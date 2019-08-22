@@ -54,6 +54,12 @@ class WriterSerializer(serializers.HyperlinkedModelSerializer):
         view_name = "manager_api:editor_detail",
         lookup_field = "link"
     )
+    articles = serializers.HyperlinkedRelatedField(
+        queryset = Article.objects.all(),
+        view_name = "publisher_api:article_detail",
+        lookup_field = "link",
+        many = True
+    )
     class Meta:
         model = Writer 
         fields = ['user','editor','link','about','date_reg',]

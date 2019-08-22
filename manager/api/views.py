@@ -58,6 +58,7 @@ class UserDetailView(generics.RetrieveUpdateAPIView):
     lookup_field = "pk"
     authentication_classes = [BasicAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly, DjangoModelPermissions, IsAdminUser]
+
 class EditorListView(generics.ListCreateAPIView):
     queryset = Editor.objects.all()
     serializer_class = EditorSerializer
