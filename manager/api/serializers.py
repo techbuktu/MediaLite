@@ -7,12 +7,12 @@ class UserSerializer(serializers.ModelSerializer):
     """
     Serializer for the django.contrib.auth.models.User model.
     """
-    writer = serializers.HyperlinkedModelSerializer(
+    writer = serializers.HyperlinkedRelatedField(
         queryset = Writer.objects.all(),
         view_name = 'manager_api:writer_detail',
         lookup_field = "link"
     )
-    editor = serializers.HyperlinkedModelSerializer(
+    editor = serializers.HyperlinkedRelatedField(
         queryset = Editor.objects.all(),
         view_name = 'manager_api:editor_detail',
         lookup_field = "link"
@@ -30,7 +30,7 @@ class EditorSerializer(serializers.HyperlinkedModelSerializer):
         view_name = 'manager_api:user_detail',
         lookup_field = "pk"
     )
-    writers = serializers.HyperlinkedModelSerializer(
+    writers = serializers.HyperlinkedRelatedField(
         queryset = Writer.objects.all(),
         view_name = 'manager_api:writer_detail',
         many = True
