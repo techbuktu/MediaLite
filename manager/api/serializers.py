@@ -19,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = User 
-        fields = ['first_name','last_name','pk']
+        fields = ['first_name','last_name','pk','editor','writer']
 
 class EditorSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -38,7 +38,7 @@ class EditorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Editor 
-        fields = ['user','link','about','date_reg']
+        fields = ['user','link','about','date_reg','writers']
 
 class WriterSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -62,4 +62,4 @@ class WriterSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Writer 
-        fields = ['user','editor','link','about','date_reg',]
+        fields = ['user','editor','link','about','date_reg','articles']
