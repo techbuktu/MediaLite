@@ -24,7 +24,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Article
-        fields = ['writer','title','body','publish_date','publish']
+        fields = ['writer','title','body','publish_date','publish','comments']
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
