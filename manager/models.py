@@ -33,4 +33,3 @@ class Writer(ProfileModel):
         on_delete=models.CASCADE
         )
 
-
