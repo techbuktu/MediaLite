@@ -27,8 +27,8 @@ def medialite_api_root(request, format=None):
     API root for the MediaLite Platform.
     """
     return Response({
-        'manager': reverse('manager_api:manager_api_root'),
-        #'publisher': reverse('publisher_api:publisher_api_root')
+        'manager': reverse('manager_api:manager_api_root', request=request, format=format),
+        'publisher': reverse('publisher_api:publisher_api_root', request=request, format=format)
     })
 
 @api_view(['GET'])
