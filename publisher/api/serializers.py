@@ -47,6 +47,3 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
         model = Comment 
         fields = ['commenter','article','body','comment_date',]
 
-
-
-
