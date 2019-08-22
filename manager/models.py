@@ -10,7 +10,7 @@ class ProfileModel(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ['-date-reg',]
+        ordering = ['-date_reg',]
 
     def __str__(self):
         return self.user.username
@@ -26,7 +26,11 @@ class Editor(ProfileModel):
 
 
 class Writer(ProfileModel):
-    user = models.OneToOneField(User, related_name="writer")
+    user = models.OneToOneField(
+        User,
+        related_name="writer", 
+        on_delete=models.CASCADE
+        )
     editor = models.ForeignKey(
         Editor,
         related_name="writers",
