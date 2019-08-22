@@ -29,3 +29,47 @@ def publisher_api_root(request, format=None):
         'comments': reverse('publisher_api:comment_list', request=request, format=format)
     })
 
+class ArticleListView(generics.ListCreateAPIView):
+    """
+    View to serve serialized format of list of publisher.Article instances.
+    Will also POST a new publisher.Article to DB.
+    """
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    lookup_field = "link"
+    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+
+class ArticleDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Handles GET, PUT and DELETE methods on the publisher.Article object instances.
+    """
+    queryset = Article.objects.all()
+    seriializer_class = ArticleSerializer
+    lookup_field = "link"
+    authentication_classes = [BasicAuthentication, SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+
+class CommentListAPIView(generics.ListCreateAPIView):
+    """
+    Serves serialized format of publisher.Comment model.
+    Requires user to be authenticated to POST new Comments.
+    """
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    lookup_field = "link"
+    authentication_classes = [BasicAuthentication, SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+
+class CommentDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Authenticated User with proper permissions performs GET, PUT and DELETE 
+    on a single publisher.Comment object instance.
+    """
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    lookup_field = "link"
+    authentication_classes = [BasicAuthentication, SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+
+
