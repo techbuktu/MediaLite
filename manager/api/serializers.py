@@ -40,7 +40,7 @@ class EditorSerializer(serializers.HyperlinkedModelSerializer):
         model = Editor 
         fields = ['user','link','about','date_reg']
 
-class WriterSerializer(serializer.HyperlinkedModelSerializer):
+class WriterSerializer(serializers.HyperlinkedModelSerializer):
     """
     API Serializer for the manager.Writer model. Returns JSON format by default.
     """

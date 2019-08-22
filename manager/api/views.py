@@ -8,7 +8,7 @@ from rest_framework.decorators import (
     api_view, authentication_classes 
 )
 from rest_framework.permissions import (
-    IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions
+    IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions, IsAdminUser
 )
 from rest_framework.authentication import (
     SessionAuthentication, BasicAuthentication, TokenAuthentication
@@ -28,7 +28,7 @@ def medialite_api_root(request, format=None):
     """
     return Response({
         'manager': reverse('manager_api:manager_api_root'),
-        'publisher': reverse('publisher_api:publisher_api_root')
+        #'publisher': reverse('publisher_api:publisher_api_root')
     })
 
 @api_view(['GET'])
@@ -50,15 +50,14 @@ class UserListView(generics.ListCreateAPIView):
     serializer_class = UserSerializer 
     lookup_field = "pk"
     authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
 
 class UserDetailView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = "pk"
     authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly, DjangoModelPermissions]
-
+    permission_classes = [IsAuthenticatedOrReadOnly, DjangoModelPermissions, IsAdminUser]
 class EditorListView(generics.ListCreateAPIView):
     queryset = Editor.objects.all()
     serializer_class = EditorSerializer

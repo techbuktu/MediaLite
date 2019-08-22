@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from manager.api.views import medialite_api_root 
+from django.urls import path, include
+from manager.api.views import medialite_api_root, manager_api_root
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', medialite_api_root, name="api_root"),
+    path('api/manager/', include('manager.api.urls', namespace='manager_api'))
 ]
