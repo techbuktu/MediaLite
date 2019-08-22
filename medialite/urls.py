@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from manager.api.views import medialite_api_root 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', medialite_api_root, name="api_root"),
 ]

@@ -8,7 +8,7 @@ from rest_framework.decorators import (
     api_view, authentication_classes 
 )
 from rest_framework.permissions import (
-    IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermisions
+    IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions
 )
 from rest_framework.authentication import (
     SessionAuthentication, BasicAuthentication, TokenAuthentication
@@ -57,7 +57,7 @@ class UserDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     lookup_field = "pk"
     authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly, DjangoModelPermissions]
 
 class EditorListView(generics.ListCreateAPIView):
     queryset = Editor.objects.all()
@@ -71,7 +71,7 @@ class EditorDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = EditorSerializer
     lookup_field = "link"
     authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
 class WriterListView(generics.ListCreateAPIView):
     queryset = Writer.objects.all()
@@ -85,4 +85,4 @@ class WriterDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = WriterSerializer
     lookup_field = "link"
     authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly, DjangoModelPermissions]
