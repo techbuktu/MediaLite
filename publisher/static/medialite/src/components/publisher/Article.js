@@ -5,8 +5,8 @@ class Article extends Component {
         article = {
 
         },
-        comment = {
-
+        new_comment = {
+            
         },
         comments = [
 
