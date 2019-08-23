@@ -121,7 +121,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../../static/')
 
 
 #CORS Settings for the MediaLite API
-CORS_ORIGIN_ALLOW_ALL = True 
+#CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 
 CORS_ALLOW_METHODS = (
     'DELETE',
