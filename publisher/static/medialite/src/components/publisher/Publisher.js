@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
 class Publisher extends Component {
+    state = {
+        latest_articles = []
+
+    };
+
     render() {
         return (
             <div>
@@ -11,6 +16,10 @@ class Publisher extends Component {
             </div>
         )
     }
+
+    getArticles(){
+
+    };
 }
 
 export default  Publisher;

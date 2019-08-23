@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Comment from './Comment';
+import NewComment from './NewComment';
 
 class Article extends Component {
     state = {
@@ -6,7 +8,7 @@ class Article extends Component {
 
         },
         new_comment = {
-            
+
         },
         comments = [
 
@@ -22,11 +24,15 @@ class Article extends Component {
 
     getArticleDetails(link){
 
-    }
+    };
+
+    getArticleComments(){
+
+    };
 
     commentOnArticle(link){
 
-    }
+    };
 }
 
 export default Article;

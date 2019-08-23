@@ -5,7 +5,8 @@ class ArticleList extends Component {
     state = {
         new_article = {
 
-        }
+        },
+        article_list = []
     }
     render() {
         return (
@@ -17,9 +18,13 @@ class ArticleList extends Component {
         )
     }
 
+    getArticles(){
+
+    };
+
     publishNewArticle(){
 
-    }
+    };
 }
 
 export default ArticleList;
