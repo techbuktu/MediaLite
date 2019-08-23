@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ArticleApi from '../../api/ArticleApi';
 
 class Publisher extends Component {
     componentDidMount(){
@@ -22,7 +23,7 @@ class Publisher extends Component {
     }
 
     getArticles(){
-
+        ArticleApi.getAllArticles();
     };
 }
 
