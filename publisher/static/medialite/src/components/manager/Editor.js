@@ -3,6 +3,7 @@ import Writer from './Writer';
 
 class Editor extends Component {
     componentDidMount(){
+        this.getWritersByEditor();
         
     }
     render() {
