@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 
 class Home extends Component {
     state = {
-        user = {},
-        articles = [],
-        writers = []
+        user : { },
+        articles : [],
+        writers : []
     }
-    
+
+    componentDidMount(){
+        this.getArticles();
+        this.getWriters();
+    };
+
     render() {
         return (
             <div>
@@ -15,6 +20,14 @@ class Home extends Component {
             </p>
             </div>
         )
+    }
+
+    getArticles(){
+
+    };
+
+    getWriters(){
+
     }
 }
 

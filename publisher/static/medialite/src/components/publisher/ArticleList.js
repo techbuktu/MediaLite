@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 
 class ArticleList extends Component {
     state = {
-        new_article = {
+        new_article : {
 
         },
-        article_list = []
+        article_list : []
     }
     render() {
         return (

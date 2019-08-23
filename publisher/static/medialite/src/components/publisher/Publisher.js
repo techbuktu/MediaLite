@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 
 class Publisher extends Component {
+    componentDidMount(){
+        this.getArticles();
+    };
+
     state = {
-        latest_articles = []
+        latest_articles : []
 
     };
 

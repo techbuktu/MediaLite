@@ -4,13 +4,13 @@ import NewComment from './NewComment';
 
 class Article extends Component {
     state = {
-        article = {
+        article : {
 
         },
-        new_comment = {
+        new_comment : {
 
         },
-        comments = [
+        comments : [
 
         ]
     }
