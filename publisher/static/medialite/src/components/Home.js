@@ -4,6 +4,7 @@ import CommentApi from '../api/CommentApi';
 import WriterApi from '../api/WriterApi';
 import EditorApi from '../api/EditorApi';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 // Import sectional base components 
 import Manager from './manager/Manager';
 import Publisher from './publisher/Publisher';
@@ -24,10 +25,10 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-                <Manager editors={this.state.editors} writers={this.state.writers} />
-                <Publisher articles={this.state.articles} />
-            </div>
+                <React.Fragment>
+                   <Publisher />
+                   <Manager />
+                </React.Fragment>
         )
     }
 
