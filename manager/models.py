@@ -13,12 +13,12 @@ class ProfileModel(models.Model):
         ordering = ['-date_reg',]
 
     def __str__(self):
-        return self.user.username
+        return "%s: %s" % (self.user.username, self.user.get_full_name())
 
     def save(self, *args, **kwargs):
         if not self.link:
             self.link = slugify(self.user.username)
-        super(Editor, self).save(*args, **kwargs)
+        super(ProfileModel, self).save(*args, **kwargs)
 
 
 class Editor(ProfileModel):
