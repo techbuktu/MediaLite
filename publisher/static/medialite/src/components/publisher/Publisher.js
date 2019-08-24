@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ArticleApi from '../../api/ArticleApi';
+import PropTypes from 'prop-types';
 
 class Publisher extends Component {
     componentDidMount(){
@@ -17,7 +18,6 @@ class Publisher extends Component {
                 <p> 
                     Publisher home.
                 </p>
-                
             </div>
         )
     }
@@ -25,6 +25,12 @@ class Publisher extends Component {
     getArticles(){
         ArticleApi.getAllArticles();
     };
+
+}
+
+//PropTypes for the Publisher component
+Publisher.propTypes = {
+    
 }
 
 export default  Publisher;

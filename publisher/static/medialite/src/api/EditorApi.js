@@ -15,3 +15,5 @@ class EditorApi {
         return axios.post("http://localhost:8000/api/manager/editors/", new_editor);
     }
 }
+
+export default EditorApi;

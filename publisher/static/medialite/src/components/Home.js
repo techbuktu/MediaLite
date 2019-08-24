@@ -8,12 +8,14 @@ class Home extends Component {
     state = {
         user : { },
         articles : [],
-        writers : []
+        writers : [],
+        editors: []
     }
 
     componentDidMount(){
         this.getArticles();
         this.getWriters();
+        this.getEditors();
     };
 
     render() {
@@ -30,7 +32,7 @@ class Home extends Component {
         ArticleApi.getAllArticles()
             .then(res => {
                 this.setState({
-                    articles : res
+                    articles : res.data
                 });
                 console.log(this.state.articles);
             })
@@ -47,7 +49,7 @@ class Home extends Component {
         WriterApi.getAllWriters()
             .then(res => {
                 this.setState({
-                    writers: res
+                    writers: res.data
                 })
             })
             .catch(err => {
@@ -56,7 +58,21 @@ class Home extends Component {
             .finally(() => {
                 console.log("WriterApi.getAllWriters() ran...");
             })
+    }
 
+    getEditors(){
+        EditorApi.getAllEditors()
+            .then(response => {
+                this.setState({
+                    editors: response.data
+                })
+            })
+            .catch(err => {
+
+            })
+            .finally(() => {
+
+            })
     }
 }
 

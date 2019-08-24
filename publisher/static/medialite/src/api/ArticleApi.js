@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class ArticleApi {
-    //apiUrl = "localhost:8000/api/publisher/articles/";
+    apiUrl = "localhost:8000/api/publisher/articles/";
     
     constructor(){
         //this.apiUrl = apiUrl;

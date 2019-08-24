@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export function Header() {
-    const headerStyle = {
-        
-    }
-
+function Header() {
     return (
         <header style = { headerStyle }>
             <h3>
@@ -19,5 +15,9 @@ export function Header() {
     
 }
 
+const headerStyle = {
+        
+};
 
-//export Header;
+
+export default Header;
