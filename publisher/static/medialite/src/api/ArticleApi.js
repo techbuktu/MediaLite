@@ -14,7 +14,7 @@ class ArticleApi {
     }
 
     static getSingleArticle(link){
-        return axios.get("http://localhost:8000/api/publisher/articles/${link}/");
+        return axios.get(`http://localhost:8000/api/publisher/articles/${link}/`);
         
     }
 

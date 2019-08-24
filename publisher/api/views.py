@@ -37,8 +37,8 @@ class ArticleListView(generics.ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     lookup_field = "link"
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
+    #authentication_classes = [BasicAuthentication, SessionAuthentication]
+    #permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
 
 class ArticleDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
