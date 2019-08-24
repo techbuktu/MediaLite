@@ -8,7 +8,7 @@ class EditorApi {
     }
 
     static getSingleEditor(editor_link){
-        return axios.get("http://localhost:8000/api/manager/editors/${editor_link}/");
+        return axios.get(`http://localhost:8000/api/manager/editors/${editor_link}/`);
     }
 
     static postNewEditor(new_editor){

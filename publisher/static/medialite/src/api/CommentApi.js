@@ -8,7 +8,7 @@ class CommentApi {
     }
     
     static getSingleComment(link){
-        return axios.get("http://localhost:8000/api/publisher/comments/${link}/");
+        return axios.get(`http://localhost:8000/api/publisher/comments/${link}/`);
 
     }
 

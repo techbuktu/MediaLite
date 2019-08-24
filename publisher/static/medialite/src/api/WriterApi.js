@@ -8,7 +8,7 @@ class WriterApi{
     }
 
     static getWriterByLink(writer_link){
-        return axios.get("http://localhost:8000/api/manager/writers/${writer_link}/");
+        return axios.get(`http://localhost:8000/api/manager/writers/${writer_link}/`);
     }
 
     static newWriter(new_writer){
