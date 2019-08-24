@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 class Manager extends Component {
-    state = {
-        writers : [ ],
-        editors : [ ]
-    }
 
     componentDidMount(){
         this.getEditors();
@@ -15,7 +12,7 @@ class Manager extends Component {
     render() {
         return (
             <div>
-                
+                Manager Home
             </div>
         )
     }
@@ -28,5 +25,11 @@ class Manager extends Component {
 
     }
 }
+
+Manager.propTypes = {
+    editors: PropTypes.array.isRequired,
+    writers: PropTypes.array.isRequired,
+    user: PropTypes.object.isRequired
+};
 
 export default Manager;

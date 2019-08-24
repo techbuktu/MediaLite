@@ -4,6 +4,10 @@ import CommentApi from '../api/CommentApi';
 import WriterApi from '../api/WriterApi';
 import EditorApi from '../api/EditorApi';
 
+// Import sectional base components 
+import Manager from './manager/Manager';
+import Publisher from './publisher/Publisher';
+
 class Home extends Component {
     state = {
         user : { },
@@ -21,9 +25,8 @@ class Home extends Component {
     render() {
         return (
             <div>
-            <p>
-                Home component
-            </p>
+                <Manager editors={this.state.editors} writers={this.state.writers} />
+                <Publisher articles={this.state.articles} />
             </div>
         )
     }

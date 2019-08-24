@@ -11,7 +11,6 @@ function Header() {
             <Link to="/publisher"> Publisher </Link>
         </header>
     )
-
     
 }
 
