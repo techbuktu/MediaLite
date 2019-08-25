@@ -3,7 +3,8 @@ import Writer from './Writer';
 
 export default class WriterList extends Component {
     state = {
-        writers: [ ]
+        writers: [ ],
+        writers_api_error_msg : ""
     }
 
     render() {
@@ -11,4 +12,6 @@ export default class WriterList extends Component {
             <Writer key={writer.link} writer={writer} />
         ))
     }
+
+    
 }
