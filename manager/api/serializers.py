@@ -19,7 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = User 
-        fields = ['first_name','last_name','pk','editor','writer']
+        fields = ['username','first_name','last_name','pk','editor','writer']
 
 class EditorSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -33,6 +33,7 @@ class EditorSerializer(serializers.HyperlinkedModelSerializer):
     writers = serializers.HyperlinkedRelatedField(
         queryset = Writer.objects.all(),
         view_name = 'manager_api:writer_detail',
+        lookup_field = "link",
         many = True
     )
 

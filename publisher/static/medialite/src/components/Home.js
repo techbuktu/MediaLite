@@ -4,8 +4,6 @@ import { PropTypes } from 'prop-types';
 
 import ArticleApi from '../api/ArticleApi';
 import CommentApi from '../api/CommentApi';
-import WriterApi from '../api/WriterApi';
-import EditorApi from '../api/EditorApi';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
