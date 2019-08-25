@@ -23,8 +23,8 @@ class Manager extends Component {
     render() {
         return (
             <p>
-                <button> <Link to="">Editors Corner</Link> </button>  {''}
-                <button> <Link to=""> Writers Valley</Link> </button> 
+                <button> <Link to="/manager/editors">Editors Corner</Link> </button>  {''}
+                <button> <Link to="/manager/writers"> Writers Valley</Link> </button> 
             </p>
 
         )

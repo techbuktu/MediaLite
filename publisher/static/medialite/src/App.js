@@ -6,6 +6,8 @@ import Header  from './components/Header';
 import Home  from './components/Home';
 import Publisher from './components/publisher/Publisher';
 import Manager from './components/manager/Manager';
+import EditorList from './components/manager/EditorList';
+import WriterList from './components/manager/WriterList';
 
 
 class App extends Component {
@@ -25,6 +27,8 @@ class App extends Component {
             )}/>
             <Route path="/publisher" component={Publisher} />
             <Route path="/manager" component={Manager} />
+            <Route path="/manager/editors" component={EditorList} />
+            <Route path="/manager/writers" component={WriterList} />
             
         </div>
       </Router>
