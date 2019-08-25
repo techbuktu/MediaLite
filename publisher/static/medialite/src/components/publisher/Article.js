@@ -17,7 +17,7 @@ class Article extends Component {
     render() {
         return (
             <div>
-                
+                <h5>Title of Article</h5>
             </div>
         )
     }
