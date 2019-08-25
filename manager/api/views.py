@@ -49,21 +49,21 @@ class UserListView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer 
     lookup_field = "pk"
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    #authentication_classes = [BasicAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly, IsAdminUser]
 
 class UserDetailView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = "pk"
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    #authentication_classes = [BasicAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly, DjangoModelPermissions, IsAdminUser]
 
 class EditorListView(generics.ListCreateAPIView):
     queryset = Editor.objects.all()
     serializer_class = EditorSerializer
     lookup_field = "link"
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    #authentication_classes = [BasicAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
 class EditorDetailView(generics.RetrieveUpdateAPIView):
