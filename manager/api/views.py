@@ -64,7 +64,7 @@ class EditorListView(generics.ListCreateAPIView):
     serializer_class = EditorSerializer
     lookup_field = "link"
     #authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class EditorDetailView(generics.RetrieveUpdateAPIView):
     queryset = Editor.objects.all()
@@ -77,8 +77,8 @@ class WriterListView(generics.ListCreateAPIView):
     queryset = Writer.objects.all()
     serializer_class = WriterSerializer
     lookup_field = "link"
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticated]
+    #authentication_classes = [BasicAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class WriterDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Writer.objects.all()

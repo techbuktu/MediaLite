@@ -36,10 +36,17 @@ class EditorSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field = "link",
         many = True
     )
+    full_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Editor 
-        fields = ['user','link','about','date_reg','writers']
+        fields = ['user','link','about','date_reg','writers', 'full_name']
+
+    def get_full_name(self, obj):
+        """
+            Returns the writer's user.first_name + user.last_name
+        """
+        return obj.user.first_name + " " + obj.user.last_name
 
 class WriterSerializer(serializers.HyperlinkedModelSerializer):
     """

@@ -21,11 +21,11 @@ class Manager extends Component {
     }
 
     render() {
-        return (
-            <div>
-                Manager Home
-            </div>
-        )
+            return this.state.editors.map((editor) => (
+                    <div key={editor.link}>
+                        <Link> {} </Link>
+                    </div>
+            ));
     }
 
     getWriters(){
