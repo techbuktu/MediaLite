@@ -5,8 +5,6 @@ import { PropTypes } from 'prop-types';
 import ArticleApi from '../api/ArticleApi';
 import CommentApi from '../api/CommentApi';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 class Home extends Component {
 
     componentDidMount(){

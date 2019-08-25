@@ -8,7 +8,7 @@ class Writer extends Component {
     render() {
         return (
             <div>
-                
+                <h5> { this.props.writer.full_name} </h5>
             </div>
         )
     }

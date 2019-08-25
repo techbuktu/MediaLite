@@ -25,10 +25,12 @@ class App extends Component {
                 <Home user={this.state.user} />
               </React.Fragment>
             )}/>
-            <Route path="/publisher" component={Publisher} />
-            <Route path="/manager" component={Manager} />
+            <Route exact path="/publisher" component={Publisher} />
+            <Route exact path="/manager" component={Manager} />
+
             <Route path="/manager/editors" component={EditorList} />
             <Route path="/manager/writers" component={WriterList} />
+            
             
         </div>
       </Router>

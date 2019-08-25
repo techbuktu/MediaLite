@@ -15,7 +15,7 @@ class EditorList extends Component {
     }
 
     render() {
-        return this.props.editors.map((editor)=>(
+        return this.state.editors.map((editor) => (
             <Editor key={editor.link} editor={editor} />
         ))
     }

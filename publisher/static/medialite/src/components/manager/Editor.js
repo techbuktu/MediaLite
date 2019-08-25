@@ -9,7 +9,7 @@ class Editor extends Component {
     render() {
         return (
             <div>
-                {Editor.full_name}
+                <h5> {this.props.editor.full_name} </h5>
             </div>
         )
     }
