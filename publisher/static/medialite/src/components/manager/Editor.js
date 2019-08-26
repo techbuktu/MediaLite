@@ -7,15 +7,15 @@ import EditorApi from '../../api/EditorApi';
 class Editor extends Component {
    constructor(props){
        super(props);
-       console.log(this.props);
+       //console.log(this.props);
    }
 
     componentDidMount(){
-        //const { match: {params}} = this.props;
-        console.log("this.props.params object: " + this.props.params);
+        const { match: {params}} = this.props;
+        //console.log("this.props.params object: " + this.props.params);
         //console.log(this.params.editorLink);
-        //console.log(this.match);
-        this.getWritersByEditor();
+        console.log("this.params: " + this.params);
+        this.getWritersByEditor(`${params.editorLink}`);
         
     }
     render() {
@@ -33,7 +33,7 @@ class Editor extends Component {
         )
     }
 
-    getWritersByEditor(){
+    getWritersByEditor(editor_link){
 
     }
 }

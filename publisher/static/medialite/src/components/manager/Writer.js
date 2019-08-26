@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
 class Writer extends Component {
+    constructor(props){
+        super(props);
+    }
+
+
     componentDidMount(){
+        const { match: {params}} = this.props;
         
     }
     
