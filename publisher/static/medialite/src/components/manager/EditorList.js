@@ -5,9 +5,12 @@ import Editor from './Editor';
 
 class EditorList extends Component {
 
-    state = {
-        editors: [],
-        editor_api_error_msg : ""
+    constructor(){
+        super();
+        this.state = {
+            editors: [],
+            editor_api_error_msg : ""
+        }
     }
 
     componentDidMount(){

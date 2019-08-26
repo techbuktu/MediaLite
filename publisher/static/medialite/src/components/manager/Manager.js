@@ -8,9 +8,14 @@ import EditorApi from '../../api/EditorApi';
 
 
 class Manager extends Component {
-    state = {
-        writers: [],
-        editors: [],
+    constructor(){
+        super();
+        
+        this.state = {
+            writers: [],
+            editors: [],
+        }
+
     }
 
     componentDidMount(){
