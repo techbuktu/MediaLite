@@ -23,7 +23,7 @@ class Article extends Component {
     }
 
     getArticleDetails(link){
-
+        
     };
 
     getArticleComments(){

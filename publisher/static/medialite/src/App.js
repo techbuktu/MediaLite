@@ -8,6 +8,9 @@ import Publisher from './components/publisher/Publisher';
 import Manager from './components/manager/Manager';
 import EditorList from './components/manager/EditorList';
 import WriterList from './components/manager/WriterList';
+import Editor from './components/manager/Editor';
+import Writer from './components/manager/Writer';
+
 //Import Publisher section's components 
 import Article from './components/publisher/Article';
 import ArticleList from './components/publisher/ArticleList';
@@ -35,7 +38,9 @@ class App extends Component {
             <Route path="/manager/editors" component={EditorList} />
             <Route path="/manager/writers" component={WriterList} />
             <Route path="/publisher/articles/" component={ArticleList} />
-            <Route path="/publisher/article/" component={Article} />
+            <Route path="/publisher/:articleLink" component={Article} />
+            <Route path="/manager/editors/:editorLink" component={Editor} />
+            <Route path="/manager/writers/:writerLink" component={Writer} />
             
             
         </div>
