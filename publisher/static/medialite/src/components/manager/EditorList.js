@@ -19,7 +19,7 @@ class EditorList extends Component {
 
     render() {
         return this.state.editors.map((editor) => (
-            <Editor key={editor.link} editor={editor} />
+            <Editor key={editor.link} editor={editor} stuff={'Salamun Alaikum! :)'}/>
         ))
     }
 
