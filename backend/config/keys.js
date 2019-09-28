@@ -1,3 +1,4 @@
 module.exports = {
-    mongoURI: `mongodb://link-to-mongoDB-Atlas.cluster/db_name`
+    mongoURI: `mongodb+srv://muhammad:Jalloh1234@cluster0-hpcwx.mongodb.net/test?retryWrites=true&w=majority`
 };
+
