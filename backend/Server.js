@@ -10,6 +10,16 @@ project.get('/', (req, res) => {
     res.send('Welcome to the MediaLite platform!')
 })
 
+//Import route project's route modules
+// 'Manager' API section's routes 
+project.use('/api/manager/auth', require('./routes/manager/auth'))
+project.use('/api/manager/editors', require('./routes/manager/editors'))
+project.use('/api/manager/auth', require('./routes/manager/auth'))
+
+//'Publisher' API section's routes
+project.use('/api/publisher/articles', require('./routes/publisher/articles'))
+project.use('/api/publisher/comments', require('./routes/publisher/comments'))
+
 //Connect to MongoDB here
 const db = require('./config/keys').mongoURI;
 mongoose

@@ -5,6 +5,13 @@ const router = express.Router();
 const Comment = require("../../models/publisher/Comment");
 
 
+//@route GET api/publisher/comments
+//@desc Get list of All Comments
+//@access Public 
+router.get('/', (req, res) => {
+    res.send('Home of Comments API');
+})
+
 
 
 

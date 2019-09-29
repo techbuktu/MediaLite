@@ -5,6 +5,13 @@ const router = express.Router();
 const User = require("../../models/manager/Writer");
 
 
+//@route GET api/manager/writers
+//@desc Get list of All Writer
+//@access Public 
+router.get('/', (req, res) => {
+    res.send('Home of Writers API');
+})
+
 
 
 

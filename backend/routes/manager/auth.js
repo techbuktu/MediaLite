@@ -5,6 +5,12 @@ const router = express.Router();
 const User = require("../../models/manager/User");
 
 
+//@route GET api/manager/users
+//@desc Get list of All Users
+//@access Public 
+router.get('/', (req, res) => {
+    res.send('Home of Auth/User API');
+})
 
 
 

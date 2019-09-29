@@ -5,6 +5,14 @@ const router = express.Router();
 const Editor = require("../../models/manager/Editor");
 
 
+//@route GET api/manager/editors
+//@desc Get list of All Editors
+//@access Public 
+router.get('/', (req, res) => {
+    res.send('Home of Editor API');
+})
+
+
 
 
 
