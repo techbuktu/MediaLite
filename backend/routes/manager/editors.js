@@ -9,11 +9,12 @@ const Editor = require("../../models/manager/Editor");
 //@desc Get list of All Editors
 //@access Public 
 router.get('/', (req, res) => {
-    res.send('Home of Editor API');
+    res.send('Home of Editors API');
 })
 
-
-
+//@route 
+//@desc 
+//@access 
 
 
 module.exports = router;

@@ -12,6 +12,10 @@ router.get('/', (req, res) => {
     res.send('Home of Comments API');
 })
 
+//@route 
+//@desc 
+//@access 
+
 
 
 
