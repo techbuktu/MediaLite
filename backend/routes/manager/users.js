@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
     //Check that all required fields are supplied
     if (!firstName || !lastName || !email || !password){
         return res.status(400).json({
-            errorMessage: "Please, supply all the fields's values correctly."
+            errorMessage: "Please, supply all the fields' values correctly."
         })
     }
 
