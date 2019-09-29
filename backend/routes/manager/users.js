@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
-
 //Import the 'User' model
 const User = require("../../models/manager/User");
 
@@ -68,7 +67,7 @@ router.post('/', (req, res) => {
                        newUser.password = hash;
                        newUser.save()
                         .then(new_user => {
-                            res.status(200).json({
+                            res.json({
                                 successMessage: 'Congrats! :) You have sucessfully created a new user.',
                                 new_user: {
                                     id: new_user.id,
