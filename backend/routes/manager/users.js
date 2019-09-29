@@ -98,7 +98,22 @@ router.put('/:id', (req, res) => {
 //@desc Delete a single User object
 //@access Private 
 router.delete('/:id', (req, res) => {
-    
+    User.findById(req.params.id)
+        .then(user => {
+            user.remove()
+                .then(() => {
+                    res.json({
+                        successMessage: `You have removed user with id: ${req.params.id}`
+                    })
+                })
+            
+        })
+        .catch(err => {
+            res.status(400).json({
+                errorMessage: `User with id of ${req.params.id} not found.`,
+                fullErrorMessage: `${err}`
+            })
+        })
 })
 
 
