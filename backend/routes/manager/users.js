@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+
 
 //Import the 'User' model
 const User = require("../../models/manager/User");
@@ -37,7 +39,52 @@ router.get('/:id', (req, res) => {
 //@desc Create a New User object
 //@access Public
 router.post('/', (req, res) => {
+    const {firstName, lastName, email, password } = req.body;
 
+    //Check that all required fields are supplied
+    if (!firstName || !lastName || !email || !password){
+        return res.status(400).json({
+            errorMessage: "Please, supply all the fields's values correctly."
+        })
+    }
+
+    //If all fields were supplied, check if this could create a duplicate User object.
+    User.findOne({ email: email})
+        .then(duplicateUser => {
+            
+            if(duplicateUser){
+                return res.status(400).json({
+                    errorMessage: `User with this email ${email} already exists. Please, try with a different email or request a password change.`
+                })
+            } else {
+                let newUser = new User({
+                    firstName, lastName, email, password
+                });
+
+                //Create a salt and hash the supplied plain-text User.password
+                bcrypt.genSalt(10, (err, salt) => {
+                   bcrypt.hash(newUser.password, salt, (err, hash) => {
+                       if(err) throw err;
+                       newUser.password = hash;
+                       newUser.save()
+                        .then(new_user => {
+                            res.status(200).json({
+                                successMessage: 'Congrats! :) You have sucessfully created a new user.',
+                                new_user: {
+                                    id: new_user.id,
+                                    firstName: new_user.firstName,
+                                    lastName: new_user.lastName,
+                                    email: new_user.email
+                                }
+                            })
+                        })
+                   })
+                })
+            }
+
+
+
+        })
 })
 
 //@route PUT api/manager/users/:id
