@@ -34,7 +34,7 @@ mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db
 .once('open', () => console.log(`Local MongoDB connected`))
-.on('error', err => console.log(`Local MongoDB connection error: ${error}`));
+.on('error', err => console.log(`Local MongoDB connection error: ${err}`));
 
 const PORT = process.env.PORT || 5000;
 

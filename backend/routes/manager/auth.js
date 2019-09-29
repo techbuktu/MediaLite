@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 //Import the 'User' model
 const User = require("../../models/manager/User");
