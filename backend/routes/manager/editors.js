@@ -106,7 +106,7 @@ router.put('/:id', (req, res) => {
             Editor.update(query, editorUpdate)
                 .then(updatedEditor => {
                     res.json({
-                        successMessage: `Editor (${updatedEditor._id}) has been successfully-updated.`,
+                        successMessage: `Editor (${editor._id}) has been successfully-updated.`,
                         updated_editor: updatedEditor
                     })
                 })
