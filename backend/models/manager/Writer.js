@@ -19,7 +19,7 @@ const WriterSchema = new Schema({
     },
     link: {
         type: String,
-        slug: _id,
+        slug: '_id',
         required: false
     },
     editor: {
