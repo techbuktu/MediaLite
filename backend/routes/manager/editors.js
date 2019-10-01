@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     Editor.find()
         .then(editors => {
             res.json({
-                successMessage: `${editors.length} editors were found!`,
+                successMessage: `${editors.length} editor(s) were found!`,
                 editors
             })
         })
@@ -52,34 +52,35 @@ router.post('/', (req, res) => {
         return res.status(400).json({
             errorMessage: `Please, fill out all required fields. You only supplied ${Object.keys(req.body)} .`
         })
-    } 
+    }
 
     //Check if a duplicate Editor instance already exists
     Editor.findOne({ user: user})
         .then(duplicateEditor => {
-            res.status(400).json({
-                errorMessage: `Sorry, an Editor attached to that user already exists.`
-            })
-        })
-        .catch(err => {
-            //No duplicate Editor was found. It's safe to create a new one.
-            const newEditor = new Editor({
-                user:user, about: about
-            })
-            newEditor.save()
-                .then(new_editor => {
-                    res.json({
-                        successMessage: `You have successfully-added a new Editor`,
-                        new_editor: new_editor
-                    })
+            if(duplicateEditor){
+                res.status(400).json({
+                    errorMessage: `Sorry, an Editor attached to that user already exists.`
                 })
-                .catch(err => {
-                    res.status(400).json({
-                        errorMessage: `Sorry, a new Editor could not be created. Please, check the date you sent and try again.`
-                    })
+            }else {
+                //Create and save() the new Editor and return 200 response.
+                const newEditor = new Editor({
+                    user:user, about: about
                 })
-            
+                newEditor.save()
+                    .then(new_editor => {
+                        res.json({
+                            successMessage: `You have successfully-added a new Editor`,
+                            new_editor: new_editor
+                        })
+                    })
+                    .catch(err => {
+                        res.status(400).json({
+                            errorMessage: `Sorry, a new Editor could not be created. Please, check the date you sent and try again.`
+                        })
+                    })
+            }
         })
+
 })
 
 //@route PUT api/manager/editrs/:id
