@@ -92,11 +92,10 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     user = User.findOne({ _id: req.params.id })
     if(user){
-        const userFields = Object.keys(req.body);
-        //res.json({userFields});
+        const updatedFields = Object.keys(req.body);
         let userUpdate = {};
 
-        userFields.map(field => {
+        updatedFields.map(field => {
             userUpdate[field] = req.body[field];
         })
         let query = { _id: req.params.id };
