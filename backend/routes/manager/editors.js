@@ -86,6 +86,42 @@ router.post('/', (req, res) => {
 //@desc Update an existing Editor object
 //@access Private 
 router.put('/:id', (req, res) => {
+    //Check if this Editor exists 
+    Editor.findOne({ _id: req.params.id})
+        .then(editor => {
+            //Get the updated fields
+            const updatedEditorFields = Object.keys(req.body);
+
+            // Initialize and populate an object to store the updated fields' value
+            let editorUpdate = {};
+            updatedEditorFields.map(field => {
+                editorUpdate[field] = req.body[field];
+            })
+            
+            //Create a 'query' object to search the DB collection with.
+            let query = {_id: req.params.id};
+
+            //Query the DB collection for the Editor instance, update it and send successful response to client
+            Editor.update(query, editorUpdate)
+                .then(updatedEditor => {
+                    res.json({
+                        successMessage: `Editor (${updatedEditor._id}) has been successfully-updated.`,
+                        updated_editor: updatedEditor
+                    })
+                })
+                .catch(updateError => {
+                    res.status(400).json({
+                        errorMessage: `Editor (${req.params.id}) could not be updated.`
+                    })
+                })
+                
+        })
+        .catch(err => {
+            res.status(400).json({
+                errorMessage: `Sorry, an Editor with the supplied id (${req.params.id}) was not found.`
+            })
+        })
+
 
 })
 
