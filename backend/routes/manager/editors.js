@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
     Editor.findOne({ user: user})
         .then(duplicateEditor => {
             res.status(400).json({
-                errorMessage: `Sorry, a Editor attached to that user already exists.`
+                errorMessage: `Sorry, an Editor attached to that user already exists.`
             })
         })
         .catch(err => {
@@ -114,7 +114,7 @@ router.put('/:id', (req, res) => {
                         errorMessage: `Editor (${req.params.id}) could not be updated.`
                     })
                 })
-                
+
         })
         .catch(err => {
             res.status(400).json({
