@@ -47,7 +47,30 @@ router.get('/:link', (req, res) => {
 //@desc Create a New Writer object
 //@access Public
 router.post('/', (req, res) => {
+    const {user, editor, about} = req.body;
 
+    if(!user || !editor || !about){
+        res.status(400).json({
+            errorMessage: `Please, fill out all the fields and re-submit.`
+        })
+    }else {
+        //Construct and save a new Writer instance into the 'writers' collection
+        const newWriter = new Writer({
+            user, editor, about
+        })
+        newWriter.save()
+            .then(new_writer => {
+                res.json({
+                    successMessage: 'You have successfully created a new Writer instance.',
+                    new_writer: new_writer
+                })
+            })
+            .catch(dbError => {
+                res.status(500).json({
+                    errorMessage: `There was an error. A new Writer instance could not be created. Please, try again.`
+                })
+            })
+    }
 })
 
 //@route PUT api/manager/writers/:link
