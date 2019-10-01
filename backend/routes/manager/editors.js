@@ -9,7 +9,18 @@ const Editor = require("../../models/manager/Editor");
 //@desc Get list of All Editors
 //@access Public 
 router.get('/', (req, res) => {
-    res.send('Home of Editors API');
+    Editor.find()
+        .then(editors => {
+            res.json({
+                successMessage: `${editors.length} editors were found!`,
+                editors
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                errorMessage: `Sorr, no editors were found..`
+            })
+        })
 })
 
 //@route 
