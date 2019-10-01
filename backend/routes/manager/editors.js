@@ -89,10 +89,29 @@ router.put('/:id', (req, res) => {
 
 })
 
-//@route DELETE api/managers/:id
+//@route DELETE api/manager/editors/:id
 //@desc Delete a single Editor object
 //@access Private 
 router.delete('/:id', (req, res) => {
+    Editor.findById(req.params.id)
+        .then(editor => {
+            editor.remove()
+                .then(() => {
+                    res.json({
+                        successMessage: `Editor with id ${editor._id} was successfully-deleted.`
+                    })
+                })
+                .catch(err => {
+                    res.json({
+                        errorMessage: `Editor with id ${req.params.id} could not be deleted.`
+                    })
+                })
+        })
+        .catch(err => {
+            res.status(400).json({
+                errorMessage: `Editor with id ${req.params.id} was not found.`
+            })
+        })
     
 })
 
