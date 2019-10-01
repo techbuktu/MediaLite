@@ -90,7 +90,58 @@ router.post('/', (req, res) => {
 //@desc Update an existing User object
 //@access Private 
 router.put('/:id', (req, res) => {
+    user = User.findOne({ _id: req.params.id })
+    if(user){
+        const userFields = Object.keys(req.body);
+        //res.json({userFields});
+        let userUpdate = {};
 
+        userFields.map(field => {
+            userUpdate[field] = req.body[field];
+        })
+        let query = { _id: req.params.id };
+        User.update(query, userUpdate, (err) => {
+            if(err){
+                res.status(400).json({
+                    errorMessage: `Sorry, user with id ${user._id} could not be updated`
+                })
+            }else{
+                User.findById(req.params.id)
+                    .then(updatedUser => {
+                        res.json({
+                            successMessage: `You have successfully updated user with id: ${updatedUser._id}`,
+                            updatedUser
+                        })
+                    })
+                    .catch(err => {
+                        res.status(400).json({
+                            errorMessage: `Sorry, user with id (${req.params.id}) could not be updated.`
+                        })
+                    })
+            }
+        })
+        
+    }else {
+        res.status(400).json({
+            errorMessage: `Sorry, no user with id of ${req.params.id} was found.`
+        })
+    }
+
+        /* 
+        .then(user => {
+            const userFields = Object.keys(req.body);
+            //res.json({userFields});
+            userFields.map(field => {
+                user[field] = req.body[field]
+            })
+
+        })
+        .catch(err => {
+            res.status(400).json({
+                errorMessage: `Sorry, no user with id of ${req.params.id} was found.`
+            })
+        })
+        */
 })
 
 //@route DELETE api/managers/:id
@@ -118,3 +169,14 @@ router.delete('/:id', (req, res) => {
 
 
 module.exports = router;
+
+/*
+if(user){
+        const userFields = Object.keys(req.body);
+        res.json({userFields});
+    }else {
+        res.status(400).json({
+            errorMessage: `Sorry, no user with id of ${req.params.id} was found.`
+        })
+    }
+*/

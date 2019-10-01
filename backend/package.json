@@ -2,7 +2,7 @@
   "name": "medialite",
   "version": "1.0.0",
   "description": "A News outlet staff management and publishing app",
-  "main": "server.js",
+  "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon Server.js",
