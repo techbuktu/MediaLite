@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
+
+const slug_generator = require('mongoose-slug-generator');
+mongoose.plugin(slug_generator);
 
 const WriterSchema = new Schema({
     user: {
@@ -17,6 +19,7 @@ const WriterSchema = new Schema({
     },
     link: {
         type: String,
+        slug: _id,
         required: false
     },
     editor: {

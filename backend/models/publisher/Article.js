@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const slug_generator = require('mongoose-slug-generator');
+mongoose.plugin(slug_generator);
+
 const ArticleSchema = new Schema({
     title: {
         type: String, 
@@ -8,6 +11,7 @@ const ArticleSchema = new Schema({
     },
     link: {
         type: String,
+        slug: 'title',
         required: false
     },
     writer: {
