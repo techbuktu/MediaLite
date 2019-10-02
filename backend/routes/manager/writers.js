@@ -31,14 +31,14 @@ router.get('/', (req, res) => {
 //@route GET api/managers/writers/:link
 //@desc GET a single Writer object
 //@access Public 
-router.get('/:link', (req, res) => {
-    User.find({ _id: req.params.link })
+router.get('/:id', (req, res) => {
+    User.findById(req.params.id)
         .then(user => {
             res.status(200).json({user: user})
         })
         .catch(err => {
             res.status(400).json({
-                message: `User with id of ${req.params.link} does not exist.`
+                message: `User with id of ${req.params.id} does not exist.`
             })
         })
 }); 
@@ -123,7 +123,25 @@ router.put('/:id', (req, res) => {
 //@desc Delete a single Writer object
 //@access Private 
 router.delete('/:id', (req, res) => {
-  
+    //Find Writer 
+    const writer = Writer.findById(req.params.id)
+    if(!writer){
+        res.status(400).json({
+            errorMessage: `Sorry, Writer (${req.params.id}) was not found. Please, check the ID and try again.`
+        })
+    }else {
+        writer.remove()
+            .then(() => {
+                res.json({
+                    successMessage: `You have successfully-deleted Writer: ${writer._id}`
+                })
+            })
+            .catch(bdError => {
+                res.status(400).json({
+                    errorMessage: `This Writer (${req.params.id}) could not be deleted. Pleasec check your auth creds and try again.`
+                })
+            })
+    }
 })
 
 
