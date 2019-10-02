@@ -106,6 +106,40 @@ router.post('/', (req, res) => {
 //@desc Update an existing Article object
 //@access Private 
 router.put('/:link', (req, res) => {
+    const updatedArticleFields = Object.keys(req.body);
+
+    //Check if valid Article exists
+    let article = Article.findOne({link: req.params.link})
+    if(!article){
+        res.status(400).json({
+            errorMessage: `An Article with the URL ${req.params.link} does not exist.`
+        })
+    }else {
+        //Create an update to send to DB
+        let articleUpdate = {};
+        updatedArticleFields.map(field => {
+            articleUpdate[field] = req.body[field];
+        })
+
+        //Update article document in DB collection
+        Article.update({link: req.params.link}, articleUpdate)
+            .then(updatedArticle => {
+                //Get updated Article 
+                Article.findOne({link: req.params.link})
+                    .then(updated_article => {
+                        res.json({
+                            successMessage: `Article (${req.params.link}) updated.`,
+                            updated_article: updated_article
+                        })
+                    })
+            })
+            .catch(dbError => {
+                res.status(500).json({
+                    errorMessage: `Article (${req.params.link}) could not be updated.`,
+                    DBError: `${dbError}`
+                })
+            })
+    }
 
 })
 
