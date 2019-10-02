@@ -43,13 +43,15 @@ router.get('/', (req, res) => {
 //@desc GET a single Article object
 //@access Public 
 router.get('/:link', (req, res) => {
-    User.find({ _id: req.params.link })
-        .then(user => {
-            res.status(200).json({user: user})
+    Article.find({ link: req.params.link })
+        .then(article => {
+            res.status(200).json({
+                successMessage: "OK",
+                article })
         })
         .catch(err => {
             res.status(400).json({
-                message: `User with id of ${req.params.link} does not exist.`
+                message: `Article with URL of ${req.params.link} does not exist.`
             })
         })
 }); 
