@@ -76,7 +76,7 @@ router.post('/', (req, res) => {
 //@route PUT api/manager/writers/:link
 //@desc Update an existing Writer object
 //@access Private 
-router.put('/:link', (req, res) => {
+router.put('/:id', (req, res) => {
     targetWriter = Writer.findById(req.params.id);
     if(!targetWriter){
         res.status(404).json({
@@ -122,8 +122,8 @@ router.put('/:link', (req, res) => {
 //@route DELETE api/managers/:link
 //@desc Delete a single Writer object
 //@access Private 
-router.delete('/:link', (req, res) => {
-    
+router.delete('/:id', (req, res) => {
+  
 })
 
 
