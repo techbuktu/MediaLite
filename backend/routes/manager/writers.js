@@ -32,16 +32,19 @@ router.get('/', (req, res) => {
 //@desc GET a single Writer object
 //@access Public 
 router.get('/:id', (req, res) => {
-    User.findById(req.params.id)
-        .then(user => {
-            res.status(200).json({user: user})
+    Writer.findById(req.params.id)
+        .then(writer => {
+            res.status(200).json({
+                successMessage: "OK",
+                writer
+            })
         })
         .catch(err => {
             res.status(400).json({
-                message: `User with id of ${req.params.id} does not exist.`
+                erroMessage: `Writer with id of ${req.params.id} does not exist.`
             })
         })
-}); 
+});
 
 //@route POST api/manager/writers
 //@desc Create a New Writer object
