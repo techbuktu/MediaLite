@@ -58,7 +58,46 @@ router.get('/:link', (req, res) => {
 //@desc Create a New Article object
 //@access Public
 router.post('/', (req, res) => {
+    const {title, body, publish, writer} = req.body;
 
+    if(!title || !writer || !body){
+        return res.status(400).json({
+            errorMessage: "Please, supply all the required fields."
+        })
+    };
+    
+    //Check if this is a duplicate POST request
+    Article.findOne({ writer: writer, title: title})
+        .then(duplicateArticle => {
+            if(duplicateArticle){
+                res.status(400).json({
+                    errorMessage: `An article with this data already exists.`
+                })
+            }else {
+                const newArticle = new Article({
+                    title,
+                    body,
+                    writer,
+                    publish
+                });
+        
+                newArticle.save()
+                    .then(new_article => {
+                        res.json({
+                            successMessage: `You have successfully-added Article: ${new_article.title}`,
+                            new_article: new_article
+                        })
+                    })
+                    .catch(dbError => {
+                        res.status(400).json({
+                            errorMessage: `There was an error saving this Article (${title}. Please, check your data and try again.`,
+                            DBError: `${dbError}`
+                        })
+                    })
+            }
+        })
+
+   
 })
 
 //@route PUT api/publisher/articles/:link

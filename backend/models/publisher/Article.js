@@ -16,7 +16,7 @@ const ArticleSchema = new Schema({
     },
     writer: {
         type: Map,
-        required: true
+        //required: true
     },
     body: {
         type: String,
@@ -24,11 +24,12 @@ const ArticleSchema = new Schema({
     },
     publishDate: {
         type: Date,
-        required: true
+        default: Date.now
     },
     publish: {
         type: Boolean,
-        required: true
+        required: false,
+        default: true
     }
 });
 
