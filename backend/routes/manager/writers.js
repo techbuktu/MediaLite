@@ -136,7 +136,7 @@ router.delete('/:id', (req, res) => {
         writer.remove()
             .then(() => {
                 res.json({
-                    successMessage: `You have successfully-deleted Writer: ${writer._id}`
+                    successMessage: `You have successfully-deleted Writer: ${req.params.id}`
                 })
             })
             .catch(bdError => {
