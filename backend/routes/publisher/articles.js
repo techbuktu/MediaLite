@@ -9,7 +9,30 @@ const Article = require("../../models/publisher/Article");
 //@desc Get list of All Articles
 //@access Public 
 router.get('/', (req, res) => {
-    res.send('Home of Articles API');
+    /*const articles = Article.find();
+    if(articles.length < 1){
+        res.status(500).json({
+            errorMessage: `Sorry, no articles were found!`,
+        })
+    }else {
+        res.json({
+            successMessage: `${articles.length} article(s) were found!`,
+            articles
+        })
+    }*/
+    Article.find()
+        .then(articles => {
+            res.json({
+                successMessage: `${articles.length} article(s) were found!`,
+                articles
+            })
+        })
+        .catch(er => {
+            res.status(400).json({
+                errorMessage: `Sorry, no articles were found!`,
+            })
+        })
+        
 })
 
 //@route 
