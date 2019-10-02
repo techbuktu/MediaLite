@@ -99,7 +99,7 @@ router.put('/:id', (req, res) => {
             userUpdate[field] = req.body[field];
         })
         let query = { _id: req.params.id };
-        User.update(query, userUpdate, (err) => {
+        User.updateOne(query, userUpdate, (err) => {
             if(err){
                 res.status(400).json({
                     errorMessage: `Sorry, user with id ${user._id} could not be updated`

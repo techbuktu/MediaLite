@@ -103,7 +103,7 @@ router.put('/:id', (req, res) => {
             let query = {_id: req.params.id};
 
             //Query the DB collection for the Editor instance, update it and send successful response to client
-            Editor.update(query, editorUpdate)
+            Editor.updateOne(query, editorUpdate)
                 .then(updatedEditor => {
                     res.json({
                         successMessage: `Editor (${editor._id}) has been successfully-updated.`,

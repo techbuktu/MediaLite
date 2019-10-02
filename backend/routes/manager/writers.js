@@ -77,6 +77,45 @@ router.post('/', (req, res) => {
 //@desc Update an existing Writer object
 //@access Private 
 router.put('/:link', (req, res) => {
+    targetWriter = Writer.findById(req.params.id);
+    if(!targetWriter){
+        res.status(404).json({
+            errorMessage: `Writer (${req.params.id}) not found.`
+        })
+    }else {
+        const updatedWriterFields = Object.keys(req.body);
+
+        let writerUpdate = {};
+
+        updatedWriterFields.map(field => {
+            writerUpdate[field] = req.body[field];
+        })
+
+        let query = {_id: req.params.id}
+
+        //Update the Writer in the DB and return a success response to the API client
+        Writer.updateOne(query, writerUpdate, (dbError) =>{
+            if(dbError){
+                res.status(500).json({
+                    errorMessage: `Writer (${req.params.id}) could not be updated.`
+                })
+            }else {
+                Writer.findById(req.params.id)
+                    .then(updated_writer => {
+                        res.json({
+                            successMessage: `Congrats! This is your updated Writer.`,
+                            updated_writer
+                        })
+                    })
+                    .catch(dbError => {
+                        res.status(500).json({
+                            errorMessage: `There was an error retrieving Writer (${req.params.id}). Please, try again.`
+                        })
+                    })
+            }
+        })
+    }
+
 
 })
 
