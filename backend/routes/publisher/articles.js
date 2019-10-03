@@ -147,7 +147,27 @@ router.put('/:link', (req, res) => {
 //@desc Delete a single Article object
 //@access Private 
 router.delete('/:link', (req, res) => {
-    
+    //Check that Article exists
+    const article = Article.findOne({link: req.params.link});
+    if(!article){
+        res.status(400).json({
+            errorMessage: `Sorry, Article (${req.params.link}) could not be found. Please, check your data and try again.`
+        })
+    }else {
+        article.remove()
+            .then(() => {
+                res.status(200).json({
+                    successMessage: `You have sucessfully-deleted Article (${article.link}).`
+                })
+            })
+            .catch(error => {
+                res.status(401).json({
+                    errorMessage: `Sorry, Article (${article.link}) could not be deleted.`,
+                    authError: `You don't have the credentials to delete Article (${article.link})`,
+                    DBError: error
+                })
+            })
+    }
 })
 
 
