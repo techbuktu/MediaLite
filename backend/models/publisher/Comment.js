@@ -8,15 +8,20 @@ const CommentSchema = new Schema({
     },
     article: {
         type: Map,
+        of: String,
         required: true
     },
-    comment: {
+    commentBody: {
         type: String,
         required: true
     },
     commentDate: {
         type: Date,
         default: Date.now
+    },
+    publish: {
+        type: Boolean,
+        default: true
     }
 });
 

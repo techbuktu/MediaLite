@@ -9,7 +9,18 @@ const Comment = require("../../models/publisher/Comment");
 //@desc Get list of All Comments
 //@access Public 
 router.get('/', (req, res) => {
-    res.send('Home of Comments API');
+    Comment.find()
+        .then(comments => {
+            res.json({
+                successMessage: `${comments.length} comment(s) were found.`,
+                comments: comments
+            })
+        })
+        .catch(error => {
+            res.status(400).json({
+                errorMessage: `Sorry, no Comments were found.`
+            })
+        })
 })
 
 //@route 
