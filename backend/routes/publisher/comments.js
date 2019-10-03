@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-//Import the 'Comment' model
+//Import the 'Comment' model and the 'Article' mode in some routes
 const Comment = require("../../models/publisher/Comment");
-
+const Article = require("../../models/publisher/Article");
 
 //@route GET api/publisher/comments
 //@desc Get list of All Comments
@@ -23,24 +23,56 @@ router.get('/', (req, res) => {
         })
 })
 
-//@route GET api/manager/comments/:link
+//@route GET api/manager/comments/for/:link
 //@desc GET all comments for an Article (/:link)
 //@access Private 
-router.get('/:link', (req, res) => {
-
+router.get('/for/:articleLink', (req, res) => {
+    //Check if matching article exists first
+    const article = Article.findOne({ link: req.params.articleLink });
+    if(!article){
+        return res.status(400).json({
+            errorMessage: `Sorry, that Article (${req.params.articleLink}) does not exist. Please, check and try again.`,
+            article
+        })
+    }else {
+        // GET all Comments for this article 
+        Comment.find({ article: article, publish: true })
+            .then(commentsforArticle => {
+                if(commentsforArticle.length >0){
+                    res.json({
+                        successMessage: `${commentsforArticle.length} comments were found for this Article(${article.link})`,
+                        comments: commentsforArticle
+                    })
+                }else {
+                    res.status(500).json({
+                        errorMessage: `Sorry, no comments were found for Article(${article.link})`
+                    })
+                }
+            })
+            .catch(DBError => {
+                res.status(500).json({
+                    errorMessage: `There was a problem retrieving comments for this Article(${article.link}). 
+                    Please, check your data and try again.`,
+                    DBError
+                })
+            })
+    }
 })
 
 //@route GET api/managers/comments/:id
 //@desc GET a single Comment object
 //@access Public 
 router.get('/:id', (req, res) => {
-    Comment.find({ _id: req.params.id })
+    Comment.findOne({ _id: req.params.id })
         .then(comment => {
-            res.status(200).json({comment: comment})
+            res.status(200).json({
+                successMessage: "OK",
+                comment: comment
+            })
         })
         .catch(err => {
             res.status(400).json({
-                message: `Comment with id of ${req.params.id} does not exist.`
+                errorMessage: `Comment with id of ${req.params.id} does not exist.`
             })
         })
 }); 
