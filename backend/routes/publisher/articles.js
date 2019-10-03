@@ -9,17 +9,7 @@ const Article = require("../../models/publisher/Article");
 //@desc Get list of All Articles
 //@access Public 
 router.get('/', (req, res) => {
-    /*const articles = Article.find();
-    if(articles.length < 1){
-        res.status(500).json({
-            errorMessage: `Sorry, no articles were found!`,
-        })
-    }else {
-        res.json({
-            successMessage: `${articles.length} article(s) were found!`,
-            articles
-        })
-    }*/
+
     Article.find()
         .then(articles => {
             res.json({
@@ -43,17 +33,19 @@ router.get('/', (req, res) => {
 //@desc GET a single Article object
 //@access Public 
 router.get('/:link', (req, res) => {
-    Article.find({ link: req.params.link })
+    Article.findOne({ link: req.params.link })
         .then(article => {
             res.status(200).json({
                 successMessage: "OK",
-                article })
-        })
-        .catch(err => {
-            res.status(400).json({
-                message: `Article with URL of ${req.params.link} does not exist.`
+                article: article 
             })
         })
+        .catch(error => {
+            res.status(400).json({
+                errorMessage: `Article with URL of ${req.params.link} does not exist.`
+            })
+        })
+
 }); 
 
 //@route POST api/publisher/articles
