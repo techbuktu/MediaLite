@@ -36,23 +36,24 @@ router.get('/for/:articleLink', (req, res) => {
         })
     }else {
         // GET all Comments for this article 
-        Comment.find({ article: article, publish: true })
+        const targetArticle = Article.findOne({ link: req.params.link });
+
+        Comment.find({ article: targetArticle})
             .then(commentsforArticle => {
-                if(commentsforArticle.length >0){
+                if(commentsforArticle.length > 0){
                     res.json({
-                        successMessage: `${commentsforArticle.length} comments were found for this Article(${article.link})`,
+                        successMessage: `${commentsforArticle.length} comments were found for this Article(${targetArticle.link})`,
                         comments: commentsforArticle
                     })
                 }else {
-                    res.status(500).json({
-                        errorMessage: `Sorry, no comments were found for Article(${article.link})`
+                    res.status(400).json({
+                        errorMessage: `Sorry, no comments were found for Article(${targetArticle.link})`
                     })
                 }
             })
             .catch(DBError => {
                 res.status(500).json({
-                    errorMessage: `There was a problem retrieving comments for this Article(${article.link}). 
-                    Please, check your data and try again.`,
+                    errorMessage: `There was a problem retrieving comments for this Article(${article.link}).Please, check your data and try again.`,
                     DBError
                 })
             })
@@ -124,11 +125,18 @@ router.post('/', (req, res) => {
     }
 })
 
-//@route PUT api/publisher/Comments/:link
+//@route PUT api/publisher/Comments/:id
 //@desc Update an existing Comment object
 //@access Private 
-router.put('/:link', (req, res) => {
+router.put('/:id', (req, res) => {
+    //Check that this Comment instance exists
+    const comment = Comment.findOne({ _id: req.params.id });
+    if(!comment){
+        //Return error
+        res.status()
+    }else {
 
+    }
 })
 
 //@route DELETE api/managers/:link
