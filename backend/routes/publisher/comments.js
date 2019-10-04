@@ -133,9 +133,23 @@ router.put('/:id', (req, res) => {
     const comment = Comment.findOne({ _id: req.params.id });
     if(!comment){
         //Return error
-        res.status()
+        res.status(400).json({
+            errorMessage: `This Comment(${req.params.id}) does not exist. Please, check your data and try again.`
+        })
     }else {
+        //Check that client user only wants to update (allowed) Comment.publish field
+        if(Object.keys(req.body)[0] === 'publish'){
+            //Update the Comment.field value
+            Comment.updateOne({ _id: req.params.id}, {publish: req.body["publish"]}, (error) =>{
+                
+            })
+                
 
+        }else{
+            res.status(400).json({
+                badDataError: `You sent the wrong data to update this Comment(${comment._id}). Please, check and try again.`
+            })
+        }
     }
 })
 

@@ -114,23 +114,29 @@ router.put('/:link', (req, res) => {
         })
 
         //Update article document in DB collection
-        Article.update({link: req.params.link}, articleUpdate)
-            .then(updatedArticle => {
-                //Get updated Article 
-                Article.findOne({link: req.params.link})
-                    .then(updated_article => {
+        Article.update({link: req.params.link}, articleUpdate, (err) => { 
+            if(err){
+                res.status(400).json({
+                    errorMessage: `This Article(${req.params.link}) could not be updated.`,
+                    Error: err
+                })
+            }else {
+                Article.findOne({ link: req.params.link })
+                    .then(updatedArticle => {
                         res.json({
                             successMessage: `Article (${req.params.link}) updated.`,
                             updated_article: updated_article
                         })
                     })
-            })
-            .catch(dbError => {
-                res.status(500).json({
-                    errorMessage: `Article (${req.params.link}) could not be updated.`,
-                    DBError: `${dbError}`
-                })
-            })
+                    .catch(err => {
+                        res.status(500).json({
+                            errorMessage: `Article (${req.params.link}) could not be updated.`,
+                            DBError: `${dbError}`
+                        })
+                    })
+            }
+        })
+            
     }
 
 })
