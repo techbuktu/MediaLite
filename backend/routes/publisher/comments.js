@@ -66,15 +66,16 @@ router.get('/for/:articleLink', (req, res) => {
 router.get('/:id', (req, res) => {
     Comment.findOne({ _id: req.params.id })
         .then(comment => {
-            res.status(200).json({
-                successMessage: "OK",
-                comment: comment
-            })
-        })
-        .catch(err => {
-            res.status(400).json({
-                errorMessage: `Comment with id of ${req.params.id} does not exist.`
-            })
+            if(!comment){
+                res.status(404).json({
+                    errorMessage: `Comment with id of ${req.params.id} does not exist.`
+                })
+            }else {
+                res.status(200).json({
+                    successMessage: "OK",
+                    comment: comment
+                })
+            }
         })
 }); 
 
