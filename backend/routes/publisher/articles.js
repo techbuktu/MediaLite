@@ -125,7 +125,7 @@ router.put('/:link', (req, res) => {
                     .then(updatedArticle => {
                         res.json({
                             successMessage: `Article (${req.params.link}) updated.`,
-                            updated_article: updated_article
+                            updated_article: updatedArticle
                         })
                     })
                     .catch(err => {

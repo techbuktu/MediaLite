@@ -141,13 +141,30 @@ router.put('/:id', (req, res) => {
         if(Object.keys(req.body)[0] === 'publish'){
             //Update the Comment.field value
             Comment.updateOne({ _id: req.params.id}, {publish: req.body["publish"]}, (error) =>{
-                
-            })
-                
+                if(error){
+                    res.status(400).json({
+                        errorMessage: `You sent bad data. Please, check and try again.`
+                    })
+                }else {
+                    Comment.findOne({ _id: req.params.id })
+                        .then(updatedComment => {
+                            res.json({
+                                successMessage: `You have successfully-updated Comment(${req.params.id})`,
+                                updated_comment: updatedComment
+                            })
+                        })
+                        .catch(dbError => {
+                            res.status(400).json({
+                                errorMessage: `There was an error updating this comment. Please, check your creds and try again, if possible.`,
+                                DBError: dbError
+                            })
+                        })
+                }
+            })  
 
         }else{
             res.status(400).json({
-                badDataError: `You sent the wrong data to update this Comment(${comment._id}). Please, check and try again.`
+                badDataError: `You sent the wrong data to update this Comment(${ req.params.id}). Please, check and try again.`
             })
         }
     }
