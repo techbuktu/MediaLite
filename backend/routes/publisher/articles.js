@@ -35,15 +35,16 @@ router.get('/', (req, res) => {
 router.get('/:link', (req, res) => {
     Article.findOne({ link: req.params.link })
         .then(article => {
-            res.status(200).json({
-                successMessage: "OK",
-                article: article 
-            })
-        })
-        .catch(error => {
-            res.status(400).json({
-                errorMessage: `Article with URL of ${req.params.link} does not exist.`
-            })
+            if(!article){
+                res.status(404).json({
+                    errorMessage: `Article with URL of ${req.params.link} does not exist.`
+                })
+            }else {
+                res.status(200).json({
+                    successMessage: "OK",
+                    article: article 
+                })
+            }
         })
 
 }); 
