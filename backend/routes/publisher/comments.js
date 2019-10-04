@@ -28,37 +28,40 @@ router.get('/', (req, res) => {
 //@access Private 
 router.get('/for/:articleLink', (req, res) => {
     //Check if matching article exists first
-    const article = Article.findOne({ link: req.params.articleLink });
-    if(!article){
-        return res.status(400).json({
-            errorMessage: `Sorry, that Article (${req.params.articleLink}) does not exist. Please, check and try again.`,
-            article
-        })
-    }else {
-        // GET all Comments for this article 
-        const targetArticle = Article.findOne({ link: req.params.link });
+    Article.findOne({ link: req.params.articleLink })
+        .then(targetArticle => {
 
-        Comment.find({ article: targetArticle})
-            .then(commentsforArticle => {
-                if(commentsforArticle.length > 0){
-                    res.json({
-                        successMessage: `${commentsforArticle.length} comments were found for this Article(${targetArticle.link})`,
-                        comments: commentsforArticle
-                    })
-                }else {
-                    res.status(400).json({
-                        errorMessage: `Sorry, no comments were found for Article(${targetArticle.link})`
-                    })
-                }
-            })
-            .catch(DBError => {
-                res.status(500).json({
-                    errorMessage: `There was a problem retrieving comments for this Article(${article.link}).Please, check your data and try again.`,
-                    DBError
+            if(!targetArticle){
+                return res.status(400).json({
+                    errorMessage: `Sorry, that Article (${req.params.articleLink}) does not exist. Please, check and try again.`
                 })
-            })
-    }
+            }else {
+                // GET all Comments for this article
+                Comment.find({ article: targetArticle})
+                    .then(commentsforArticle => {
+                        if(commentsforArticle){
+                            res.json({
+                                successMessage: `${commentsforArticle.length} comments were found for this Article(${targetArticle.link})`,
+                                comments: commentsforArticle
+                            })
+                        }else {
+                            res.status(400).json({
+                                errorMessage: `Sorry, no comments were found for Article(${targetArticle.link})`
+                            })
+                        }
+                    })
+                    .catch(dbError => {
+                        res.status(500).json({
+                            errorMessage: `Sorry, something went wrong. Please, see the full eror and try again later.`,
+                            DBError: dbError
+                        })
+                    })
+            }
+    
 })
+
+})
+
 
 //@route GET api/managers/comments/:id
 //@desc GET a single Comment object

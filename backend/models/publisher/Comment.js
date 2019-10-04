@@ -8,7 +8,6 @@ const CommentSchema = new Schema({
     },
     article: {
         type: Map,
-        of: String,
         required: true
     },
     commentBody: {
