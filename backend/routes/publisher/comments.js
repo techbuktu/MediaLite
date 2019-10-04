@@ -173,8 +173,24 @@ router.put('/:id', (req, res) => {
 //@route DELETE api/managers/:link
 //@desc Delete a single Comment object
 //@access Private 
-router.delete('/:link', (req, res) => {
-    
+router.delete('/:id', (req, res) => {
+    //Check that Comment exists and delete if so.
+    Comment.findById(req.params.id)
+        .then(comment => {
+            comment.remove()
+                .then(() => {
+                    res.json({
+                        successMessage: `You have successfully-deleted: Comment(${req.params.id})`
+                    })
+                })
+                .catch(err => {
+                    res.status(400).json({
+                        errorMessage: `This Comment(${req.params.id} could not be deleted. Please, check your creds and try again.)`,
+                        AppError: err
+                    })
+                })
+        })
+
 })
 
 module.exports = router;
