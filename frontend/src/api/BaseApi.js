@@ -5,13 +5,13 @@ const auth_token = localStorage.getItem('auth_token');
 
 const RequestHeaders = {
     'Access-Control-Allow-Origin': '*',
-    'content-type': 'application/json',
+    'Content-Type': 'application/json',
     'x-auth-token': `${auth_token}`
 }
 
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:8000/api',
+    baseURL: 'http://localhost:5000/api',
     headers: RequestHeaders,
 })
 
