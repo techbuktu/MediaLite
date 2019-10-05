@@ -30,7 +30,7 @@ mongoose
     .catch(err => console.log(err))
 */
 const mongoURL = 'mongodb://127.0.0.1:27017/medialite'
-mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 const db = mongoose.connection;
 db
 .once('open', () => console.log(`Local MongoDB connected`))
