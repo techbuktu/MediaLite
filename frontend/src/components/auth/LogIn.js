@@ -4,7 +4,7 @@ class LogIn extends Component {
     render() {
         return (
             <div>
-                
+                Login form
             </div>
         )
     }

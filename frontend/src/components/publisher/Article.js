@@ -5,7 +5,8 @@ class Article extends Component {
     render() {
         return (
             <div>
-                
+                Details about an article: Life in the Tech Lane.
+                data: article
             </div>
         )
     }
