@@ -1,6 +1,6 @@
 // Import all action types for the User
-import { REGISTER_USER, REGISTER_USER_FAILED, GET_USER, GET_USER_FAILED, UPDATE_USER,
-        UPDATE_USER_FAILED, LOGIN_SUCCESS, LOGIN_FAILED, DELETE_USER, DELETE_USER_FAILED} from './types/users';
+import { REGISTER_USER, REGISTER_USER_FAILED, GET_USER, GET_USER_FAILED, GET_ALL_USERS, GET_ALL_USERS_FAILED, UPDATE_USER,
+        UPDATE_USER_FAILED, LOGIN_SUCCESS, LOGIN_FAILED, DELETE_USER, DELETE_USER_FAILED, } from './types/users';
 
 import UserApi from '../../api/UserApi';
 
@@ -40,6 +40,23 @@ export const getUser = (dispatch, userId) => {
             })
         })
 };
+
+export const getAllUsers = (dispatch) => {
+    //Handles GET_ALL_USERS and GET_ALL_USERS_FAILED action types 
+    UserApi.getAllUsers()
+        .then(res => {
+            dispatch({
+                type: GET_ALL_USERS,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: GET_ALL_USERS_FAILED,
+                payload: err
+            })
+        })
+}
 
 export const updateUser = (userId, updatedUserObj, dispatch) => {
     //Handles types: UPDATE_USER and UPDATE_USER_FAILED
