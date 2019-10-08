@@ -25,10 +25,11 @@ import ArticlesHome from './components/publisher/ArticlesHome';
 
 //React-Redux objects and setup 
 import { Provider } from 'react-redux';
+import store from './dataStore';
 
 function App() {
   return (
-    <Provider>
+    <Provider store={store}>
         <Router>
           <div className="App">
           <header className="App-header">
