@@ -23,30 +23,35 @@ import Article from './components/publisher/Article';
 import newArticle from './components/publisher/newArticle';
 import ArticlesHome from './components/publisher/ArticlesHome';
 
+//React-Redux objects and setup 
+import { Provider } from 'react-redux';
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-      <header className="App-header">
-        <Header />
-      </header>
+    <Provider>
+        <Router>
+          <div className="App">
+          <header className="App-header">
+            <Header />
+          </header>
 
-          <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Home} />
 
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={LogIn} />
-          <Route exact path="/manager" component={ManagerHome} />
-          <Route path="/manager/new-editor" component={newEditor} />
-          <Route path="/manager/new-writer" component={newWriter} />
-          <Route path="/editors/:editorLink" component={Editor} />
-          <Route path="/writers/:writerLink" component={Writer} />
-          <Route exact path="/articles" component={ArticlesHome} />
-          <Route path="/articles/new-article" component={newArticle} />
-          <Route path="/articles/:articleLink" component={Article} />
-  
-    <Footer  />
-    </div>
-    </Router>
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={LogIn} />
+            <Route exact path="/manager" component={ManagerHome} />
+            <Route path="/manager/new-editor" component={newEditor} />
+            <Route path="/manager/new-writer" component={newWriter} />
+            <Route path="/editors/:editorLink" component={Editor} />
+            <Route path="/writers/:writerLink" component={Writer} />
+            <Route exact path="/articles" component={ArticlesHome} />
+            <Route path="/articles/new-article" component={newArticle} />
+            <Route path="/articles/:articleLink" component={Article} />
+
+          <Footer  />
+          </div>
+        </Router>
+    </Provider>
   );
 }
 
