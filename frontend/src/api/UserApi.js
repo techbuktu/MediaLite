@@ -23,7 +23,7 @@ class UserApi {
         return Axios.get(`/manager/users`);
     }
 
-    static Login(login_creds){
+    static loginUser(login_creds){
         return Axios.post(`/manager/users/login`, login_creds);
     }
 }
