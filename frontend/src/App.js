@@ -21,6 +21,7 @@ import newWriter from './components/manager/newWriter';
 //Import 'publisher'-section components 
 import Article from './components/publisher/Article';
 import newArticle from './components/publisher/newArticle';
+import ArticlesHome from './components/publisher/ArticlesHome';
 
 function App() {
   return (
@@ -34,8 +35,14 @@ function App() {
 
           <Route path="/register" component={Register} />
           <Route path="/login" component={LogIn} />
-
-
+          <Route exact path="/manager" component={ManagerHome} />
+          <Route path="/manager/new-editor" component={newEditor} />
+          <Route path="/manager/new-writer" component={newWriter} />
+          <Route path="/editors/:editorLink" component={Editor} />
+          <Route path="/writers/:writerLink" component={Writer} />
+          <Route exact path="/articles" component={ArticlesHome} />
+          <Route path="/articles/new-article" component={newArticle} />
+          <Route path="/articles/:articleLink" component={Article} />
   
     <Footer  />
     </div>
