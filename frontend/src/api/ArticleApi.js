@@ -2,7 +2,7 @@ import Axios from './BaseApi';
 
 class ArticleApi {
     //Handles all API calls for the Article API endpoint: /api/publisher/articles 
-
+    
     static newArticle(new_article_obj){
         return Axios.post(`/publisher/articles`, new_article_obj);
     }

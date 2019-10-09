@@ -5,26 +5,91 @@ import ArticleApi from '../../api/ArticleApi';
 import { NEW_ARTICLE, NEW_ARTICLE_FAILED, GET_ARTICLE, GET_ARTICLE_FAILED, GET_ALL_ARTICLES,
     GET_ALL_ARTICLES_FAILED, UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED, DELETE_ARTICLE, DELETE_ARTICLE_FAILED
 } from './types/articles';
+import Article from '../../components/publisher/Article';
 
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
 export const newArticle = (dispatch, new_article_obj) => {
     //Handles action types: NEW_ARTICLE, NEW_ARTICLE_FAILED
-    ArticleApi;
+    ArticleApi.newArticle(new_article_obj)
+        .then(res => {
+            dispatch({
+                type: NEW_ARTICLE,
+                payload: res.data 
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: NEW_ARTICLE_FAILED,
+                payload: err
+            })
+        })
 }
 
-export const getArticle = (dispatch, article_id) => {
+export const getArticle = (dispatch, article_link) => {
     //Handles action types: GET_ARTICLE, GET_ARTICLE_FAILED
-    ArticleApi;
+    ArticleApi.getArticle(article_link)
+        .then(res => {
+            dispatch({
+                type: GET_ARTICLE,
+                payload: res.data 
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: GET_ARTICLE_FAILED,
+                payload: err
+            })
+        })
 }
 
-export const getALlArticles = (dispatch) => {
+export const getAllArticles = (dispatch) => {
     //Handles action types: GET_ALL_ARTICLES, GET_ALL_ARTICLES_FAILED
-    ArticleApi;
+    ArticleApi.getAllArticles()
+        .then(res => {
+            dispatch({
+                type: GET_ALL_ARTICLES,
+                payload: res.data 
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: GET_ALL_ARTICLES_FAILED,
+                payload: err
+            })
+        })
 }
 
-export const updateArticle = (dispatch, article_id, updated_article_obj) => {
+export const updateArticle = (dispatch, article_link, updated_article_obj) => {
     //Handles action types: UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED
-    ArticleApi;
+    ArticleApi.updateArticle(article_link)
+        .then(res => {
+            dispatch({
+                type: UPDATE_ARTICLE,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: UPDATE_ARTICLE_FAILED ,
+                payload: err
+            })
+        })
+}
+
+export const deleteArticle = (dispatch, article_link) => {
+    ArticleApi.deleteArticle(article_link)
+        .then(res => {
+            dispatch({
+                type: DELETE_ARTICLE,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: DELETE_ARTICLE_FAILED,
+                payload: err
+            })
+        })
 }
