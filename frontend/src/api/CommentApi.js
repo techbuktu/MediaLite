@@ -7,6 +7,10 @@ class CommentApi{
         return Axios.post(`/publisher/comments`, new_comment_obj);
     }
 
+    static getComment(comment_id){
+        return Axios.get(`/publisher/comments/${comment_id}`);
+    }
+
     static updateComment(comment_id, updated_comment_obj){
         return Axios.put(`/publisher/comments/${comment_id}`, updated_comment_obj);
     }
