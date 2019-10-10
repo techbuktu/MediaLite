@@ -1,7 +1,7 @@
 import { REGISTER_USER, REGISTER_USER_FAILED, GET_USER, GET_USER_FAILED, 
     GET_ALL_USERS, GET_ALL_USERS_FAILED, UPDATE_USER,UPDATE_USER_FAILED, 
     LOGIN_SUCCESS, LOGIN_FAILED, DELETE_USER, DELETE_USER_FAILED
-} from './types/users';
+} from '../actions/types/users';
 
 //Create the initial/default state for the userReducer
 const initialState = {
