@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 //Import individual reducer type from their respective files
+import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-    users: {},
+    user: userReducer,
     editors: {},
     writers: {},
     articles: {},
