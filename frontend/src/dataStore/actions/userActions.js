@@ -1,6 +1,6 @@
 // Import all action types for the User
 import { REGISTER_USER, REGISTER_USER_FAILED, GET_USER, GET_USER_FAILED, GET_ALL_USERS, GET_ALL_USERS_FAILED, UPDATE_USER,
-        UPDATE_USER_FAILED, LOGIN_SUCCESS, LOGIN_FAILED, DELETE_USER, DELETE_USER_FAILED, } from './types/users';
+        UPDATE_USER_FAILED, LOGIN_SUCCESS, LOGIN_FAILED, DELETE_USER, DELETE_USER_FAILED } from './types/users';
 
 import UserApi from '../../api/UserApi';
 
