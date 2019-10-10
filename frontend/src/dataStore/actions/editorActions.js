@@ -2,7 +2,7 @@
 import EditorApi from '../../api/EditorApi';
 import {NEW_EDITOR, NEW_EDITOR_FAILED, GET_EDITOR, GET_EDITOR_FAILED, GET_ALL_EDITORS, 
     GET_ALL_EDITORS_FAILED, UPDATE_EDITOR, UPDATE_EDITOR_FAILED, DELETE_EDITOR, 
-    DELETE_EDITOR_FAILED, GET_EDITOR_BY_USER, GET_EDITOR_BY_USER_FAILED } from '../../api/EditorApi';
+    DELETE_EDITOR_FAILED, GET_EDITOR_BY_USER, GET_EDITOR_BY_USER_FAILED } from './types/editors';
 
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks

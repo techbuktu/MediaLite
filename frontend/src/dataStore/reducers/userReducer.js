@@ -85,5 +85,4 @@ userReducer = (state=initialState, action) => {
     }
 }
 
-
 export default userReducer;
