@@ -3,12 +3,13 @@ import { combineReducers } from 'redux';
 import userReducer from './userReducer';
 import editorReducer from './editorReducer';
 import writerReducer from './writerReducer';
+import articleReducer from './articleReducer';
 
 const rootReducer = combineReducers({
     user: userReducer,
     editor: editorReducer,
     writer: writerReducer,
-    articles: {},
+    article: articleReducer,
     comments: {}
 });
 
