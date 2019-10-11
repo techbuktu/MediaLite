@@ -9,7 +9,7 @@ const initialState = {
     article_comments: [] //Or just use commentReducer.comments_for_article array
 };
 
-articleReducer = (state=initialState, action){
+articleReducer = (state=initialState, action) => {
     switch(action.type){
         case NEW_ARTICLE:
             return {
