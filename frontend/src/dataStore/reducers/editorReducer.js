@@ -10,3 +10,72 @@ const initialState = {
     updated_user: {}
 };
 
+editorReducer = (state=initialState, action) => {
+    switch(action.type){
+        case NEW_EDITOR:
+            return {
+                ...state,
+                editor: action.payload.editor
+            };
+        case NEW_EDITOR_FAILED:
+            return {
+                ...state, 
+                errorMessage: action.payload.errorMessage
+            };
+        case GET_EDITOR:
+            return {
+                ...state,
+                editor: action.payload.editor
+            };
+        case GET_EDITOR_FAILED:
+            return {
+                ...state, 
+                errorMessage: action.payload.errorMessage
+            };
+        case GET_ALL_EDITORS:
+            return {
+                ...state, 
+                editor_list: action.payload.editor_list
+            };
+        case GET_ALL_EDITORS_FAILED:
+            return {
+                ...state, 
+                errorMessage: action.payload.errorMessage
+            };
+        case UPDATE_EDITOR:
+            return {
+                ...state,
+                editor: action.payload.updated_editor
+            };
+        case UPDATE_EDITOR_FAILED:
+            return {
+                ...state,
+                errorMessage: action.payload.errorMessage
+            };
+        case DELETE_EDITOR:
+            return {
+                ...state, 
+                successMessage: action.payload.successMessage,
+                //deleted_editor: action.payload.deleted_editor
+            };
+        case DELETE_EDITOR_FAILED:
+            return {
+                ...state, 
+                errorMessage: action.payload.errorMessage
+            }
+        case GET_EDITOR_BY_USER:
+            return {
+                ...state,
+                editor: action.payload.editor
+            };
+        case GET_EDITOR_BY_USER_FAILED:
+            return {
+                ...state, 
+                errorMessage: action.payload.errorMessage
+            }
+        default:
+            return state;
+    }
+}
+
+export default editorReducer;

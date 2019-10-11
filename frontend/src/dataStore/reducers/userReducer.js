@@ -21,7 +21,7 @@ userReducer = (state=initialState, action) => {
         case REGISTER_USER:
             return {
                 ...state,
-
+                user: action.payload.user
             };
         case REGISTER_USER_FAILED:
             return {
