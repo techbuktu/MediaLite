@@ -21,7 +21,8 @@ const userReducer = (state=initialState, action) => {
         case REGISTER_USER:
             return {
                 ...state,
-                user: action.payload.user
+                user: action.payload.user,
+                user_list: [action.payload.new_user, ...state.user_list]
             };
         case REGISTER_USER_FAILED:
             return {

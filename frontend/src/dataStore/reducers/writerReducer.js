@@ -16,7 +16,8 @@ const writerReducer = (state=initialState, action) => {
         case NEW_WRITER:
             return {
                 ...state, 
-                writer: action.payload.writer
+                writer: action.payload.writer,
+                writer_list: [action.payload.new_writer, ...state.writer_list]
             };
         case NEW_WRITER_FAILED:
             return {

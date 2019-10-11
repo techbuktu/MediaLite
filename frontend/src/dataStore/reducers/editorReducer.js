@@ -15,7 +15,8 @@ const editorReducer = (state=initialState, action) => {
         case NEW_EDITOR:
             return {
                 ...state,
-                editor: action.payload.editor
+                editor: action.payload.editor,
+                editor_list: [action.payload.new_editor, ...state.editor_list]
             };
         case NEW_EDITOR_FAILED:
             return {

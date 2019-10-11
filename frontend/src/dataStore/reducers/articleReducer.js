@@ -14,7 +14,8 @@ const articleReducer = (state=initialState, action) => {
         case NEW_ARTICLE:
             return {
                 ...state, 
-                article: action.payload.new_article // .article; VERIFY.
+                article: action.payload.new_article, // .article; VERIFY.
+                article_list: [action.payload.new_article, ...state.article_list]
             };
         case NEW_ARTICLE_FAILED:
             return {
