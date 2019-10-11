@@ -11,7 +11,7 @@ const initialState = {
     updated_writer: {} //Or remove this and just use 'writer' object for both cases.
 };
 
-writerReducer = (state=initialState, action) => {
+const writerReducer = (state=initialState, action) => {
     switch(action.type){
         case NEW_WRITER:
             return {
@@ -66,7 +66,7 @@ writerReducer = (state=initialState, action) => {
         case DELETE_WRITER:
             return {
                 ...state,
-                //writer_list: - deleted_writer
+                writer_list: state.writer_list.filter(writer => writer._id !== action.payload.deleted_writer._id)
             };
         case DELETE_WRITER_FAILED:
             return {

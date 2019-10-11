@@ -13,13 +13,13 @@ const initialState = {
     comment_error: {}
 };
 
-commentReducer = (state=initialState, action) => {
+const commentReducer = (state=initialState, action) => {
     switch(action.type){
         case NEW_COMMENT:
             return {
                 ...state, 
                 comment: action.payload.new_comment, // .comment : VERIFY
-                comment_list : [...comment_list, action.payload.new_comment]
+                comment_list : [action.payload.new_comment, ...state.comment_list]
             };
         case NEW_COMMENT_FAILED:
             return {
@@ -50,8 +50,8 @@ commentReducer = (state=initialState, action) => {
             };
         case DELETE_COMMENT:
             return {
-                ...state, 
-                comment_list: [] // -minus action.payload.deleted_comment 
+                ...state,
+                comment_list: state.comment_list.filter(comment => comment._id !== action.payload.deleted_comment._id)
             };
         case DELETE_COMMENT_FAILED:
             return {

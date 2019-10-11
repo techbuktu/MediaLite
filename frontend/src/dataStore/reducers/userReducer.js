@@ -16,7 +16,7 @@ const initialState = {
     delete_user_error : {}
 }
 
-userReducer = (state=initialState, action) => {
+const userReducer = (state=initialState, action) => {
     switch(action.type){
         case REGISTER_USER:
             return {
@@ -73,7 +73,7 @@ userReducer = (state=initialState, action) => {
         case DELETE_USER:
             return {
                 ...state,
-                //user_list: return an array minus deleted user
+                user_list: state.user_list.filter(user => user._id !== action.payload.deleted_user._id)
             };
         case DELETE_USER_FAILED:
             return {

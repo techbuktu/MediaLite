@@ -10,7 +10,7 @@ const initialState = {
     updated_user: {}
 };
 
-editorReducer = (state=initialState, action) => {
+const editorReducer = (state=initialState, action) => {
     switch(action.type){
         case NEW_EDITOR:
             return {
@@ -56,7 +56,7 @@ editorReducer = (state=initialState, action) => {
             return {
                 ...state, 
                 successMessage: action.payload.successMessage,
-                //deleted_editor: action.payload.deleted_editor
+                editor_list: state.editor_list.filter(editor => editor._id !== action.payload.deleted_editor._id)
             };
         case DELETE_EDITOR_FAILED:
             return {
