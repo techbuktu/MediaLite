@@ -11,6 +11,15 @@ class Register extends Component {
             </div>
         )
     }
-}
+};
 
-export default Register;
+Register.propTypes ={
+    //add props and action creators here.
+};
+
+const mapStateToProps = (state) => ({
+    //add obj: state.<reducer_key>.obj_name; one for each component prop
+});
+
+
+export default connect(mapStateToProps, { })(Register);

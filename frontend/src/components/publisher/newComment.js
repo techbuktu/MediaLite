@@ -23,5 +23,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-//after mapStateToProps: export default connect(mapStateToProps, {[action_creators,]})(componentName)
-export default newComment;
+export default connect(mapStateToProps, { })(newComment)

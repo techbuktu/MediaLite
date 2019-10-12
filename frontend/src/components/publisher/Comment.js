@@ -23,5 +23,4 @@ const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
 });
 
-//after mapStateToProps: export default connect(mapStateToProps, {[action_creators,]})(componentName)
-export default Comment;
+export default connect(mapStateToProps, { })(Comment)

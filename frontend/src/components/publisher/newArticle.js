@@ -23,6 +23,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-//after mapStateToProps: export default connect(mapStateToProps, {[action_creators,]})(componentName)
-
-export default newArticle;
+export default connect(mapStateToProps, { })(newArticle)

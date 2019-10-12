@@ -23,6 +23,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-//after mapStateToProps: export default connect(mapStateToProps, {[action_creators,]})(componentName)
-
-export default newEditor;
+export default connect(mapStateToProps, { })(newEditor);
