@@ -7,11 +7,11 @@ import articleReducer from './articleReducer';
 import commentReducer from './commentReducer';
 
 const rootReducer = combineReducers({
-    user: userReducer,
-    editor: editorReducer,
-    writer: writerReducer,
-    article: articleReducer,
-    comment: commentReducer
+    users: userReducer,
+    editors: editorReducer,
+    writers: writerReducer,
+    articles: articleReducer,
+    comments: commentReducer
 });
 
 export default rootReducer;
