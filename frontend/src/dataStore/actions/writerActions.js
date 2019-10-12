@@ -26,7 +26,6 @@ export const newWriter = (dispatch, new_writer_obj) => {
         })
 };
 
-
 export const getWriter = (dispatch, writer_id) => {
     //Handles action types: GET_WRITER, GET_WRITER_FAILED
     WriterApi.getWriter(writer_id)
