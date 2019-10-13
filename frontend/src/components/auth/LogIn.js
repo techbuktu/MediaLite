@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import action creators
+import { loginUser } from '../../dataStore/actions/userActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

@@ -27,3 +27,5 @@ class CommentApi{
         return Axios.get(`/publisher/comments/`);
     }
 }
+
+export default CommentApi;

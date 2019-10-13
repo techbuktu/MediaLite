@@ -28,3 +28,5 @@ class EditorApi {
     }
     
 }
+
+export default EditorApi;

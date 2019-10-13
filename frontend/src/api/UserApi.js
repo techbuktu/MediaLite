@@ -27,3 +27,5 @@ class UserApi {
         return Axios.post(`/manager/users/login`, login_creds);
     }
 }
+
+export default UserApi;

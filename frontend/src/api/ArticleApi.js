@@ -24,3 +24,5 @@ class ArticleApi {
     }
     
 }
+
+export default ArticleApi;
