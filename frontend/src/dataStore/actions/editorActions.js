@@ -7,7 +7,7 @@ import {NEW_EDITOR, NEW_EDITOR_FAILED, GET_EDITOR, GET_EDITOR_FAILED, GET_ALL_ED
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const createNewEditor = (new_editor_obj, dispatch) => {
+export const createNewEditor = (new_editor_obj) =>  dispatch => {
     //Handles action types: NEW_EDITOR and NEW_EDITOR_FAILED
     EditorApi.newEditor(new_editor_obj)
         .then(res => {
@@ -24,7 +24,7 @@ export const createNewEditor = (new_editor_obj, dispatch) => {
         })
 };
 
-export const getEditorById = (dispatch, editorId) => {
+export const getEditorById = (editorId) =>  dispatch => {
     //Handles action types: GET_EDITOR and GET_EDITOR_FAILED
     EditorApi.getEditorById(editorId)
         .then(res => {
@@ -41,7 +41,7 @@ export const getEditorById = (dispatch, editorId) => {
         })
 };
 
-export const getEditorByUser = (dispatch, related_user_obj) => {
+export const getEditorByUser = (related_user_obj) =>  dispatch => {
     //Handles action types: GET_EDITOR_BY_USER and GET_EDITOR_BY_USER_FAILED
     EditorApi.getEditorByUser(related_user_obj)
         .then(res => {
@@ -58,7 +58,7 @@ export const getEditorByUser = (dispatch, related_user_obj) => {
         })
 };
 
-export const getAllEditors = (dispatch) => {
+export const getAllEditors = ( ) =>  dispatch => {
     //Handles action types: GET_ALL_EDITORS, GET_ALL_EDITORS_FAILED
     EditorApi.getAllEditors()
         .then(res => {
@@ -76,7 +76,7 @@ export const getAllEditors = (dispatch) => {
 
 };
 
-export const updateEditor = (dispatch, editor_id, updated_editor_obj) => {
+export const updateEditor = (editor_id, updated_editor_obj) =>  dispatch => {
     //Handles action types: UPDATE_EDITOR and UPDATE_EDITOR_FAILED
     EditorApi.updateEditor(editor_id, updated_editor_obj)
         .then(res => {
@@ -94,7 +94,7 @@ export const updateEditor = (dispatch, editor_id, updated_editor_obj) => {
 
 };
 
-export const deleteEditor = (dispatch, editor_id) => {
+export const deleteEditor = (editor_id) => dispatch => {
     //Handles action types: DELETE_EDITOR and DELETE_EDITOR_FAILED
     EditorApi.deleteEditor(editor_id)
         .then(res => {
