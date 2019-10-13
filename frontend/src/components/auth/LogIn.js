@@ -7,6 +7,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class LogIn extends Component {
+
+    logIn(e){
+        e.preventDefault();
+    }
+
+    onChange(e){
+        
+    }
+
     render() {
         return (
             <div>
