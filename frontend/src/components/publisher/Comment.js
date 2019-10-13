@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//import react-router-dom components
+import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -15,7 +17,7 @@ class Comment extends Component {
 }
 
 
-Comment.propTypes ={
+Comment.propTypes = {
     //add props and action creators here.
 };
 
