@@ -29,6 +29,8 @@ ManagerHome.propTypes ={
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    editor_list: state.editors.editor_list,
+    writer_list: state.writers.writer_list
 });
 
 

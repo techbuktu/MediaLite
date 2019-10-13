@@ -18,10 +18,13 @@ class LogIn extends Component {
 
 LogIn.propTypes ={
     //add props and action creators here.
+    loginUser: PropTypes.func.isRequired
 };
+
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+
 });
 
 

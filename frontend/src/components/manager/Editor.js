@@ -28,6 +28,7 @@ Editor.propTypes = {
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    editor: state.editors.editor
 });
 
 export default connect(mapStateToProps, { })(Editor);
