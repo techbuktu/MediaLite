@@ -9,7 +9,7 @@ import { NEW_WRITER, NEW_WRITER_FAILED, GET_WRITER, GET_WRITER_BY_USER, GET_WRIT
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const createNewWriter = (dispatch, new_writer_obj) => {
+export const createNewWriter = (new_writer_obj) => dispatch => {
     //Handles action types: NEW_WRITER and NEW_WRITER_FAILED
     WriterApi.newWriter(new_writer_obj)
         .then(res => {
@@ -26,7 +26,7 @@ export const createNewWriter = (dispatch, new_writer_obj) => {
         })
 };
 
-export const getWriter = (dispatch, writer_id) => {
+export const getWriter = (writer_id) => dispatch => {
     //Handles action types: GET_WRITER, GET_WRITER_FAILED
     WriterApi.getWriter(writer_id)
         .then(res => {
@@ -43,7 +43,7 @@ export const getWriter = (dispatch, writer_id) => {
         })
 };
 
-export const getWriterByUser = (dispatch, user_id) => {
+export const getWriterByUser = ( user_id) => dispatch => {
     //Handles action types: GET_WRITER_BY_USER and GET_WRITER_BY_USER_FAILED
     WriterApi.getWriterByUser(user_id)
         .then(res => {
@@ -60,7 +60,7 @@ export const getWriterByUser = (dispatch, user_id) => {
         })
 }
 
-export const getAllWriters = (dispatch) => {
+export const getAllWriters = ( ) =>  dispatch => {
     //Handles action types: GET_ALL_WRITERS and GET_ALL_WRITERS_FAILED
     WriterApi.getAllWriters()
         .then(res => {
@@ -77,7 +77,7 @@ export const getAllWriters = (dispatch) => {
         })
 }
 
-export const updateWriter = (dispatch, writer_id, updated_writer_obj) => {
+export const updateWriter = (writer_id, updated_writer_obj) => dispatch => {
     //Handles action types: UPDATE_WRITER and UPDATE_WRITER_FAILED 
     WriterApi.updateWriter(writer_id, updated_writer_obj)
         .then(res => {
@@ -94,7 +94,7 @@ export const updateWriter = (dispatch, writer_id, updated_writer_obj) => {
         })
 }
 
-export const deleteWriter = (dispatch, writer_id) => {
+export const deleteWriter = (writer_id) => dispatch => {
     //Handles action types: DELETE_WRITER and DELETE_WRITER_FAILED
     WriterApi.deleteWriter(writer_id)
         .then(res => {
@@ -111,7 +111,7 @@ export const deleteWriter = (dispatch, writer_id) => {
         })
 }
 
-export const getWritersByEditor = (dispatch, editor_id) =>{
+export const getWritersByEditor = (editor_id) => dispatch => {
     //Handles action types: GET_WRITERS_BY_EDITOR and GET_WRITERS_BY_EDITOR_FAILED
     WriterApi.getWritersByEditor(editor_id)
         .then(res => {
