@@ -7,6 +7,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class newArticle extends Component {
+    componentDidMount(){
+        //
+    };
+
+    onChange(e){
+        //process form change
+    };
+
+    oSubmit(e){
+        e.preventDefault();
+    };
+
     render() {
         return (
             <div>

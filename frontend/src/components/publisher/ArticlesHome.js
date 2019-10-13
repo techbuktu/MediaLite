@@ -7,7 +7,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class ArticlesHome extends Component {
+    componentDidMount(){
+        this.props.getAllArticles();
+    };
+
     render() {
+        const all_articles = this.props.article_list.map(article => {
+            return (
+                <div>
+                    <h3> { article.title} </h3>
+                </div>
+            )
+        })
         return (
             <div>
                 Landing page and linked list of published articles

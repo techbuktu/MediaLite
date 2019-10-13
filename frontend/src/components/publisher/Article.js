@@ -9,7 +9,19 @@ import { connect } from 'react-redux';
 import Comment from './Comment';
 
 class Article extends Component {
+    componentDidMount(){
+        this.props.getArticle('/articleLink/'); // from  params.articleLink 
+        this.props.getCommentsforArticle('/articleLink/'); 
+    };
+
     render() {
+        const article_comments = this.props.comment_list.map(comment => {
+            return (
+                <p>
+                    { comment.body }
+                </p>
+            )
+        })
         return (
             <div>
                 Details about an article: Life in the Tech Lane.

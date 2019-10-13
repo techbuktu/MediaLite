@@ -7,6 +7,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class newComment extends Component {
+    componentDidMount(){
+        //
+    };
+
+    onChange(e){
+        //
+    };
+
+    onSubmit(e){
+        e.preventDefault();
+        //call action creators here to submit form data to API
+    };
+    
     render() {
         return (
             <div>

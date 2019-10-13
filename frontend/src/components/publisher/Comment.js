@@ -7,6 +7,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Comment extends Component {
+    componentDidMount(){
+        this.props.getComment('123'); // from params.id
+    };
+    
     render() {
         return (
             <div>
