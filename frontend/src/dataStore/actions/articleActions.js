@@ -10,7 +10,7 @@ import Article from '../../components/publisher/Article';
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const createNewArticle = (dispatch, new_article_obj) => {
+export const createNewArticle = (new_article_obj) => dispatch => {
     //Handles action types: NEW_ARTICLE, NEW_ARTICLE_FAILED
     ArticleApi.newArticle(new_article_obj)
         .then(res => {
@@ -27,7 +27,7 @@ export const createNewArticle = (dispatch, new_article_obj) => {
         })
 }
 
-export const getArticle = (dispatch, article_link) => {
+export const getArticle = (article_link) => dispatch =>  {
     //Handles action types: GET_ARTICLE, GET_ARTICLE_FAILED
     ArticleApi.getArticle(article_link)
         .then(res => {
@@ -44,7 +44,7 @@ export const getArticle = (dispatch, article_link) => {
         })
 }
 
-export const getAllArticles = (dispatch) => {
+export const getAllArticles = ( ) => dispatch => {
     //Handles action types: GET_ALL_ARTICLES, GET_ALL_ARTICLES_FAILED
     ArticleApi.getAllArticles()
         .then(res => {
@@ -61,7 +61,7 @@ export const getAllArticles = (dispatch) => {
         })
 }
 
-export const updateArticle = (dispatch, article_link, updated_article_obj) => {
+export const updateArticle = (article_link, updated_article_obj) => dispatch =>  {
     //Handles action types: UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED
     ArticleApi.updateArticle(article_link)
         .then(res => {
@@ -78,7 +78,7 @@ export const updateArticle = (dispatch, article_link, updated_article_obj) => {
         })
 }
 
-export const deleteArticle = (dispatch, article_link) => {
+export const deleteArticle = ( article_link) =>  dispatch => {
     ArticleApi.deleteArticle(article_link)
         .then(res => {
             dispatch({
