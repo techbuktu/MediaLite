@@ -8,7 +8,7 @@ import {
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const newComment =(dispatch, new_comment_obj) => {
+export const createNewComment =(dispatch, new_comment_obj) => {
     //Handles action types: NEW_COMMENT and NEW_COMMENT_FAILED
     CommentApi.newComment(new_comment_obj)
         .then(res => {

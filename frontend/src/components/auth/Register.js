@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { newUser } from '../../dataStore/actions/userActions';
+import { registerUser } from '../../dataStore/actions/userActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

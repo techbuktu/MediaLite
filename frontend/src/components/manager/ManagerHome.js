@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
+import { getAllEditors } from '../../dataStore/actions/editorActions';
+import { getALlWriters } from '../../dataStore/actions/writerActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

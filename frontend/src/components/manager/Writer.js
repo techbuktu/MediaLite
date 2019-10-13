@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
+import { getWriter } from '../../dataStore/actions/writerActions'; //getAllArticlesforWriter() too
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

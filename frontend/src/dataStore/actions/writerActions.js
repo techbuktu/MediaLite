@@ -9,7 +9,7 @@ import { NEW_WRITER, NEW_WRITER_FAILED, GET_WRITER, GET_WRITER_BY_USER, GET_WRIT
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const newWriter = (dispatch, new_writer_obj) => {
+export const createNewWriter = (dispatch, new_writer_obj) => {
     //Handles action types: NEW_WRITER and NEW_WRITER_FAILED
     WriterApi.newWriter(new_writer_obj)
         .then(res => {

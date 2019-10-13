@@ -10,7 +10,7 @@ import Article from '../../components/publisher/Article';
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const newArticle = (dispatch, new_article_obj) => {
+export const createNewArticle = (dispatch, new_article_obj) => {
     //Handles action types: NEW_ARTICLE, NEW_ARTICLE_FAILED
     ArticleApi.newArticle(new_article_obj)
         .then(res => {
