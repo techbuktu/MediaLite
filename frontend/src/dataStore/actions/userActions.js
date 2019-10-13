@@ -6,7 +6,8 @@ import UserApi from '../../api/UserApi';
 
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
-export const registerUser = (dispatch, newUserObj) => {
+
+export const registerUser = (newUserObj) => dispatch => {
     //Handles action types: REGISTER_USER and REGISTER_USER_FAILED types
     UserApi.newUser(newUserObj)
         .then(res => {
@@ -24,7 +25,7 @@ export const registerUser = (dispatch, newUserObj) => {
 
 };
 
-export const getUser = (dispatch, userId) => {
+export const getUser = (userId) =>  dispatch => {
     //Handles GET_USER and GET_USER_FAILED
     UserApi.getUser(userId)
         .then(res => {
@@ -41,7 +42,7 @@ export const getUser = (dispatch, userId) => {
         })
 };
 
-export const getAllUsers = (dispatch) => {
+export const getAllUsers = ( ) => dispatch => {
     //Handles GET_ALL_USERS and GET_ALL_USERS_FAILED action types 
     UserApi.getAllUsers()
         .then(res => {
@@ -58,7 +59,7 @@ export const getAllUsers = (dispatch) => {
         })
 }
 
-export const updateUser = (userId, updatedUserObj, dispatch) => {
+export const updateUser = (userId, updatedUserObj) =>  dispatch => {
     //Handles types: UPDATE_USER and UPDATE_USER_FAILED
     UserApi.updateUser(userId, updatedUserObj)
         .then(res => {
@@ -75,7 +76,7 @@ export const updateUser = (userId, updatedUserObj, dispatch) => {
         })
 }
 
-export const loginUser = (loginCredsObj, dispatch) => {
+export const loginUser = (loginCredsObj) =>  dispatch => {
     //Handles action types: LOGIN_SUCCESS and LOGIN_FAILED
     UserApi.loginUser(loginCredsObj)
         .then(res => {
@@ -93,7 +94,7 @@ export const loginUser = (loginCredsObj, dispatch) => {
         })
 }
 
-export const deleteUser = (userId, dispatch) => {
+export const deleteUser = (userId) => dispatch => {
     //Handles action types: DELETE_USER and DELETE_USER_FAILED
     UserApi.deleteUser(userId)
         .then(res => {
