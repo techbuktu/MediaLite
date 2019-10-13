@@ -8,7 +8,7 @@ import {
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
 
-export const createNewComment =(dispatch, new_comment_obj) => {
+export const createNewComment = (new_comment_obj) => dispatch => {
     //Handles action types: NEW_COMMENT and NEW_COMMENT_FAILED
     CommentApi.newComment(new_comment_obj)
         .then(res => {
@@ -26,7 +26,7 @@ export const createNewComment =(dispatch, new_comment_obj) => {
         })
 }
 
-export const getComment = (dispatch, comment_id) => {
+export const getComment = (comment_id) =>  dispatch => {
     //Handles action types: GET_COMMENT, GET_COMMENT_FAILED
     CommentApi.getComment(comment_id)
         .then(res => {
@@ -43,7 +43,7 @@ export const getComment = (dispatch, comment_id) => {
         })
 }
 
-export const updateComment = (dispatch, comment_id, updated_comment_obj) => {
+export const updateComment = (comment_id, updated_comment_obj) =>  dispatch => {
     //Handles action types: UPDATE_COMMENT and UPDATE_COMMENT_FAILED
     CommentApi.updateComment(comment_id, updated_comment_obj)
         .then(res => {
@@ -61,7 +61,7 @@ export const updateComment = (dispatch, comment_id, updated_comment_obj) => {
         })
 }
 
-export const getCommentsforArticle = (dispatch, article_link) => {
+export const getCommentsforArticle = (article_link) =>  dispatch => {
     //Handles action types: GET_COMMENTS_FOR_ARTICLE and GET_COMMENTS_FOR_ARTICLE_FAILED
     CommentApi.getCommentsforArticle(article_link)
         .then(res => {
@@ -78,7 +78,7 @@ export const getCommentsforArticle = (dispatch, article_link) => {
         })
 }
 
-export const getAllComments = (dispatch) => {
+export const getAllComments = () =>  dispatch => {
     //Handles action types: GET_ALL_COMMENTS and GET_ALL_COMMENTS_FAILED
     CommentApi.getAllComments()
         .then(res => {
@@ -95,7 +95,7 @@ export const getAllComments = (dispatch) => {
         })
 }
 
-export const deleteComment = (dispatch, comment_id) => {
+export const deleteComment = (comment_id) =>  dispatch => {
     //Handles action types: DELETE_COMMENT and DELETE_COMMENT_FAILED
     CommentApi.deleteComment(comment_id)
         .then(res => {
