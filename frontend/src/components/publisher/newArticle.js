@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { createNewArticle } from '../../dataStore/actions/commentActions';
+import { createNewArticle } from '../../dataStore/actions/articleActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -27,4 +27,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { })(newArticle)
+export default connect(mapStateToProps, { createNewArticle })(newArticle)

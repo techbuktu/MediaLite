@@ -24,7 +24,7 @@ newComment.propTypes ={
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    article: state.articles.article
 });
 
-
-export default connect(mapStateToProps, { })(newComment)
+export default connect(mapStateToProps, { createNewComment })(newComment)

@@ -30,7 +30,9 @@ Article.propTypes ={
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    article: state.articles.article,
+    comment_list: state.comments.comment_list
 });
 
 
-export default connect(mapStateToProps, { })(Article)
+export default connect(mapStateToProps, { getArticle, getCommentsforArticle })(Article)
