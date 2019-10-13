@@ -20,6 +20,10 @@ class Editor extends Component {
 
 Editor.propTypes = {
     //add props and action creators here.
+    editor: PropTypes.object.isRequired,
+    getEditorById: PropTypes.func.isRequired,
+    getwritersByEditor: PropTypes.func.isRequired,
+    writers_under_editor: PropTypes.array // implement API endpoint, TYPE, action creator and reducer case for this.
 };
 
 const mapStateToProps = (state) => ({

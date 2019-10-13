@@ -19,6 +19,7 @@ class newWriter extends Component {
 
 newWriter.propTypes ={
     //add props and action creators here.
+    createNewWriter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

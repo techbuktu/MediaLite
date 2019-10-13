@@ -19,6 +19,7 @@ class newEditor extends Component {
 
 newEditor.propTypes ={
     //add props and action creators here.
+    createNewEditor: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({

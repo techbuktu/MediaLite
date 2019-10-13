@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { getAllEditors } from '../../dataStore/actions/editorActions';
-import { getALlWriters } from '../../dataStore/actions/writerActions';
+import { getAllWriters } from '../../dataStore/actions/writerActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -18,8 +18,13 @@ class ManagerHome extends Component {
     }
 }
 
+
 ManagerHome.propTypes ={
     //add props and action creators here.
+    editor_list: PropTypes.array.isRequired,
+    writer_list: PropTypes.array.isRequired,
+    getAllEditors: PropTypes.func.isRequired,
+    getAllWriters: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
