@@ -20,6 +20,8 @@ class ArticlesHome extends Component {
 
 ArticlesHome.propTypes ={
     //add props and action creators here.
+    getAllArticles: PropTypes.func.isRequired,
+    article_list: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({

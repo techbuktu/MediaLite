@@ -22,6 +22,10 @@ class Article extends Component {
 
 Article.propTypes ={
     //add props and action creators here.
+    getArticle: PropTypes.func.isRequired,
+    getCommentsforArticle: PropTypes.func.isRequired,
+    article: PropTypes.object.isRequired,
+    comment_list: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({

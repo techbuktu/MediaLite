@@ -19,6 +19,7 @@ class newComment extends Component {
 
 newComment.propTypes ={
     //add props and action creators here.
+    createNewComment: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

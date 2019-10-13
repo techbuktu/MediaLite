@@ -20,6 +20,9 @@ class Comment extends Component {
 
 Comment.propTypes = {
     //add props and action creators here.
+    getComment: PropTypes.func.isRequired,
+    comment: PropTypes.object.isRequired,
+    article: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
