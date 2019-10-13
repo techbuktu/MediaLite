@@ -27,4 +27,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { })(newWriter)
+export default connect(mapStateToProps, { createNewWriter })(newWriter)

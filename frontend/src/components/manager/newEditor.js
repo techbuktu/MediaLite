@@ -27,4 +27,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { })(newEditor);
+export default connect(mapStateToProps, { createNewEditor })(newEditor);

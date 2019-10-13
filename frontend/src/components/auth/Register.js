@@ -26,4 +26,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { })(Register);
+export default connect(mapStateToProps, { registerUser })(Register);

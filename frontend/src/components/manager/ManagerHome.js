@@ -34,4 +34,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { })(ManagerHome);
+export default connect(mapStateToProps, { getAllEditors, getAllWriters })(ManagerHome);

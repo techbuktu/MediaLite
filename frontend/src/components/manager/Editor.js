@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { getEditorById, getwritersByEditor } from '../../dataStore/actions/editorActions';
+import { getEditorById } from '../../dataStore/actions/editorActions';
+import { getWritersByEditor } from '../../dataStore/actions/writerActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -31,4 +32,4 @@ const mapStateToProps = (state) => ({
     editor: state.editors.editor
 });
 
-export default connect(mapStateToProps, { })(Editor);
+export default connect(mapStateToProps, { getEditorById, getWritersByEditor })(Editor);
