@@ -8,6 +8,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Writer extends Component {
+    componentDidMount(){
+        this.props.getWriter();
+        //getAllArticlesforWriter('123'); id from params.id
+    };
+
     render() {
         return (
             <div>

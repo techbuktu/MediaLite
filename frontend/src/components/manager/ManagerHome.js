@@ -8,6 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class ManagerHome extends Component {
+
+    componentDidMount(){
+        this.props.getAllEditors();
+        this.props.getAllWriters();
+    };
+
     render() {
         return (
             <div>

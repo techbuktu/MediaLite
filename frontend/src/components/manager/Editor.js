@@ -8,6 +8,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Editor extends Component {
+
+    componentDidMount(){
+        this.props.get('123'); // get from params.id
+    };
+
     render() {
         return (
             <div>

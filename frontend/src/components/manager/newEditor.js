@@ -7,6 +7,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class newEditor extends Component {
+    componentDidMount(){
+        //
+    };
+
+    onChange(e){
+        //
+    };
+
+    onSubmit(e){
+        e.preventDefault();
+    }
     render() {
         return (
             <div>
