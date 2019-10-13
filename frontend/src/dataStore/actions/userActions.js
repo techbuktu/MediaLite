@@ -61,7 +61,7 @@ export const getAllUsers = (dispatch) => {
 export const updateUser = (userId, updatedUserObj, dispatch) => {
     //Handles types: UPDATE_USER and UPDATE_USER_FAILED
     UserApi.updateUser(userId, updatedUserObj)
-        .then(then => {
+        .then(res => {
             dispatch({
                 type: UPDATE_USER,
                 payoad: res.data
