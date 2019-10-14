@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const project = express();
 
 project.use(express.json());
+project.use(cors()); //Enable CORS headers during development 
 
 //Default route for the project
 project.get('/', (req, res) => {
