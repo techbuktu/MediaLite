@@ -23,7 +23,7 @@ class WriterApi {
         return Axios.delete(`/manager/writers/${writerId}`);
     }
 
-    getAllWriters(){
+    static getAllWriters(){
         return Axios.get(`/manager/writers`);
     }
 
