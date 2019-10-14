@@ -5,8 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 function Header() {
     return (
         <div>
-            <h3>MediaLite</h3>
-            <p>Media Publishing CMS</p>
+            <h3>MediaLite: Media Publishing CMS</h3>
         </div>
     )
 }

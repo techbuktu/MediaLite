@@ -5,8 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 function Footer() {
     return (
         <div className="App-footer">
-            Footer links go here.
-            (c) TechBuktu.com .
+            (c) Muhammad Jalloh of <a href="https://TechBuktu.com">TechBuktu.com </a>. Code @ <a href="https://github.com/techbuktu/MediaLite/tree/mern-stack">MediaLite on GitHub</a>.
         </div>
     )
 }
