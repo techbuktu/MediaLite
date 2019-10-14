@@ -27,8 +27,8 @@ class ManagerHome extends Component {
 
 ManagerHome.propTypes ={
     //add props and action creators here.
-    editor_list: PropTypes.array.isRequired,
-    writer_list: PropTypes.array.isRequired,
+    editor_list: PropTypes.array,
+    writer_list: PropTypes.array,
     getAllEditors: PropTypes.func.isRequired,
     getAllWriters: PropTypes.func.isRequired
 };
