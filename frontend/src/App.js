@@ -32,9 +32,9 @@ function App() {
     <Provider store={store}>
         <Router>
           <div className="App">
-          <header className="App-header">
-            <Header />
-          </header>
+            <header className="App-header">
+              <Header />
+            </header>
 
             <Route exact path="/" component={Home} />
 
