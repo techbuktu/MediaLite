@@ -36,7 +36,6 @@ function App() {
           </header>
           <div className="App">
             <Route exact path="/" component={Home} />
-
             <Route path="/register" component={Register} />
             <Route path="/login" component={LogIn} />
             <Route exact path="/manager" component={ManagerHome} />

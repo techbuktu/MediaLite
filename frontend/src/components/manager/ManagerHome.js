@@ -12,7 +12,7 @@ class ManagerHome extends Component {
     componentDidMount(){
         this.props.getAllEditors();
         this.props.getAllWriters();
-        console.log('this.props.editor_list', this.props.editor_list);
+        console.log('this.props.editor_list', this.props.writer_list);
     };
 
     render() {
@@ -27,6 +27,18 @@ class ManagerHome extends Component {
                 </React.Fragment>
             )
         });
+
+        const writersUI = this.props.writer_list.map(writer => {
+            return (
+                <React.Fragment>
+                    <li>
+                        <Link to={`/writers/${writer._id}`}>
+                            {writer.user.firstName} {writer.user.lastName}
+                        </Link>
+                    </li>
+                </React.Fragment>
+            )
+        })
         
         return (
             <div>
@@ -35,6 +47,9 @@ class ManagerHome extends Component {
                     {editorsUI}
                 </ul>
                 <h5> Writers</h5>
+               <ul>
+                    {writersUI}
+               </ul>
             </div>
         )
     }
