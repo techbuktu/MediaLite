@@ -19,7 +19,7 @@
 }
 
 .App-footer{
-  position: absolute;
+  position: relative;
   bottom: 0px;
   margin-left: 25%;
 }
