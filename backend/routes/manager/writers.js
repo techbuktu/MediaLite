@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         .then(writers => {
             res.json({
                 successMessage: `${writers.length} writer(s) were found.`,
-                writers
+                writer_list: writers
 
             })
         })

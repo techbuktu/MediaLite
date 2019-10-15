@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
         .then(articles => {
             res.json({
                 successMessage: `${articles.length} article(s) were found!`,
-                articles
+                article_list: articles
             })
         })
         .catch(er => {

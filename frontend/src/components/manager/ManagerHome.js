@@ -12,13 +12,29 @@ class ManagerHome extends Component {
     componentDidMount(){
         this.props.getAllEditors();
         this.props.getAllWriters();
+        console.log('this.props.editor_list', this.props.editor_list);
     };
 
     render() {
+        const editorsUI = this.props.editor_list.map(editor => {
+            return (
+                <React.Fragment>
+                    <li>
+                        <Link to={`/editors/${editor._id}`}>
+                            {editor.user.firstName} {editor.user.lastName}
+                        </Link>
+                    </li>
+                </React.Fragment>
+            )
+        });
+        
         return (
             <div>
-                List of and links to Editors and Writers individual pages.
-                Needs data: editor_list, writer_list
+                <h5>Editors</h5>
+                <ul>
+                    {editorsUI}
+                </ul>
+                <h5> Writers</h5>
             </div>
         )
     }
@@ -27,7 +43,7 @@ class ManagerHome extends Component {
 
 ManagerHome.propTypes ={
     //add props and action creators here.
-    editor_list: PropTypes.array,
+    editor_list: PropTypes.array.isRequired,
     writer_list: PropTypes.array,
     getAllEditors: PropTypes.func.isRequired,
     getAllWriters: PropTypes.func.isRequired

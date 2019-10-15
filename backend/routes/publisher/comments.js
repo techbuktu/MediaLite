@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         .then(comments => {
             res.json({
                 successMessage: `${comments.length} comment(s) were found.`,
-                comments: comments
+                comment_list: comments
             })
         })
         .catch(error => {
@@ -42,7 +42,7 @@ router.get('/for/:articleLink', (req, res) => {
                         if(commentsforArticle){
                             res.json({
                                 successMessage: `${commentsforArticle.length} comments were found for this Article(${targetArticle.link})`,
-                                comments: commentsforArticle
+                                comment_list: commentsforArticle
                             })
                         }else {
                             res.status(400).json({

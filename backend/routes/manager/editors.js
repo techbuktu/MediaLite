@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         .then(editors => {
             res.json({
                 successMessage: `${editors.length} editor(s) were found!`,
-                editors
+                editor_list: editors
             })
         })
         .catch(err => {

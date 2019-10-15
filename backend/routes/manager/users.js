@@ -12,10 +12,14 @@ const User = require("../../models/manager/User");
 router.get('/', (req, res) => {
     User.find()
         .then(users => {
-            res.status(200).json(users);
+            res.status(200).json(
+                {user_list: users}
+                );
         })
         .catch(err => {
-            console.log(`User GET ALL DB Error: ${err}`);
+            res.status(400).json({
+                errorMessage: `No users were found`
+            })
         });
 })
 
