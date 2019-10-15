@@ -31,11 +31,10 @@ function App() {
   return (
     <Provider store={store}>
         <Router>
+          <header className="App-header">
+                <Header />
+          </header>
           <div className="App">
-            <header className="App-header">
-              <Header />
-            </header>
-
             <Route exact path="/" component={Home} />
 
             <Route path="/register" component={Register} />
