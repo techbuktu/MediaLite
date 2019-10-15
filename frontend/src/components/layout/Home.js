@@ -13,7 +13,7 @@ class Home extends Component {
                     To see a list of the articles we currently have on our platform, please go to the <Link to={`/articles`}>Articles section</Link>.
                 </p>
                 <p>
-                    For our awesome roster of editors and writers, please, see the <Link to>Newsroom</Link> section.
+                    For our awesome roster of editors and writers, please, see the <Link to={'/manager'}>Newsroom</Link> section.
                 </p>
                 <p>
                     And, if you are new here, please, take a moment to <Link to={`/register`}>register for a new account</Link>.
