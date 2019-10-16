@@ -17,25 +17,21 @@ class ManagerHome extends Component {
     render() {
         const editorsUI = this.props.editor_list.map(editor => {
             return (
-                <React.Fragment>
                     <li key={editor._id}>
                         <Link to={`/editors/${editor._id}`}>
                             {editor.user.firstName} {editor.user.lastName}
                         </Link>
                     </li>
-                </React.Fragment>
             )
         });
 
         const writersUI = this.props.writer_list.map(writer => {
             return (
-                <React.Fragment>
                     <li key={writer._id}>
                         <Link to={`/writers/${writer._id}`}>
                             {writer.user.firstName} {writer.user.lastName}
                         </Link>
                     </li>
-                </React.Fragment>
             )
         })
         
