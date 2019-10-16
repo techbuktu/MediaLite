@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 //@desc GET a single Editor object
 //@access Public 
 router.get('/:link', (req, res) => {
-    Editor.find({ _id: req.params.link })
+    Editor.findOne({ _id: req.params.link })
         .then(editor => {
             res.status(200).json({editor: editor})
         })

@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
 //@desc GET a single User object
 //@access Public 
 router.get('/:id', (req, res) => {
-    User.find({ _id: req.params.id })
+    User.findOne({ _id: req.params.id })
         .then(user => {
             res.status(200).json({user: user})
         })

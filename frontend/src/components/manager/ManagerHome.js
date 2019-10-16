@@ -19,7 +19,7 @@ class ManagerHome extends Component {
         const editorsUI = this.props.editor_list.map(editor => {
             return (
                 <React.Fragment>
-                    <li>
+                    <li key={editor._id}>
                         <Link to={`/editors/${editor._id}`}>
                             {editor.user.firstName} {editor.user.lastName}
                         </Link>
@@ -31,7 +31,7 @@ class ManagerHome extends Component {
         const writersUI = this.props.writer_list.map(writer => {
             return (
                 <React.Fragment>
-                    <li>
+                    <li key={writer._id}>
                         <Link to={`/writers/${writer._id}`}>
                             {writer.user.firstName} {writer.user.lastName}
                         </Link>

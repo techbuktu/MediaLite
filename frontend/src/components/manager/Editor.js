@@ -10,14 +10,22 @@ import { connect } from 'react-redux';
 class Editor extends Component {
 
     componentDidMount(){
-        this.props.get('123'); // get from params.id
+        let editorLink = this.props.match.params.editorLink;
+        this.props.getEditorById(editorLink);
     };
 
     render() {
+        const {user, about} = this.props.editor;
+        console.log(this.props.editor);
         return (
             <div>
-                Details about an editor.
-                data: editor
+                <h5>
+                   
+                </h5>
+                <h5>About Me</h5>
+                <p>
+                    {this.props.editor.about}
+                </p>
             </div>
         )
     }
@@ -28,7 +36,7 @@ Editor.propTypes = {
     //add props and action creators here.
     editor: PropTypes.object.isRequired,
     getEditorById: PropTypes.func.isRequired,
-    getwritersByEditor: PropTypes.func.isRequired,
+    getwritersByEditor: PropTypes.func,
     writers_under_editor: PropTypes.array // implement API endpoint, TYPE, action creator and reducer case for this.
 };
 
