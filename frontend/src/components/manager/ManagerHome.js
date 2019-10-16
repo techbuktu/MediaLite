@@ -12,7 +12,6 @@ class ManagerHome extends Component {
     componentDidMount(){
         this.props.getAllEditors();
         this.props.getAllWriters();
-        console.log('this.props.editor_list', this.props.writer_list);
     };
 
     render() {
