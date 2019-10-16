@@ -4,6 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 //import action creators
 import { getEditorById } from '../../dataStore/actions/editorActions';
 import { getWritersByEditor } from '../../dataStore/actions/writerActions';
+import { getUser } from '../../dataStore/actions/userActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -15,8 +16,8 @@ class Editor extends Component {
     };
 
     render() {
-        const {user, about} = this.props.editor;
-        console.log(this.props.editor);
+        const {about, user} = this.props.editor;
+        
         return (
             <div>
                 <h5>
@@ -24,13 +25,12 @@ class Editor extends Component {
                 </h5>
                 <h5>About Me</h5>
                 <p>
-                    {this.props.editor.about}
+                    {about}
                 </p>
             </div>
         )
     }
 }
-
 
 Editor.propTypes = {
     //add props and action creators here.
