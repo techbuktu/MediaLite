@@ -16,7 +16,6 @@ class Writer extends Component {
 
     render() {
         if(this.props.writer.user){
-            console.log(`this.props.writer: ${this.props.writer.user}`);
             const {about, user} = this.props.writer;
             return (
                 <div>
