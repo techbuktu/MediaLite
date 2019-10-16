@@ -9,17 +9,27 @@ import { connect } from 'react-redux';
 
 class Writer extends Component {
     componentDidMount(){
-        this.props.getWriter();
+        let writerLink = this.props.match.params.writerLink;
+        this.props.getWriter(writerLink);
         //getAllArticlesforWriter('123'); id from params.id
     };
 
     render() {
-        return (
-            <div>
-                Details about a Writer.
-                Data needed: writer
-            </div>
-        )
+        if(this.props.writer.user){
+            console.log(`this.props.writer: ${this.props.writer.user}`);
+            const {about, user} = this.props.writer;
+            return (
+                <div>
+                   <h4> {user.firstName} {user.lastName} </h4>
+                   <p>
+                       {about}
+                   </p>
+                </div>
+            )
+        }
+        else {
+            return ('Loading...')
+        }
     }
 }
 

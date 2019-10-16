@@ -7,6 +7,10 @@ class WriterApi {
         return Axios.post(`/manager/writers`, new_writer_obj);
     }
 
+    static getWriter (writer_id){
+        return Axios.get(`/manager/writers/${writer_id}`);
+    }
+
     static getWritersByEditor(editorId){
         return Axios.get(`/manager/editors/${editorId}`);
     }

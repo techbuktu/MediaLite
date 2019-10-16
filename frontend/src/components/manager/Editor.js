@@ -13,15 +13,16 @@ class Editor extends Component {
     componentDidMount(){
         let editorLink = this.props.match.params.editorLink;
         this.props.getEditorById(editorLink);
+        console.log(`this.props.editor: ${this.props.editor};`);
     };
 
     render() {
         const {about, user} = this.props.editor;
-        
+
         return (
             <div>
                 <h5>
-                   
+                    {user.firstName} {user.lastName}
                 </h5>
                 <h5>About Me</h5>
                 <p>
