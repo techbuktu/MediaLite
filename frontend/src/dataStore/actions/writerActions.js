@@ -113,7 +113,7 @@ export const deleteWriter = (writer_id) => dispatch => {
 
 export const getWritersUnderEditor = (editor_id) => dispatch => {
     //Handles action types: GET_WRITERS_BY_EDITOR and GET_WRITERS_BY_EDITOR_FAILED
-    WriterApi.getWritersByEditor(editor_id)
+    WriterApi.getWritersUnderEditor(editor_id)
         .then(res => {
             dispatch({
                 type: GET_WRITERS_UNDER_EDITOR,
