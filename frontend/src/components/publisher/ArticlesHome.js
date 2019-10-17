@@ -14,15 +14,17 @@ class ArticlesHome extends Component {
     render() {
         const all_articles = this.props.article_list.map(article => {
             return (
-                <div>
-                    <h3> { article.title} </h3>
-                </div>
+                <p>
+                    <Link to={`/articles/${article.link}`}>
+                        {article.title}
+                    </Link>
+                </p>
             )
-        })
+        });
+        
         return (
             <div>
-                Landing page and linked list of published articles
-                data: article_list
+                {all_articles}
             </div>
         )
     }
