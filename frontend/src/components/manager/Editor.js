@@ -46,13 +46,15 @@ Editor.propTypes = {
     editor: PropTypes.object.isRequired,
     getEditorById: PropTypes.func.isRequired,
     getwritersUnderEditor: PropTypes.func,
-    writer_list: PropTypes.array 
+    writer_list: PropTypes.array,
+    errorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
     editor: state.editors.editor,
-    writer_list: state.writers.writer_list
+    writer_list: state.writers.writer_list,
+    errorMessage: state.editors.errorMessage
 });
 
 export default connect(mapStateToProps, { getEditorById, getWritersUnderEditor })(Editor);

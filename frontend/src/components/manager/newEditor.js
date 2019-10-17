@@ -70,11 +70,13 @@ class newEditor extends Component {
 
 newEditor.propTypes ={
     //add props and action creators here.
-    createNewEditor: PropTypes.func
+    createNewEditor: PropTypes.func,
+    errorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    errorMessage: state.editors.errorMessage
 });
 
 

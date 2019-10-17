@@ -44,6 +44,7 @@ Writer.propTypes ={
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
     writer: state.writers.writer,
+    errorMessage: state.writers.errorMessage
     //articles_by_writer: state.articles.articles_by_writer
 });
 

@@ -82,11 +82,13 @@ class newWriter extends Component {
 
 newWriter.propTypes ={
     //add props and action creators here.
-    createNewWriter: PropTypes.func.isRequired
+    createNewWriter: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    errorMessage: state.writers.errorMessage
 });
 
 

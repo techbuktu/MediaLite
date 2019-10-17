@@ -56,13 +56,17 @@ ManagerHome.propTypes ={
     editor_list: PropTypes.array.isRequired,
     writer_list: PropTypes.array,
     getAllEditors: PropTypes.func.isRequired,
-    getAllWriters: PropTypes.func.isRequired
+    getAllWriters: PropTypes.func.isRequired,
+    editorsErrorMessage: PropTypes.string,
+    writersErrorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
     editor_list: state.editors.editor_list,
-    writer_list: state.writers.writer_list
+    writer_list: state.writers.writer_list,
+    editorsErrorMessage: state.editors.errorMessage,
+    writersErrorMessage: state.writers.errorMessage
 });
 
 
