@@ -16,12 +16,7 @@ class newWriter extends Component {
         //placeholder 'editor' object until auth, etc. is implemented
         this.editor = {
             _id:"5d93d7e02825b05a49fde0e5",
-            user: {
-                firstName: 'Abraham',
-                lastName: 'Lincoln',
-                email: 'coding.abe@example.com',
-                joinDate: "2019-10-16T20:07:12.805Z"
-            },
+            user: "5d910f646b3fcb4e13ac3545",
             about: "I am Founder of The Millenial Times",
             date: "2019-10-17T04:09:54.606Z"
         };

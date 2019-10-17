@@ -59,7 +59,7 @@ class newArticle extends Component {
                     <div className="formContainer">
                         
                         <p>
-                            <label> Title</label> 
+                            <label> Title</label>
                             <input type="text" defaultValue="" onChange={this.onChange}/>
                         </p>
                         <p>
