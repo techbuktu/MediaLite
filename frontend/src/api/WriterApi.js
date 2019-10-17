@@ -11,8 +11,8 @@ class WriterApi {
         return Axios.get(`/manager/writers/${writer_id}`);
     }
 
-    static getWritersByEditor(editorId){
-        return Axios.get(`/manager/editors/${editorId}`);
+    static getWritersUnderEditor(editorId){
+        return Axios.get(`/manager/editors/${editorId}/writers`);
     }
 
     static updateWriter(writerId, updated_writer_obj){
