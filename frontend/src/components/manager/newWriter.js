@@ -23,7 +23,7 @@ class newWriter extends Component {
 
         //placeholder this.props.user until auth is implemented
         this.user = {
-            isActive:true, 
+            isActive:true,
             firstName:"Alpha",
             lastName:"Jalloh",
             email:"techlite@jalloh.com"

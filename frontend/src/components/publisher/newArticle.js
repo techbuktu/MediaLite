@@ -60,10 +60,10 @@ class newArticle extends Component {
                         
                         <p>
                             <label> Title</label>
-                            <input type="text" defaultValue="" onChange={this.onChange}/>
+                            <input type="text" defaultValue="" onChange={this.onChange} name="title" />
                         </p>
                         <p>
-                            <textarea defaultValue="" onChange={this.onChange} rows="13" cols="30" />
+                            <textarea defaultValue="" onChange={this.onChange} rows="13" cols="30" name="body" />
                         </p>
                         <input type="submit" value="Publish Article"/>
                     </div>
