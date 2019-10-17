@@ -7,22 +7,67 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class newArticle extends Component {
+    constructor(){
+        super();
+
+        //placeholder for this.props.user until auth is implemented
+        this.writer = {
+            "_id":"5d93e3292327c36458f6de71",
+            "user":{
+                "isActive":true,
+                "_id":"5d910d6e469e314c83fa4ed1",
+                "firstName":"Alpha",
+                "lastName":"Jalloh",
+                "email":"techlite@jalloh.com",
+                "joinDate":"2019-09-29T20:00:46.883Z"
+            },
+            "editor":
+                {"_id":"5d93d9964a4a775ae07c3b58",
+                    "user":"5d910f646b3fcb4e13ac3545",
+                    "about":"I am the Editor-in-Chief of 'TechLite'.",
+                    "date":"2019-10-01T22:56:22.851Z","__v":"0"
+                },
+                "about":"I write for the TechLite.",
+                "date":"2019-10-01T23:37:13.472Z"
+            }
+        
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    };
+
     componentDidMount(){
         //
     };
 
     onChange(e){
         //process form change
+        
     };
 
-    oSubmit(e){
+    onSubmit(e){
         e.preventDefault();
     };
 
     render() {
         return (
             <div>
-                Form to create a new Article 
+                <h5>
+                    SUbmit a New Article for Publication
+                </h5>
+                <form onSubmit={this.onSubmit}>
+                    <div className="formContainer">
+                        
+                        <p>
+                            <label> Title</label> 
+                            <input type="text" defaultValue="" onChange={this.onChange}/>
+                        </p>
+                        <p>
+                            <textarea defaultValue="" onChange={this.onChange} rows="13" cols="30" />
+                        </p>
+                        <input type="submit" value="Publish Article"/>
+                    </div>
+                </form>
             </div>
         )
     }

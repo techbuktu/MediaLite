@@ -44,7 +44,7 @@ function App() {
             <Route path="/editors/:editorLink" component={Editor} />
             <Route path="/writers/:writerLink" component={Writer} />
             <Route exact path="/articles" component={ArticlesHome} />
-            <Route path="/articles/new-article" component={newArticle} />
+            <Route exact path="/articles/new-article" component={newArticle} />
             <Route path="/articles/:articleLink" component={Article} />
 
           <Footer  />

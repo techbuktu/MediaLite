@@ -46,7 +46,7 @@ class newEditor extends Component {
         return (
             <div>
                  <form onSubmit={this.onSubmit}>
-                    <div>
+                    <div className="formContainer">
                        <p>
                             <label> About </label>
                        </p>

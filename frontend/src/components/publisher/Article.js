@@ -12,7 +12,7 @@ class Article extends Component {
     componentDidMount(){
         let articleLink = this.props.match.params.articleLink;
         this.props.getArticle(articleLink); 
-        this.props.getCommentsforArticle(articleLink); 
+        this.props.getCommentsforArticle(articleLink);
     };
 
     render() {

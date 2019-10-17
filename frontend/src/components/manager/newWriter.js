@@ -15,6 +15,7 @@ class newWriter extends Component {
 
         //placeholder 'editor' object until auth, etc. is implemented
         this.editor = {
+            _id:"5d93d7e02825b05a49fde0e5",
             user: {
                 firstName: 'Abraham',
                 lastName: 'Lincoln',
@@ -50,7 +51,7 @@ class newWriter extends Component {
         let newWriterObj = {
             user: this.user,
             about: this.about,
-            editor: this.editor,
+            editor: this.editor._id,
         };
         const newWriterJson = JSON.stringify(newWriterObj)
         console.log(newWriterJson);
@@ -61,7 +62,7 @@ class newWriter extends Component {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <div>
+                    <div className="formContainer">
                         <h5> Use the Form Below to Add a New Staff Writer</h5>
                         <p>
                             <label> About </label>
