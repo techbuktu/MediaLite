@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
     }else {
         //Construct and save a new Writer instance into the 'writers' collection
         const newWriter = new Writer({
-            user, editor, about
+            user: user, editor:editor, about:about
         })
         newWriter.save()
             .then(new_writer => {
