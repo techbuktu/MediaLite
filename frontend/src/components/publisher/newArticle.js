@@ -81,6 +81,7 @@ newArticle.propTypes ={
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
+    errorMessage: state.articles.errorMessage
 });
 
 

@@ -32,7 +32,8 @@ Comment.propTypes = {
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
     article: state.articles.article,
-    comment: state.comments.comment 
+    comment: state.comments.comment,
+    errorMessage: state.comments.errorMessage
 });
 
 export default connect(mapStateToProps, { getComment })(Comment)
