@@ -7,21 +7,60 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class newEditor extends Component {
+
+    constructor(){
+        super();
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
+        //placeholder this.props.user object until auth is implemented
+        this.user = {
+            firstName: 'Abraham',
+            lastName: 'Lincoln',
+            email: 'coding.abe@example.com',
+            joinDate: "2019-10-16T20:07:12.805Z"
+        }
+
+    }
+        
+
     componentDidMount(){
-        //
+        
     };
 
     onChange(e){
-        //
+        this.about = e.target.value;
+        console.log(this.about);
     };
 
     onSubmit(e){
         e.preventDefault();
+        let newEditorObj = {
+            user: this.user,
+            about: this.about
+        }
+        this.props.createNewEditor(newEditorObj);
     }
     render() {
         return (
             <div>
-                Form to create a new Editor 
+                 <form onSubmit={this.onSubmit}>
+                    <div>
+                       <p>
+                            <label> About </label>
+                       </p>
+                        <p>
+                            <textarea 
+                                name="about" 
+                                defaultValue="" 
+                                placeholder="Enter some bio info about this new Editor." 
+                                cols="30" rows="7"
+                                onChange={this.onChange} 
+                            />
+                        </p>
+                    </div>
+                    <button type="submit"> Add New Editor</button>
+                 </form>
             </div>
         )
     }
