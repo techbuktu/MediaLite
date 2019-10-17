@@ -39,7 +39,8 @@ class newEditor extends Component {
             user: this.user,
             about: this.about
         }
-        this.props.createNewEditor(newEditorObj);
+        const newEditorJson = JSON.stringify(newEditorObj);
+        this.props.createNewEditor(newEditorJson);
     }
     render() {
         return (
