@@ -1,6 +1,6 @@
 import { NEW_WRITER, NEW_WRITER_FAILED, GET_WRITER, GET_WRITER_BY_USER, GET_WRITER_BY_USER_FAILED,
     GET_WRITER_FAILED, GET_ALL_WRITERS,GET_ALL_WRITERS_FAILED, UPDATE_WRITER, UPDATE_WRITER_FAILED, 
-    DELETE_WRITER, DELETE_WRITER_FAILED, GET_WRITERS_BY_EDITOR, GET_WRITERS_BY_EDITOR_FAILED
+    DELETE_WRITER, DELETE_WRITER_FAILED, GET_WRITERS_UNDER_EDITOR, GET_WRITERS_UNDER_EDITOR_FAILED
 
 } from '../actions/types/writers';
 
@@ -74,12 +74,12 @@ const writerReducer = (state=initialState, action) => {
                 ...state, 
                 errorMessage: action.payload.errorMessage
             };
-        case GET_WRITERS_BY_EDITOR:
+        case GET_WRITERS_UNDER_EDITOR:
             return {
                 ...state, 
                 writer_list: action.payload.writer_list
             };
-        case GET_WRITERS_BY_EDITOR_FAILED:
+        case GET_WRITERS_UNDER_EDITOR_FAILED:
             return {
                 ...state,
                 errorMessage: action.payload.errorMessage

@@ -3,7 +3,7 @@ import WriterApi from '../../api/WriterApi';
 
 import { NEW_WRITER, NEW_WRITER_FAILED, GET_WRITER, GET_WRITER_BY_USER, GET_WRITER_BY_USER_FAILED,
     GET_WRITER_FAILED, GET_ALL_WRITERS,GET_ALL_WRITERS_FAILED, UPDATE_WRITER, UPDATE_WRITER_FAILED, 
-    DELETE_WRITER, DELETE_WRITER_FAILED, GET_WRITERS_BY_EDITOR, GET_WRITERS_BY_EDITOR_FAILED
+    DELETE_WRITER, DELETE_WRITER_FAILED, GET_WRITERS_UNDER_EDITOR, GET_WRITERS_UNDER_EDITOR_FAILED
 
 } from './types/writers';
 //One 'exported' action creator for each action type 
@@ -111,18 +111,18 @@ export const deleteWriter = (writer_id) => dispatch => {
         })
 }
 
-export const getWritersByEditor = (editor_id) => dispatch => {
+export const getWritersUnderEditor = (editor_id) => dispatch => {
     //Handles action types: GET_WRITERS_BY_EDITOR and GET_WRITERS_BY_EDITOR_FAILED
     WriterApi.getWritersByEditor(editor_id)
         .then(res => {
             dispatch({
-                type: GET_WRITERS_BY_EDITOR,
+                type: GET_WRITERS_UNDER_EDITOR,
                 payload: res.data
             })
         })
         .catch(err => {
             dispatch({
-                type: GET_WRITERS_BY_EDITOR_FAILED,
+                type: GET_WRITERS_UNDER_EDITOR_FAILED,
                 payload: err
             })
         })

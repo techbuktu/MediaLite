@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { getEditorById } from '../../dataStore/actions/editorActions';
-import { getWritersByEditor } from '../../dataStore/actions/writerActions';
+import { getWritersUnderEditor } from '../../dataStore/actions/writerActions';
 import { getUser } from '../../dataStore/actions/userActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -13,6 +13,7 @@ class Editor extends Component {
     componentDidMount(){
         let editorLink = this.props.match.params.editorLink;
         this.props.getEditorById(editorLink);
+        this.props.getWritersUnderEditor()
     };
 
     render() {
@@ -44,7 +45,7 @@ Editor.propTypes = {
     //add props and action creators here.
     editor: PropTypes.object.isRequired,
     getEditorById: PropTypes.func.isRequired,
-    getwritersByEditor: PropTypes.func,
+    getwritersUnderEditor: PropTypes.func,
     writers_under_editor: PropTypes.array // implement API endpoint, TYPE, action creator and reducer case for this.
 };
 
@@ -53,4 +54,4 @@ const mapStateToProps = (state) => ({
     editor: state.editors.editor
 });
 
-export default connect(mapStateToProps, { getEditorById, getWritersByEditor })(Editor);
+export default connect(mapStateToProps, { getEditorById, getWritersUnderEditor })(Editor);
