@@ -10,8 +10,9 @@ import Comment from './Comment';
 
 class Article extends Component {
     componentDidMount(){
-        this.props.getArticle('/articleLink/'); // from  params.articleLink 
-        this.props.getCommentsforArticle('/articleLink/'); 
+        let articleLink = this.props.match.params.articleLink;
+        this.props.getArticle(articleLink); 
+        this.props.getCommentsforArticle(articleLink); 
     };
 
     render() {
@@ -22,12 +23,27 @@ class Article extends Component {
                 </p>
             )
         })
-        return (
-            <div>
-                Details about an article: Life in the Tech Lane.
-                data: article
-            </div>
-        )
+        if(this.props.comment_list){
+            return (
+                <div>
+                    <h4> {this.props.article.title} </h4>
+                    <div>
+                        {this.props.article.body}
+                    </div>
+                    <div>
+                        <h5> Reader comments: </h5>
+                        {article_comments}
+                    </div>
+
+                </div>
+            )
+        }else {
+            return (
+                <div>
+                    Loading... Please, wait....
+                </div>
+            )
+        }
     }
 }
 
