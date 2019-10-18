@@ -46,7 +46,7 @@ class newWriter extends Component {
         let newWriterObj = {
             user: this.user,
             about: this.about,
-            editor: this.editor._id,
+            editor: this.editor,
         };
         const newWriterJson = JSON.stringify(newWriterObj)
         console.log(newWriterJson);
