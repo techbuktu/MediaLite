@@ -31,7 +31,8 @@ class newArticle extends Component {
                 "date":"2019-10-01T23:37:13.472Z"
             }
         
-
+        this.newArticleObj = {};
+        
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     };
@@ -42,6 +43,8 @@ class newArticle extends Component {
 
     onChange(e){
         //process form change
+        this.newArticleObj[e.target.name] = e.target.value;
+        console.log(this.newArticleObj);
         
     };
 
@@ -64,6 +67,10 @@ class newArticle extends Component {
                         </p>
                         <p>
                             <textarea defaultValue="" onChange={this.onChange} rows="13" cols="30" name="body" />
+                        </p>
+                        <p>
+                            <label> Publish? </label>
+                            <input type="checkbox" defaultValue={false} name="publish" onChange={this.onChange} />
                         </p>
                         <input type="submit" value="Publish Article"/>
                     </div>
