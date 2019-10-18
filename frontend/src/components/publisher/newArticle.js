@@ -31,7 +31,9 @@ class newArticle extends Component {
                 "date":"2019-10-01T23:37:13.472Z"
             }
         
-        this.newArticleObj = {};
+        this.newArticleObj = {
+            writer: this.writer
+        };
         
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -50,6 +52,8 @@ class newArticle extends Component {
 
     onSubmit(e){
         e.preventDefault();
+        let newArticleJson = JSON.stringify(this.newArticleObj);
+        this.props.createNewArticle(newArticleJson);
     };
 
     render() {
