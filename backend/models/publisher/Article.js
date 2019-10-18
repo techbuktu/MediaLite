@@ -16,7 +16,8 @@ const ArticleSchema = new Schema({
     },
     writer: {
         type: Map,
-        //required: true
+        //required: true,
+        of: String
     },
     body: {
         type: String,
