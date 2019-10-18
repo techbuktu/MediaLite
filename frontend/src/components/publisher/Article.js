@@ -7,6 +7,7 @@ import { getCommentsforArticle } from '../../dataStore/actions/commentActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Comment from './Comment';
+import NewComment from './newComment';
 
 class Article extends Component {
     componentDidMount(){
@@ -18,7 +19,7 @@ class Article extends Component {
     render() {
         const article_comments = this.props.comment_list.map(comment => {
             return (
-                <p>
+                <p key={comment._id}>
                     { comment.body }
                 </p>
             )
@@ -34,6 +35,8 @@ class Article extends Component {
                         <h5> Reader comments: </h5>
                         {article_comments}
                     </div>
+                    <h5>Got something to share?</h5>
+                    <NewComment parentArticle={this.props.article} />
 
                 </div>
             )
@@ -54,8 +57,8 @@ Article.propTypes ={
     getCommentsforArticle: PropTypes.func.isRequired,
     article: PropTypes.object.isRequired,
     comment_list: PropTypes.array.isRequired,
-    errorMessage: PropTypes.string,
-    commentsErrorMessage: PropTypes.string
+    errorMessage: PropTypes.object,
+    commentsErrorMessage: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({

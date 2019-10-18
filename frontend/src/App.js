@@ -47,7 +47,7 @@ function App() {
             <Route exact path="/publisher/new-article" component={newArticle} />
             <Route path="/articles/:articleLink" component={Article} />
 
-          <Footer  />
+          <Footer />
           </div>
         </Router>
     </Provider>

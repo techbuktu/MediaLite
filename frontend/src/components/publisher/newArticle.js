@@ -60,7 +60,7 @@ class newArticle extends Component {
         return (
             <div>
                 <h5>
-                    SUbmit a New Article for Publication
+                    Submit a New Article for Publication
                 </h5>
                 <form onSubmit={this.onSubmit}>
                     <div className="formContainer">
