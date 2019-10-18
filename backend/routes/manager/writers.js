@@ -70,7 +70,8 @@ router.post('/', (req, res) => {
             })
             .catch(dbError => {
                 res.status(500).json({
-                    errorMessage: `There was an error. A new Writer instance could not be created. Please, try again.`
+                    //errorMessage: `There was an error. A new Writer instance could not be created. Please, try again.`
+                    erroMessage: dbError
                 })
             })
     }
