@@ -17,11 +17,10 @@ class Article extends Component {
     };
 
     render() {
+        console.log(`this.props.comment_list: ${this.props.comment_list}`);
         const article_comments = this.props.comment_list.map(comment => {
             return (
-                <p key={comment._id}>
-                    { comment.body }
-                </p>
+                <Comment commentItem = {comment} key={comment._id} />
             )
         })
         if(this.props.comment_list){

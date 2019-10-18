@@ -8,14 +8,15 @@ import { connect } from 'react-redux';
 
 class Comment extends Component {
     componentDidMount(){
-        this.props.getComment('123'); // from params.id
+        
     };
     
     render() {
         return (
             <div>
-                Details about a Comment.
-                data: comment 
+                <p>
+                    { this.props.commentItem.commentBody }
+                </p>
             </div>
         )
     }
