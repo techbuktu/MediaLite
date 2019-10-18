@@ -26,7 +26,8 @@ Comment.propTypes = {
     //add props and action creators here.
     getComment: PropTypes.func.isRequired,
     comment: PropTypes.object.isRequired,
-    article: PropTypes.object
+    article: PropTypes.object,
+    errorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({

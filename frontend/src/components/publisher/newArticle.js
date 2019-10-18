@@ -76,7 +76,8 @@ class newArticle extends Component {
 
 newArticle.propTypes ={
     //add props and action creators here.
-    createNewArticle: PropTypes.func.isRequired
+    createNewArticle: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({

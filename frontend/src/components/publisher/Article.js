@@ -53,14 +53,17 @@ Article.propTypes ={
     getArticle: PropTypes.func.isRequired,
     getCommentsforArticle: PropTypes.func.isRequired,
     article: PropTypes.object.isRequired,
-    comment_list: PropTypes.array.isRequired
+    comment_list: PropTypes.array.isRequired,
+    errorMessage: PropTypes.string,
+    commentsErrorMessage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
     article: state.articles.article,
     comment_list: state.comments.comment_list,
-    errorMessage: state.articles.errorMessage
+    errorMessage: state.articles.errorMessage,
+    commentsErrorMessage: state.comments.errorMessage
 });
 
 
