@@ -15,6 +15,13 @@ class Writer extends Component {
     };
 
     render() {
+        const articlesByWriterUI = this.props.articles_by_writer.map(article => {
+            return (
+                <li key={article.link}>
+                    <Link to={`articles/${article.link}`}> {article.title} </Link>
+                </li>
+            )
+        })
         if(this.props.writer.user){
             const {about, user} = this.props.writer;
             return (
@@ -23,11 +30,15 @@ class Writer extends Component {
                    <p>
                        {about}
                    </p>
+                   <h5> {user.firstName} {user.lastName}'s Articles:</h5>
+                   <ul>
+                        {articlesByWriterUI}
+                   </ul>
                 </div>
             )
         }
         else {
-            return ('Loading...')
+            return ('Loading...writer... and his/her penmanly entourage!')
         }
     }
 }
@@ -44,8 +55,8 @@ Writer.propTypes ={
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
     writer: state.writers.writer,
-    errorMessage: state.writers.errorMessage
-    //articles_by_writer: state.articles.articles_by_writer
+    errorMessage: state.writers.errorMessage,
+    articles_by_writer: state.articles.article_list
 });
 
 
