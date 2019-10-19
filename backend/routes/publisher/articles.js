@@ -3,6 +3,7 @@ const router = express.Router();
 
 //Import the 'Article' model
 const Article = require("../../models/publisher/Article");
+const Writer = require("../../models/manager/Writer");
 
 //@route GET api/publisher
 //@desc Get list of All Articles
@@ -168,6 +169,39 @@ router.delete('/:link', (req, res) => {
     }
 })
 
+
+//@route GET api/publisher/articles/by/:writerLink
+//@desc List of Articles published by a Writer (/:writerLink)
+//@access Public 
+router.get('/by/:writerLink', (req, res) => {
+    const writerLink = req.params.writerLink;
+    Writer.findOne({ _id: writerLink})
+        .then(writer => {
+            if(!writer){
+                res.status(400).json({
+                    errorMessage: `This writer (${writerLink}) could not be found.`
+                })
+            }else {
+                Article.find({ "writer._id": writerLink})
+                    .then(articles_by_writer => {
+                        res.json({
+                            successMessage: `${articles_by_writer.length} articles by Writer (${writerLink}) were found.`,
+                            article_list: articles_by_writer
+                        })
+                    })
+                    .catch(err => {
+                        res.status(400).json({
+                            errorMessage: `This writer (${writerLink}) has not published any articles yet.`
+                        })
+                    })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({
+                errorMessage: `Sorry, Writer (${writerLink}) does not exist.`
+            })
+        })
+})
 
 
 module.exports = router;
