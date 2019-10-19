@@ -18,7 +18,7 @@ class Writer extends Component {
         const articlesByWriterUI = this.props.articles_by_writer.map(article => {
             return (
                 <li key={article.link}>
-                    <Link to={`articles/${article.link}`}> {article.title} </Link>
+                    <Link to={`/articles/${article.link}`}> {article.title} </Link>
                 </li>
             )
         })
