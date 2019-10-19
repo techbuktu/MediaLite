@@ -1,4 +1,4 @@
-// Import all action types for the Article 
+// Import ArticleApi object 
 import ArticleApi from '../../api/ArticleApi';
 
 //Import all Article-related action TYPES
@@ -6,7 +6,6 @@ import { NEW_ARTICLE, NEW_ARTICLE_FAILED, GET_ARTICLE, GET_ARTICLE_FAILED, GET_A
     GET_ALL_ARTICLES_FAILED, UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED, DELETE_ARTICLE, DELETE_ARTICLE_FAILED,
     GET_ALL_ARTICLES_BY_WRITER, GET_ALL_ARTICLES_BY_WRITER_FAILED
 } from './types/articles';
-import Article from '../../components/publisher/Article';
 
 //One 'exported' action creator for each action type 
 //(Error-related action creators to be dispatch()ed inside their appropriate .catch() callbacks
