@@ -3,6 +3,7 @@ const router = express.Router();
 
 //Import the 'Writer' model
 const Writer = require("../../models/manager/Writer");
+const Editor = require("../../models/manager/Editor");
 
 
 //@route GET api/manager/writers
@@ -28,7 +29,7 @@ router.get('/', (req, res) => {
 //@desc 
 //@access 
 
-//@route GET api/managers/writers/:link
+//@route GET api/manager/writers/:link
 //@desc GET a single Writer object
 //@access Public 
 router.get('/:id', (req, res) => {
@@ -45,6 +46,44 @@ router.get('/:id', (req, res) => {
             })
         })
 });
+
+// @route GET api/manager/writers/for/:editorId 
+//@desc GET a list of writers under this editor: :editorId
+//@access Public
+router.get('/for/:editorId', (req, res) => {
+    //Get the editor 
+    const editorId = req.params.editorId
+    Editor.findOne({_id: editorId})
+        .then(editor => {
+            if(!editor){
+                res.status(400).json({
+                    errorMessage: `This editor (${editorId}) could not be found.`
+                })
+            }else {
+                //Get all writers under this Editor 
+                Writer.find({"editor._id": editorId })
+                    .then(writers_for_editor => {
+                        if(writers_for_editor){
+                            res.json({
+                                successMessage: `${writers_for_editor.length} writers were found for Editor (${editorId})`,
+                                writer_list: writers_for_editor
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        res.status(400).json({
+                            erroMessage: `Something went wrong. Please, try again.`
+                        })
+                    })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({
+                errorMessage: `Editor with ID (${editorId}) does not exist. Please, check editorId and try again.`,
+            })
+        })
+})
+
 
 //@route POST api/manager/writers
 //@desc Create a New Writer object

@@ -26,7 +26,7 @@ class ArticleApi {
     static getArticlesByWriter(writer_link){
         return Axios.get(`/publisher/articles/by/${writer_link}`);
     }
-    
+
 }
 
 export default ArticleApi;
