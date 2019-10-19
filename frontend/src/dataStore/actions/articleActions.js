@@ -99,13 +99,13 @@ export const getAllArticlesByWriter = (writer_link) => dispatch => {
     ArticleApi.getAllArticlesByWriter(writer_link)
         .then(res => {
             dispatch({
-                type: GET_ALL_ARTICLES_FOR_WRITER,
+                type: GET_ALL_ARTICLES_BY_WRITER,
                 payload: res.data
             })
         })
         .catch(err => {
             dispatch({
-                type: GET_ALL_ARTICLES_FOR_WRITER_FAILED,
+                type: GET_ALL_ARTICLES_BY_WRITER_FAILED,
                 payload: err
             })
         })
