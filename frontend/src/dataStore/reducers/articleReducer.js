@@ -1,5 +1,6 @@
 import { NEW_ARTICLE, NEW_ARTICLE_FAILED, GET_ARTICLE, GET_ARTICLE_FAILED, GET_ALL_ARTICLES,
-    GET_ALL_ARTICLES_FAILED, UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED, DELETE_ARTICLE, DELETE_ARTICLE_FAILED
+    GET_ALL_ARTICLES_FAILED, UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED, DELETE_ARTICLE, DELETE_ARTICLE_FAILED,
+    GET_ALL_ARTICLES_BY_WRITER, GET_ALL_ARTICLES_BY_WRITER_FAILED
 } from '../actions/types/articles';
 
 const initialState = {
@@ -60,6 +61,16 @@ const articleReducer = (state=initialState, action) => {
         case DELETE_ARTICLE_FAILED:
             return {
                 ...state, 
+                errorMessage: action.payload.errorMessage
+            };
+        case GET_ALL_ARTICLES_BY_WRITER:
+            return {
+                ...state,
+                article_list: action.payload.article_list
+            };
+        case GET_ALL_ARTICLES_BY_WRITER_FAILED:
+            return {
+                ...state,
                 errorMessage: action.payload.errorMessage
             };
         default:
