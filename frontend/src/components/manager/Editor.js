@@ -19,6 +19,23 @@ class Editor extends Component {
     render() {
         const {about, user} = this.props.editor;
 
+        const writersUnderEditorUI = this.props.writer_list.map(writer => {
+            const { user, _id } = writer;
+            if(user){
+                return (
+                    <p>
+                        <Link to={`/writers/${_id}`}> {user.firstName} {user.lastName}</Link>
+                    </p>
+                )
+            }else {
+                return (
+                    <p>
+                        Loading ... writer...
+                    </p>
+                )
+            }
+        })
+
         if(this.props.editor.user){
             return (
                 <div>
@@ -29,6 +46,9 @@ class Editor extends Component {
                     <p>
                         {about}
                     </p>
+                    <h5> Writers I Work With</h5>
+                    {writersUnderEditorUI}
+
                 </div>
             )
         }else {
