@@ -95,7 +95,7 @@ export const deleteArticle = ( article_link) =>  dispatch => {
 }
 
 export const getAllArticlesByWriter = (writer_link) => dispatch => {
-    ArticleApi.getAllArticlesByWriter(writer_link)
+    ArticleApi.getArticlesByWriter(writer_link)
         .then(res => {
             dispatch({
                 type: GET_ALL_ARTICLES_BY_WRITER,

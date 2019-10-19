@@ -11,7 +11,7 @@ class Writer extends Component {
     componentDidMount(){
         let writerLink = this.props.match.params.writerLink;
         this.props.getWriter(writerLink);
-        //getAllArticlesforWriter('123'); id from params.id
+        this.props.getAllArticlesByWriter(writerLink);
     };
 
     render() {
@@ -47,7 +47,7 @@ class Writer extends Component {
 Writer.propTypes ={
     //add props and action creators here.
     getWriter: PropTypes.func.isRequired,
-    //getAllArticlesforWriter: PropTypes.func.isRequired,
+    getAllArticlesByWriter: PropTypes.func.isRequired,
     writer: PropTypes.object.isRequired,
     articles_by_writer: PropTypes.array 
 };
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { getWriter })(Writer)
+export default connect(mapStateToProps, { getWriter, getAllArticlesByWriter })(Writer)
