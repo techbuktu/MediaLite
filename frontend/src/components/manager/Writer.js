@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { getWriter } from '../../dataStore/actions/writerActions'; //getAllArticlesforWriter() too
-//import { getAllArticlesforWriter } from '../../dataStore/actions/articleActions';
+import { getAllArticlesByWriter } from '../../dataStore/actions/articleActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

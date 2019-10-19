@@ -3,7 +3,8 @@ import ArticleApi from '../../api/ArticleApi';
 
 //Import all Article-related action TYPES
 import { NEW_ARTICLE, NEW_ARTICLE_FAILED, GET_ARTICLE, GET_ARTICLE_FAILED, GET_ALL_ARTICLES,
-    GET_ALL_ARTICLES_FAILED, UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED, DELETE_ARTICLE, DELETE_ARTICLE_FAILED
+    GET_ALL_ARTICLES_FAILED, UPDATE_ARTICLE, UPDATE_ARTICLE_FAILED, DELETE_ARTICLE, DELETE_ARTICLE_FAILED,
+    GET_ALL_ARTICLES_FOR_WRITER, GET_ALL_ARTICLES_FOR_WRITER_FAILED
 } from './types/articles';
 import Article from '../../components/publisher/Article';
 
@@ -89,6 +90,22 @@ export const deleteArticle = ( article_link) =>  dispatch => {
         .catch(err => {
             dispatch({
                 type: DELETE_ARTICLE_FAILED,
+                payload: err
+            })
+        })
+}
+
+export const getAllArticlesByWriter = (writer_link) => dispatch => {
+    ArticleApi.getAllArticlesByWriter(writer_link)
+        .then(res => {
+            dispatch({
+                type: GET_ALL_ARTICLES_FOR_WRITER,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: GET_ALL_ARTICLES_FOR_WRITER_FAILED,
                 payload: err
             })
         })
