@@ -37,9 +37,9 @@ router.get('/for/:articleLink', (req, res) => {
                 })
             }else {
                 // GET all Comments for this article
-                Comment.find({ article: targetArticle})
+                Comment.find({ article: {link: req.params.articleLink}})
                     .then(commentsforArticle => {
-                        if(commentsforArticle){
+                        if(commentsforArticle.length >= 1){
                             res.json({
                                 successMessage: `${commentsforArticle.length} comments were found for this Article(${targetArticle.link})`,
                                 comment_list: commentsforArticle
