@@ -49,7 +49,6 @@ class NewComment extends Component {
     render() {
         return (
             <div>
-                Hi, comment here! :)
                 <form onSubmit={this.onSubmit}>
                     <div className="formContainer">
                         <h5>Submit Your Comment</h5>
