@@ -12,13 +12,23 @@ class Comment extends Component {
     };
     
     render() {
-        return (
-            <div>
+        const {commenter, commentBody} = this.props.commentItem;
+        if(this.props.commentItem.commenter){
+            return (
+                <div>
+                    <h5> {commenter.firstName} {commenter.lastName} said:</h5> 
+                    <p>
+                        { commentBody }
+                    </p>
+                </div>
+            )
+        } else {
+            return (
                 <p>
-                    { this.props.commentItem.commentBody }
+                    Loading chatter ... :)
                 </p>
-            </div>
-        )
+            )
+        }
     }
 }
 
