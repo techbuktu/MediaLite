@@ -22,6 +22,10 @@ class ArticleApi {
     static deleteArticle(article_link){
         return Axios.delete(`/publisher/articles/${article_link}`);
     }
+
+    static getArticlesByWriter(writer_link){
+        return Axios.get(`/publisher/articles/by/${writer_link}`);
+    }
     
 }
 
