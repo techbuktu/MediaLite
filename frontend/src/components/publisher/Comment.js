@@ -15,14 +15,12 @@ class Comment extends Component {
         const {commenter, commentBody} = this.props.commentItem;
         if(this.props.commentItem.commenter){
             return (
-                <div>
-                    <h5> {commenter.firstName} {commenter.lastName} said:</h5> 
-                    <p>
-                        <i>
-                            { commentBody }
-                        </i>
-                    </p>
-                </div>
+                <p> 
+                    <h5> {commenter.firstName} {commenter.lastName} said:</h5>
+                    <i>
+                        { commentBody }
+                    </i>
+                </p>
             )
         } else {
             return (
