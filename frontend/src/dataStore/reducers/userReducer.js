@@ -63,7 +63,9 @@ const userReducer = (state=initialState, action) => {
             };
         case LOGIN_SUCCESS:
             return {
-                state
+                ...state,
+                errorMessage: null,
+                user: action.payload.user
             };
         case LOGIN_FAILED:
             return {
