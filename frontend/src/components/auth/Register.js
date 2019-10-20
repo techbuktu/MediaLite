@@ -37,52 +37,62 @@ class Register extends Component {
     };
     
     render() {
-        return (
-            <div>
-                <form onSubmit={this.onSubmit} id="register_form">
-                    <div className="formContainer">
-                        <h5>Register for a New Medialite Account</h5>
-                        <p>
-                            <label>
-                                First Name
-                            </label>
-                            <input type="text" className="formInput" name="firstName" defaultValue="" onChange={this.onChange} />
-                        </p>
-                        <p>
-                            <label>
-                                Last Name
-                            </label>
-                            <input type="text" className="formInput" name="lastName" defaultValue="" onChange={this.onChange} />
-                        </p>
-                        <p>
-                            <label>
-                                eMail 
-                            </label>
-                            <input type="email" className="formInput" name="email" defaultValue="" onChange={this.onChange} />
-                        </p>
-                        <p>
-                            <label>
-                                Password
-                            </label>
-                            <input type="password" className="formInput" name="password" defaultValue="" onChange={this.onChange} />
-                        </p>
-                        <input type="submit" value="Submit Comment"/>
-                    </div>
-                </form>
-            </div>
-        )
+        if(this.props.user.firstName){
+            return (
+                <div>
+                    <h5>Congrats, {this.props.user.firstName}! You have registered as {this.props.user.email}</h5>
+                </div>
+            )
+        }else {
+            return (
+                <div>
+                    <form onSubmit={this.onSubmit} id="register_form">
+                        <div className="formContainer">
+                            <h5>Register for a New Medialite Account</h5>
+                            <p>
+                                <label>
+                                    First Name
+                                </label>
+                                <input type="text" className="formInput" name="firstName" defaultValue="" onChange={this.onChange} />
+                            </p>
+                            <p>
+                                <label>
+                                    Last Name
+                                </label>
+                                <input type="text" className="formInput" name="lastName" defaultValue="" onChange={this.onChange} />
+                            </p>
+                            <p>
+                                <label>
+                                    eMail 
+                                </label>
+                                <input type="email" className="formInput" name="email" defaultValue="" onChange={this.onChange} />
+                            </p>
+                            <p>
+                                <label>
+                                    Password
+                                </label>
+                                <input type="password" className="formInput" name="password" defaultValue="" onChange={this.onChange} />
+                            </p>
+                            <input type="submit" value="Submit Comment"/>
+                        </div>
+                    </form>
+                </div>
+            )
+        }
     }
 };
 
 Register.propTypes ={
     //add props and action creators here.
     registerUser: PropTypes.func.isRequired,
-    new_user: PropTypes.object
+    user: PropTypes.object,
+    errorMessage: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
-    new_user: state.users.new_user
+    user: state.users.user,
+    errorMessage: state.users.errorMessage
 });
 
 
