@@ -17,13 +17,26 @@ class Article extends Component {
     };
 
     render() {
-        console.log(`this.props.comment_list: ${this.props.comment_list}`);
-        const article_comments = this.props.comment_list.map(comment => {
-            return (
-                <Comment commentItem = {comment} key={comment._id} />
-            )
-        })
-        if(this.props.comment_list){
+        const commentsUI = () => {
+            //let article_comments = null;
+            if(this.props.comment_list){
+                return this.props.comment_list.map(comment => {
+                     return (
+                         <Comment commentItem = {comment} key={comment._id} />
+                     )
+                 });
+             }else {
+                 return (
+                     <p>
+                        <i>
+                            No comments have been posted on this article yet.
+                        </i>
+                     </p>
+                 )
+             }
+        };
+        
+        if(this.props.article){
             return (
                 <div>
                     <h4> {this.props.article.title} </h4>
@@ -32,7 +45,7 @@ class Article extends Component {
                     </div>
                     <div>
                         <h5> Reader comments: </h5>
-                        {article_comments}
+                        {commentsUI()}
                     </div>
                     <h5>Got something to share?</h5>
                     <NewComment parentArticle={this.props.article} />
@@ -55,7 +68,7 @@ Article.propTypes ={
     getArticle: PropTypes.func.isRequired,
     getCommentsforArticle: PropTypes.func.isRequired,
     article: PropTypes.object.isRequired,
-    comment_list: PropTypes.array.isRequired,
+    comment_list: PropTypes.array,
     errorMessage: PropTypes.object,
     commentsErrorMessage: PropTypes.object
 };

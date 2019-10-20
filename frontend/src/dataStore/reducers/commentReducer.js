@@ -71,12 +71,12 @@ const commentReducer = (state=initialState, action) => {
         case GET_COMMENTS_FOR_ARTICLE:
             return {
                 ...state,
-                comment_list: action.payload.comment_list,
-                comments_for_article: action.payload.comment_list //May be redundant
+                comment_list: action.payload.comment_list
             };
         case GET_COMMENTS_FOR_ARTICLE_FAILED:
             return {
                 ...state,
+                comment_list: null,
                 errorMessage: action.payload.errorMessage
             };
         default:
