@@ -44,17 +44,21 @@ class NewComment extends Component {
         //call action creators here to submit form data to API
         let newCommentJson = JSON.stringify(this.newCommentObj);
         this.props.createNewComment(newCommentJson);
+        //Reset the form after submitting it. Keep it clean! :)
+        //document.getElementById("create-course-form").reset();
+        document.getElementById("comment_form").reset();
     };
     
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} id="comment_form">
                     <div className="formContainer">
-                        <h5>Submit Your Comment</h5>
-                        <p>
+                        <h5>Got something to share?</h5>
+                        <h6>Submit Your Comment Below</h6>
+                        <br/>
                             <textarea defaultValue="" onChange={this.onChange} rows="7" cols="30" name="commentBody" />
-                        </p>
+                        <br/>
                         <input type="submit" value="Submit Comment"/>
                     </div>
                 </form>

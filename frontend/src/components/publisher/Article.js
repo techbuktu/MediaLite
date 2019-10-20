@@ -47,7 +47,7 @@ class Article extends Component {
                         <h5> Reader comments: </h5>
                         {commentsUI()}
                     </div>
-                    <h5>Got something to share?</h5>
+                    
                     <NewComment parentArticle={this.props.article} />
 
                 </div>
