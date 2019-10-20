@@ -27,7 +27,7 @@ const userReducer = (state=initialState, action) => {
         case REGISTER_USER_FAILED:
             return {
                 ...state,
-                register_error: action.payload.data.errorMessage
+                register_error: action.payload.errorMessage
             };
         case GET_USER:
             return {
