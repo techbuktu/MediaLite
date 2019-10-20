@@ -18,7 +18,9 @@ class Comment extends Component {
                 <div>
                     <h5> {commenter.firstName} {commenter.lastName} said:</h5> 
                     <p>
-                        { commentBody }
+                        <i>
+                            { commentBody }
+                        </i>
                     </p>
                 </div>
             )
