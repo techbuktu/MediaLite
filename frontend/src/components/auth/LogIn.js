@@ -9,23 +9,37 @@ import { connect } from 'react-redux';
 class LogIn extends Component {
     constructor(){
         super();
-        
+
+        this.loginCredsObj = {
+
+        };
+
+        this.onChange = this.onChange.bind(this);
+        this.logIn = this.logIn.bind(this);
     }
 
     onChange(e){
-
+        //Populate the loginCredsObj 
+        this.loginCredsObj[e.target.name] = e.target.value;
+        console.log(this.loginCredsObj);
         
     };
 
     logIn(e){
         e.preventDefault();
+        //JSONify the object for the API call 
+        let loginJson = JSON.stringify(this.loginCredsObj);
+        //POST the login creds to the API using the loginUser action creator.
+        this.props.loginUser(loginJson);
+        //Clear the login_form 
+        document.getElementById("login_form").reset();
     }
 
     render() {
         return (
             <div>
                 <div>
-                    <form onSubmit={this.onSubmit} id="login_form">
+                    <form onSubmit={this.logIn} id="login_form">
                         <div className="formContainer">
                             <h5>Login to Your Medialite Account</h5>
                             <p>
