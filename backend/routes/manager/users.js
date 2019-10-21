@@ -92,13 +92,11 @@ router.post('/', (req, res) => {
                                         }
                                     })
                                 }
-                            )  //jwt.sign() ends 
-                        }) // .then() ends
+                            )
+                        })
                    })
                 })
             }
-
-
 
         })
 })
