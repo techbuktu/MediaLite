@@ -13,10 +13,33 @@ router.get('/', (req, res) => {
     res.send('Home of Auth API!');
 })
 
-//@route GET api/managers/
-//@desc 
-//@access 
+//@route POST /api/auth/login 
+//@desc Login endpoint for user
+//@access Public
+router.get('/login', (req, res) => {
+    //get login creds
+    const {username, password} = req.body
 
+    if(!username || !password){
+        return res.status(400).json({
+            errorMessage: `Please, supply both 'username' and 'password' fields to login`
+        })
+    }
+    User.findOne({username})
+        .then(authUser => {
+            if(authUser){
+                //Sign and return user{username, id} and 'auth_token' to client 
+            }
+        })
+        .catch(authError => {
+            res.status(400).json({
+                errorMessage: `Sorry, no User found with that username and password combination.`
+            })
+        })
+    //Validate username and password 
+
+    //Return JWT auth token 
+})
 
 
 module.exports = router;
