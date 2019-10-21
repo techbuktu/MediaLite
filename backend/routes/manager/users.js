@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
+const config = require('../../config/keys');
 
 //Import the 'User' model
 const User = require("../../models/manager/User");
@@ -71,16 +73,27 @@ router.post('/', (req, res) => {
                        newUser.password = hash;
                        newUser.save()
                         .then(new_user => {
-                            res.json({
-                                successMessage: 'Congrats! :) You have sucessfully created a new user.',
-                                new_user: {
-                                    id: new_user.id,
-                                    firstName: new_user.firstName,
-                                    lastName: new_user.lastName,
-                                    email: new_user.email
+                            //Sign the JWT token 
+                            jwt.sign(
+                                { id: new_user.id},
+                                config.get('jwtSecret'),
+                                { expiresIn: 3600 },
+                                (err, token) => {
+                                    if(err) throw err;
+                                    //If JWT signing is successful, return API response with new user and token data
+                                    res.json({
+                                        successMessage: 'Congrats! :) You have sucessfully created a new user.',
+                                        new_user: {
+                                            id: new_user.id,
+                                            firstName: new_user.firstName,
+                                            lastName: new_user.lastName,
+                                            email: new_user.email,
+                                            auth_token: token
+                                        }
+                                    })
                                 }
-                            })
-                        })
+                            )  //jwt.sign() ends 
+                        }) // .then() ends
                    })
                 })
             }

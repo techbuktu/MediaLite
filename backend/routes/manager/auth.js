@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
 //@route POST /api/auth/login 
 //@desc Login endpoint for user
 //@access Public
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
     //get login creds
-    const {username, password} = req.body
+    const {email, password} = req.body
 
     if(!username || !password){
         return res.status(400).json({
