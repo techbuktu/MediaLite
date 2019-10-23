@@ -33,6 +33,7 @@ router.post('/login', (req, res) => {
                     errorMessage: `A matching User with this email does not exist.`
                 })
             }
+            
             //Compare the client-supplied req.body.password with the hashed authUser.password in the DB
             bcrypt.compare(password, authUser.password)
                 .then(isMatch => {
@@ -69,19 +70,15 @@ router.post('/login', (req, res) => {
                             }
                         )
                     
-                })
-                .catch(matchError => {
-                    res.json({
-                        PasswordMismatchError: matchError
-                    })
-                })
+                });
                 
         })
+        /*
         .catch(authError => {
             res.status(400).json({
                 errorMessage: `Sorry, no User found with that username and password combination.`
             })
-        })
+        }) */
     //Validate username and password 
 
     //Return JWT auth token 
