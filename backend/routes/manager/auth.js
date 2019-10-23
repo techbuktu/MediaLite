@@ -36,33 +36,41 @@ router.post('/login', (req, res) => {
             //Compare the client-supplied req.body.password with the hashed authUser.password in the DB
             bcrypt.compare(password, authUser.password)
                 .then(isMatch => {
-                    //If password matches, sign and return user{username, id} and 'auth_token' to client
-                    jwt.sign(
-                        {id: authUser.id},
-                        config.get('jwtSecret'),
-                        {expiresIn: 3600},
-                        (err, token) => {
-                            if(err) throw err;
 
-                            //Else, send back signed JWT token and other data for the matching authUser 
-                            res.json({
-                                auth_token: token,
-                                id: authUser.id,
-                                user: {
-                                    firstName: authUser.firstName,
-                                    lastName: authUser.lastName,
-                                    email: authUser.email
-                                }
-                            })
-                        }
-                    )
+                    //If client-supplied does not match, return a helpful errorMessage
+                    if(!isMatch){
+                        return res.status(400).json({
+                            errorMessage: `Password does not match. Please, check and try again.`
+                        })
+                    }
+                    //If password matches, sign and return user{username, id} and 'auth_token' to client
+                        jwt.sign(
+                            {id: authUser.id},
+                            config.jwtSecret,
+                            {expiresIn: 3600},
+                            (err, token) => {
+                                if(err) throw err;
+    
+                                //Else, send back signed JWT token and other data for the matching authUser 
+                                res.json({
+                                    auth_token: token,
+                                    user: {
+                                        id: authUser.id,
+                                        firstName: authUser.firstName,
+                                        lastName: authUser.lastName,
+                                        email: authUser.email
+                                    }
+                                })
+                            }
+                        )
+                    
                 })
-                .catch(passwordError => {
-                    res.status(400).json({
-                        errorMessage: `Wrong password. Please, check and try again.`
+                .catch(matchError => {
+                    res.json({
+                        PasswordMismatchError: matchError
                     })
                 })
-
+                
         })
         .catch(authError => {
             res.status(400).json({

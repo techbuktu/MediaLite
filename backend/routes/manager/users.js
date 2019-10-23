@@ -73,13 +73,25 @@ router.post('/', (req, res) => {
                        newUser.password = hash;
                        newUser.save()
                         .then(new_user => {
+                            if(!new_user){
+                                return res.status(400).json({
+                                    errorMessage: `Error, a new user could not be created.`
+                                })
+                            }
                             //Sign the JWT token 
                             jwt.sign(
                                 { id: new_user.id},
-                                config.get('jwtSecret'),
+                                //jwtSecret
+                                //config.get('jwtSecret'),
+                                config.jwtSecret,
                                 { expiresIn: 3600 },
                                 (err, token) => {
-                                    if(err) throw err;
+                                    if(err){
+                                        return res.status(400).json({
+                                            errorMessage: `A token could not be generated for this user.`,
+                                            tokenError: err 
+                                        })
+                                    };
                                     //If JWT signing is successful, return API response with new user and token data
                                     res.json({
                                         successMessage: 'Congrats! :) You have sucessfully created a new user.',

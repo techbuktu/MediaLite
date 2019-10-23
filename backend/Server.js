@@ -23,6 +23,9 @@ project.use('/api/manager/writers', require('./routes/manager/writers'))
 project.use('/api/publisher/articles', require('./routes/publisher/articles'))
 project.use('/api/publisher/comments', require('./routes/publisher/comments'))
 
+
+//Authentication routes 
+project.use('/api/auth', require('./routes/manager/auth'));
 //Connect to remote MongoDB Atlas DB here 
 /*
 const db = require('./config/keys').mongoURI;
@@ -32,7 +35,9 @@ mongoose
     .catch(err => console.log(err))
 */
 const mongoURL = 'mongodb://127.0.0.1:27017/medialite'
-mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+mongoose.connect(mongoURL, 
+    {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}
+    );
 const db = mongoose.connection;
 db
 .once('open', () => console.log(`Local MongoDB connected`))
