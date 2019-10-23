@@ -65,13 +65,17 @@ class LogIn extends Component {
 
 LogIn.propTypes ={
     //add props and action creators here.
-    loginUser: PropTypes.func.isRequired
+    loginUser: PropTypes.func.isRequired,
+    auth_token: PropTypes.string,
+    user: PropTypes.object
 };
 
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
-    errorMessage: state.users.errorMessage
+    errorMessage: state.users.errorMessage,
+    auth_token: state.users.auth_token,
+    user: state.users.user
 
 });
 
