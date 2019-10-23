@@ -24,7 +24,7 @@ class UserApi {
     }
 
     static loginUser(login_creds){
-        return Axios.post(`/manager/users/login`, login_creds);
+        return Axios.post(`/auth/login`, login_creds);
     }
 }
 
