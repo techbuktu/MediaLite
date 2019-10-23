@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true,
-        select: true
+        select: true //Make true or leave arg, else: auth_token won't be show in /login route.
     },
     joinDate: {
         type: Date,

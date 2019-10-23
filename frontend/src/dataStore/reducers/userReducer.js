@@ -13,7 +13,8 @@ const initialState = {
     register_error : {},
     updated_user: {},
     update_user_error: {},
-    delete_user_error : {}
+    delete_user_error : {},
+    auth_token: ""
 }
 
 const userReducer = (state=initialState, action) => {
@@ -62,10 +63,12 @@ const userReducer = (state=initialState, action) => {
                 errorMessage: action.payload.errorMessage
             };
         case LOGIN_SUCCESS:
+            localStorage.setItem('auth_token') = action.payload.auth_token;
             return {
                 ...state,
                 errorMessage: null,
-                user: action.payload.user
+                user: action.payload.user,
+                auth_token: action.payload.auth_token
             };
         case LOGIN_FAILED:
             return {
