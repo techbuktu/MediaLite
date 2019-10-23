@@ -36,30 +36,43 @@ class LogIn extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <div>
-                    <form onSubmit={this.logIn} id="login_form">
-                        <div className="formContainer">
-                            <h5>Login to Your Medialite Account</h5>
-                            <p>
-                                <label>
-                                    eMail 
-                                </label>
-                                <input type="email" className="formInput" name="email" defaultValue="" onChange={this.onChange} />
-                            </p>
-                            <p>
-                                <label>
-                                    Password
-                                </label>
-                                <input type="password" className="formInput" name="password" defaultValue="" onChange={this.onChange} />
-                            </p>
-                            <input type="submit" value="Login"/>
-                        </div>
-                    </form>
+        if(this.props.user && this.props.auth_token){
+            return (
+                <div> 
+                    <p>
+                        {this.props.user.firstName}, you are already logged in.
+                    </p>
+                    <p>
+                        You can head to the <Link to={'/'}>Home page</Link>
+                    </p>
                 </div>
-            </div>
-        )
+            )
+        }else {
+            return (
+                <div>
+                    <div>
+                        <form onSubmit={this.logIn} id="login_form">
+                            <div className="formContainer">
+                                <h5>Login to Your Medialite Account</h5>
+                                <p>
+                                    <label>
+                                        eMail 
+                                    </label>
+                                    <input type="email" className="formInput" name="email" defaultValue="" onChange={this.onChange} />
+                                </p>
+                                <p>
+                                    <label>
+                                        Password
+                                    </label>
+                                    <input type="password" className="formInput" name="password" defaultValue="" onChange={this.onChange} />
+                                </p>
+                                <input type="submit" value="Login"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 
@@ -69,7 +82,6 @@ LogIn.propTypes ={
     auth_token: PropTypes.string,
     user: PropTypes.object
 };
-
 
 const mapStateToProps = (state) => ({
     //add obj: state.<reducer_key>.obj_name; one for each component prop
