@@ -26,6 +26,7 @@ router.post('/login', (req, res) => {
             errorMessage: `Please, supply both 'email' and 'password' fields to login`
         })
     }
+    
     User.findOne({email})
         .then(authUser => {
             if(!authUser){
@@ -39,26 +40,28 @@ router.post('/login', (req, res) => {
                 .then(isMatch => {
 
                     //If client-supplied does not match, return a helpful errorMessage
+                    //If password matches, sign and return user{username, id} and 'auth_token' to client
+                    //Sign the JWT token
                     if(!isMatch){
                         return res.status(400).json({
                             errorMessage: `Password does not match. Please, check and try again.`
                         })
                     }
-                    //If password matches, sign and return user{username, id} and 'auth_token' to client
                         jwt.sign(
-                            {id: authUser.id},
+                            { id: authUser.id},
+                            //config.get('jwtSecret'),
                             config.jwtSecret,
-                            {expiresIn: 3600},
+                            { expiresIn: 3600 },
                             (err, token) => {
-                                if(err) {
+                                if(err){
                                     return res.status(400).json({
                                         errorMessage: `A token could not be generated for this user.`,
                                         tokenError: err 
                                     })
                                 };
-    
-                                //Else, send back signed JWT token and other data for the matching authUser 
+                                //If JWT signing is successful, return API response with new user and token data
                                 res.json({
+                                    successMessage: 'Congrats! :) You have sucessfully created a new user.',
                                     auth_token: token,
                                     user: {
                                         id: authUser.id,
@@ -69,8 +72,12 @@ router.post('/login', (req, res) => {
                                 })
                             }
                         )
-                    
-                });
+                })
+                .catch(err => {
+                    res.status(400).json({
+                        errorMessage: err
+                    })
+                })
                 
         })
         /*
