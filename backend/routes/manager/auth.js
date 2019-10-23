@@ -49,7 +49,12 @@ router.post('/login', (req, res) => {
                             config.jwtSecret,
                             {expiresIn: 3600},
                             (err, token) => {
-                                if(err) throw err;
+                                if(err) {
+                                    return res.status(400).json({
+                                        errorMessage: `A token could not be generated for this user.`,
+                                        tokenError: err 
+                                    })
+                                };
     
                                 //Else, send back signed JWT token and other data for the matching authUser 
                                 res.json({
