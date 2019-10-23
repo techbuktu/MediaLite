@@ -63,7 +63,7 @@ const userReducer = (state=initialState, action) => {
                 errorMessage: action.payload.errorMessage
             };
         case LOGIN_SUCCESS:
-            localStorage.setItem('auth_token') = action.payload.auth_token;
+            localStorage.setItem('auth_token', action.payload.auth_token);
             return {
                 ...state,
                 errorMessage: null,
