@@ -4,7 +4,7 @@ import React, { createContext, useReducer} from 'react';
 import AppReducer from './reducers'
 
 //REDUX_DEVTOOLS_EXTENSION Setup
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialAppState = {
 
