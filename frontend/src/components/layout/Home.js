@@ -4,8 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-class Home extends Component {
-    render() {
+const Home = () => {
         return (
             <div>
                 <p>
@@ -19,15 +18,11 @@ class Home extends Component {
                 </p>
             </div>
         )
-    }
-}
+};
 
 Home.propTypes ={
     //add props and action creators here.
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-});
 
 export default Home;
