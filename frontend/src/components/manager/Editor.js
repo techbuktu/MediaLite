@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { getEditorById } from '../../dataStore/actions/editorActions';
-import { getWritersUnderEditor } from '../../dataStore/actions/writerActions';
-import { getUser } from '../../dataStore/actions/userActions';
+import { getEditorById } from '../../contextState/actions/editorActions';
+import { getWritersUnderEditor } from '../../contextState/actions/writerActions';
+import { getUser } from '../../contextState/actions/userActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

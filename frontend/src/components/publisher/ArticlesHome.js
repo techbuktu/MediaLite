@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
-import { getAllArticles } from '../../dataStore/actions/articleActions';
+import { getAllArticles } from '../../contextState/actions/articleActions';
 //import action creators
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { createNewComment } from '../../dataStore/actions/commentActions';
-import { getArticle } from '../../dataStore/actions/articleActions';
+import { createNewComment } from '../../contextState/actions/commentActions';
+import { getArticle } from '../../contextState/actions/articleActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

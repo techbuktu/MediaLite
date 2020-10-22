@@ -26,7 +26,7 @@ import ArticlesHome from './components/publisher/ArticlesHome';
 /**
 //React-Redux objects and setup 
 import { Provider } from 'react-redux';
-import store from './dataStore';
+import store from './contextState';
 */
 import { AppProvider } from './contextState';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { getComment } from '../../dataStore/actions/commentActions';
+import { getComment } from '../../contextState/actions/commentActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
