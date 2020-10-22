@@ -3,14 +3,14 @@ import { NEW_ARTICLE, NEW_ARTICLE_FAILED, GET_ARTICLE, GET_ARTICLE_FAILED, GET_A
     GET_ALL_ARTICLES_BY_WRITER, GET_ALL_ARTICLES_BY_WRITER_FAILED
 } from '../actions/types/articles';
 
-const initialState = {
+export const initialArticleState = {
     article_list : [],
     errorMessage: {},
     article: {},
     article_comments: [] //Or just use commentReducer.comments_for_article array
 };
 
-const articleReducer = (state=initialState, action) => {
+const articleReducer = (state=initialArticleState, action) => {
     switch(action.type){
         case NEW_ARTICLE:
             return {

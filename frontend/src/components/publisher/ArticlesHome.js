@@ -1,35 +1,39 @@
-import React, { Component } from 'react';
+import React, { useEffect, useReducer } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 import { getAllArticles } from '../../contextState/actions/articleActions';
+import articleReducer, { initialArticleState } from '../../contextState/reducers/articleReducer';
 //import action creators
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-class ArticlesHome extends Component {
-    componentDidMount(){
-        this.props.getAllArticles();
+
+const ArticlesHome = () => {
+    const [state, dispatch] = useReducer(articleReducer, initialArticleState);
+
+    const getArticles = () => {
+        getAllArticles();
     };
 
-    render() {
-        const all_articles = this.props.article_list.map(article => {
-            return (
-                <p>
-                    <Link to={`/articles/${article.link}`}>
-                        {article.title}
-                    </Link>
-                </p>
-            )
-        });
-        
-        return (
+    useEffect(() => {
+        getArticles();
+        console.log(`state.article_list: ${state.article_list.length}`)
+    }, [])
+
+    return(
             <div>
-                {all_articles}
+
+                {state.article_list.map(article => (
+                    <p>
+                        <Link to={`/articles/${article.link}`}>
+                            {article.title}
+                        </Link>
+                    </p>
+                ))}
+                
             </div>
         )
-    }
-}
 
+}
 
 ArticlesHome.propTypes ={
     //add props and action creators here.
@@ -38,10 +42,5 @@ ArticlesHome.propTypes ={
     errorMessage: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    article_list: state.articles.article_list,
-    errorMessage: state.articles.errorMessage
-});
 
-export default connect(mapStateToProps, { getAllArticles })(ArticlesHome)
+export default ArticlesHome;
