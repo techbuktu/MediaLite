@@ -37,7 +37,7 @@ const ArticlesHome = () => {
 
 ArticlesHome.propTypes ={
     //add props and action creators here.
-    getAllArticles: PropTypes.func.isRequired,
+    getAllArticles: PropTypes.func,
     article_list: PropTypes.array.isRequired,
     errorMessage: PropTypes.string
 };

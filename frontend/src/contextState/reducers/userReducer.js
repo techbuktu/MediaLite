@@ -4,7 +4,7 @@ import { REGISTER_USER, REGISTER_USER_FAILED, GET_USER, GET_USER_FAILED,
 } from '../actions/types/users';
 
 //Create the initial/default state for the userReducer
-const initialState = {
+export const userInitialState = {
     user_list: [],
     errorMessage: {},
     get_users_error : {},
@@ -17,7 +17,7 @@ const initialState = {
     auth_token: ""
 }
 
-const userReducer = (state=initialState, action) => {
+const userReducer = (state=userInitialState, action) => {
     switch(action.type){
         case REGISTER_USER:
             return {
