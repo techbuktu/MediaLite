@@ -34,6 +34,7 @@ const articleReducer = (state=articleInitialState, action) => {
                 errorMessage: action.payload.errorMessage
             };
         case GET_ALL_ARTICLES:
+            console.log('GET_ALL_ARTICLES case in articleReducer.js');
             return {
                 ...state, 
                 article_list: action.payload.article_list

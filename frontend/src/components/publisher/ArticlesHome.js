@@ -9,16 +9,14 @@ import PropTypes from 'prop-types';
 
 
 const ArticlesHome = () => {
-    const { articleState, articleDispatch:dispatch } = useContext(AppContext);
+    const { articleState, articleDispatch} = useContext(AppContext);
 
-    const getArticles = () => {
-        getAllArticles();
-    };
+    console.log(articleState);
 
     useEffect(() => {
-        getArticles();
+        getAllArticles();
         console.log(`state.article_list: ${articleState.article_list.length}`)
-    }, [])
+    }, [articleState.article_list])
 
     return(
             <div>
@@ -39,7 +37,7 @@ const ArticlesHome = () => {
 ArticlesHome.propTypes ={
     //add props and action creators here.
     getAllArticles: PropTypes.func,
-    article_list: PropTypes.array.isRequired,
+    article_list: PropTypes.array,
     errorMessage: PropTypes.string
 };
 

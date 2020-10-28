@@ -48,6 +48,7 @@ export const getAllArticles = ( ) => dispatch => {
     //Handles action types: GET_ALL_ARTICLES, GET_ALL_ARTICLES_FAILED
     ArticleApi.getAllArticles()
         .then(res => {
+            console.log('Calling getAllArticles() action')
             dispatch({
                 type: GET_ALL_ARTICLES,
                 payload: res.data 
