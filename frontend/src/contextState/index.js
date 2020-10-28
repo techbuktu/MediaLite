@@ -1,11 +1,11 @@
 import React, { createContext, useReducer} from 'react';
 
 //Import individual reducer type from their respective files
-import userReducer, { userInitialState } from './userReducer';
-import editorReducer from './editorReducer';
-import writerReducer from './writerReducer';
-import articleReducer from './articleReducer';
-import commentReducer from './commentReducer';
+import userReducer, { userInitialState } from './reducers/userReducer';
+import editorReducer, { editorInitialState } from './reducers/editorReducer';
+import writerReducer, { writerInitialState } from './reducers/writerReducer';
+import articleReducer, { articleInitialState }  from './reducers/articleReducer';
+import commentReducer, { commentInitialState }  from './reducers/commentReducer';
 
 //REDUX_DEVTOOLS_EXTENSION Setup
 //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,11 +17,11 @@ export const AppContext = createContext({});
 // Create the 'Provider' to wrap the components of the app
 // to allow flow of app-level state to all children components
 
-export const AppProvider = (props) => {
+const AppProvider = (props) => {
     const [userState, userDispatch] = useReducer(userReducer, userInitialState);
     const [editorState, editorDispatch] = useReducer(editorReducer, editorInitialState);
     const [writerState, writerDispatch] = useReducer(writerReducer, writerInitialState);
-    const [articleState, articleDispatch] = useReducer(articleReducer, articleDispatch);
+    const [articleState, articleDispatch] = useReducer(articleReducer, articleInitialState);
     const [commentState, commentDispatch] = useReducer(commentReducer, commentInitialState);
 
     //const [state, dispatch] = useReducer(AppReducer, initialAppState);
@@ -42,7 +42,7 @@ export const AppProvider = (props) => {
 }
 
 
-
+export default AppProvider;
 
 
 /**

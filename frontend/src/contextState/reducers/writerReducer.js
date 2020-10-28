@@ -4,14 +4,14 @@ import { NEW_WRITER, NEW_WRITER_FAILED, GET_WRITER, GET_WRITER_BY_USER, GET_WRIT
 
 } from '../actions/types/writers';
 
-const initialState = {
+export const writerInitialState = {
     writer_list: [],
     errorMessage: {},
     writer: { },
     updated_writer: {} //Or remove this and just use 'writer' object for both cases.
 };
 
-const writerReducer = (state=initialState, action) => {
+const writerReducer = (state=writerInitialState, action) => {
     switch(action.type){
         case NEW_WRITER:
             return {

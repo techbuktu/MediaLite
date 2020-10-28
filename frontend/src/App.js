@@ -28,7 +28,7 @@ import ArticlesHome from './components/publisher/ArticlesHome';
 import { Provider } from 'react-redux';
 import store from './contextState';
 */
-import { AppProvider } from './contextState';
+import AppProvider from './contextState';
 
 function App() {
   return (

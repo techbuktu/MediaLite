@@ -1,14 +1,15 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { AppContext } from '../../contextState';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 import { getAllArticles } from '../../contextState/actions/articleActions';
-import articleReducer, { initialArticleState } from '../../contextState/reducers/articleReducer';
+//import articleReducer, { initialArticleState } from '../../contextState/reducers/articleReducer';
 //import action creators
 import PropTypes from 'prop-types';
 
 
 const ArticlesHome = () => {
-    const [state, dispatch] = useReducer(articleReducer, initialArticleState);
+    const [articleState, articleDispatch] = useContext(AppContext);
 
     const getArticles = () => {
         getAllArticles();
@@ -16,13 +17,13 @@ const ArticlesHome = () => {
 
     useEffect(() => {
         getArticles();
-        console.log(`state.article_list: ${state.article_list.length}`)
+        console.log(`state.article_list: ${articleState.article_list.length}`)
     }, [])
 
     return(
             <div>
 
-                {state.article_list.map(article => (
+                {articleState.article_list.map(article => (
                     <p>
                         <Link to={`/articles/${article.link}`}>
                             {article.title}

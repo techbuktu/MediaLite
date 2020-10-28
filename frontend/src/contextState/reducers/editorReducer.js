@@ -3,14 +3,14 @@ import {NEW_EDITOR, NEW_EDITOR_FAILED, GET_EDITOR, GET_EDITOR_FAILED, GET_ALL_ED
     DELETE_EDITOR_FAILED, GET_EDITOR_BY_USER, GET_EDITOR_BY_USER_FAILED } from '../actions/types/editors';
 
 //Create the default/initial state of the editorReducer 
-const initialState = {
+export const editorInitialState = {
     editor_list: [],
     errorMessage: {},
     editor: {},
     updated_user: {}
 };
 
-const editorReducer = (state=initialState, action) => {
+const editorReducer = (state=editorInitialState, action) => {
     switch(action.type){
         case NEW_EDITOR:
             return {

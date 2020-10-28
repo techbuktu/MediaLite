@@ -4,7 +4,7 @@ import {
     GET_COMMENTS_FOR_ARTICLE, GET_COMMENTS_FOR_ARTICLE_FAILED
 } from '../actions/types/comments';
 
-const initialState = {
+export const commentInitialState = {
     comment_list: [],
     comments_for_article: [], // May also be implemented/function the same as comment_list???
     comment: {},
@@ -13,7 +13,7 @@ const initialState = {
     comment_error: {}
 };
 
-const commentReducer = (state=initialState, action) => {
+const commentReducer = (state=commentInitialState, action) => {
     switch(action.type){
         case NEW_COMMENT:
             return {
