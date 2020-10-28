@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 
 const ArticlesHome = () => {
-    const [articleState, articleDispatch] = useContext(AppContext);
+    const { articleState, articleDispatch:dispatch } = useContext(AppContext);
 
     const getArticles = () => {
         getAllArticles();
