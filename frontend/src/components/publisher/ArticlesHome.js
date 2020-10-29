@@ -14,9 +14,9 @@ const ArticlesHome = () => {
     console.log(articleState);
 
     useEffect(() => {
-        getAllArticles();
+        getAllArticles()(articleDispatch);
         console.log(`state.article_list: ${articleState.article_list.length}`)
-    }, [articleState.article_list])
+    }, [])
 
     return(
             <div>
