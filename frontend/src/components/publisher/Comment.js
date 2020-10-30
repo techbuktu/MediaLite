@@ -2,7 +2,6 @@ import React from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
-import { getComment } from '../../contextState/actions/commentActions';
 import PropTypes from 'prop-types';
 
 const Comment = ({commentItem}) => {
@@ -32,7 +31,6 @@ const Comment = ({commentItem}) => {
 
 Comment.propTypes = {
     //add props and action creators here.
-    getComment: PropTypes.func.isRequired,
     comment: PropTypes.object.isRequired,
     article: PropTypes.object,
     errorMessage: PropTypes.string

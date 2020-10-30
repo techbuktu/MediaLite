@@ -3,7 +3,6 @@ import { AppContext } from '../../contextState';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 import { getAllArticles } from '../../contextState/actions/articleActions';
-//import articleReducer, { initialArticleState } from '../../contextState/reducers/articleReducer';
 //import action creators
 import PropTypes from 'prop-types';
 

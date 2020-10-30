@@ -21,8 +21,7 @@ const Article = (props) => {
 
 
     const commentsUI = () => {
-        //let article_comments = null;
-        if(commentState.comment_list){
+        if(commentState.comment_list.length > 0){
             return commentState.comment_list.map(comment => {
                     return (
                         <Comment commentItem = {comment} key={comment._id} />

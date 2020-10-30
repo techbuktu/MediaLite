@@ -10,7 +10,7 @@ import { AppContext } from '../../contextState';
 function NewComment(props){
         const {commentState, commentDispatch} = useContext(AppContext);
 
-        //placeholder for this.props.commenter until auth is implemented
+        //placeholder for commentState.commenter until auth is implemented
         let commenter = {
             "isActive":true,
             "_id":"5d910ef06b3fcb4e13ac3544",
@@ -25,9 +25,6 @@ function NewComment(props){
             commenter: commenter
         };
 
-        //this.onChange = this.onChange.bind(this);
-        //this.onSubmit = this.onSubmit.bind(this);
-
         function onChange(e){
             newCommentObj["commentBody"] = e.target.value;
         };
@@ -39,7 +36,6 @@ function NewComment(props){
             let newCommentJson = JSON.stringify(newCommentObj);
             createNewComment(newCommentJson)(commentDispatch);
             //Reset the form after submitting it. Keep it clean! :)
-            //document.getElementById("create-course-form").reset();
             document.getElementById("comment_form").reset();
         };
     
