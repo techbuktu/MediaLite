@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { AppContext } from '../../contextState';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { getAllEditors } from '../../contextState/actions/editorActions';
 import { getAllWriters } from '../../contextState/actions/writerActions';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-class ManagerHome extends Component {
 
-    componentDidMount(){
-        this.props.getAllEditors();
-        this.props.getAllWriters();
-    };
+const ManagerHome = () => {
+        const {editorState, editorDispatch} = useContext(AppContext);
+        const {writerState, writerDispatch} = useContext(AppContext);
 
-    render() {
-        const editorsUI = this.props.editor_list.map(editor => {
-            return (
+        useEffect(() => {
+            getAllEditors()(editorDispatch);
+            getAllWriters()(writerDispatch);
+        }, [])
+
+        const editorsUI = editorState.editor_list.map(editor => {
+            return(
                     <li key={editor._id}>
                         <Link to={`/editors/${editor._id}`}>
                             {editor.user.firstName} {editor.user.lastName}
@@ -25,7 +27,7 @@ class ManagerHome extends Component {
             )
         });
 
-        const writersUI = this.props.writer_list.map(writer => {
+        const writersUI = writerState.writer_list.map(writer => {
             return (
                     <li key={writer._id}>
                         <Link to={`/writers/${writer._id}`}>
@@ -47,7 +49,6 @@ class ManagerHome extends Component {
                </ul>
             </div>
         )
-    }
 }
 
 
@@ -61,13 +62,5 @@ ManagerHome.propTypes ={
     writersErrorMessage: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    editor_list: state.editors.editor_list,
-    writer_list: state.writers.writer_list,
-    editorsErrorMessage: state.editors.errorMessage,
-    writersErrorMessage: state.writers.errorMessage
-});
 
-
-export default connect(mapStateToProps, { getAllEditors, getAllWriters })(ManagerHome);
+export default ManagerHome;
