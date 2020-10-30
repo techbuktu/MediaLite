@@ -15,9 +15,9 @@ const Article = (props) => {
     const { articleLink } = useParams();
 
     useEffect(() => {
-        getArticle()(articleDispatch);
+        getArticle(articleLink)(articleDispatch);
         console.log(`articleState.article: ${articleState.article.title}`)
-    }, [])
+    }, [articleLink])
 
 
     const commentsUI = () => {
@@ -67,15 +67,13 @@ const Article = (props) => {
 
 Article.propTypes ={
     //add props and action creators here.
-    getArticle: PropTypes.func.isRequired,
-    getCommentsforArticle: PropTypes.func.isRequired,
-    article: PropTypes.object.isRequired,
+    getArticle: PropTypes.func,
+    getCommentsforArticle: PropTypes.func,
+    article: PropTypes.object,
     comment_list: PropTypes.array,
     errorMessage: PropTypes.object,
     commentsErrorMessage: PropTypes.object
 };
-
-
 
 
 export default Article;
