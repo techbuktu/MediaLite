@@ -1,64 +1,66 @@
-import React, { Component } from 'react';
+import React, { useEffect, useContext } from 'react';
 //import react-router-dom components
-import { Redirect, Link } from 'react-router-dom'; 
+import { Redirect, Link, useParams } from 'react-router-dom'; 
 //import action creators
 import { getArticle } from '../../contextState/actions/articleActions';
 import { getCommentsforArticle } from '../../contextState/actions/commentActions';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Comment from './Comment';
 import NewComment from './newComment';
+import { AppContext } from '../../contextState';
 
-class Article extends Component {
-    componentDidMount(){
-        let articleLink = this.props.match.params.articleLink;
-        this.props.getArticle(articleLink); 
-        this.props.getCommentsforArticle(articleLink);
+const Article = (props) => {
+    const {articleState, articleDispatch} = useContext(AppContext);
+    const {commentState, commentDispatch } = useContext(AppContext);
+    const { articleLink } = useParams();
+
+    useEffect(() => {
+        getArticle()(articleDispatch);
+        console.log(`articleState.article: ${articleState.article.title}`)
+    }, [])
+
+
+    const commentsUI = () => {
+        //let article_comments = null;
+        if(commentState.comment_list){
+            return commentState.comment_list.map(comment => {
+                    return (
+                        <Comment commentItem = {comment} key={comment._id} />
+                    )
+                });
+            }else {
+                return (
+                    <p>
+                    <i>
+                        No comments have been posted on this article yet.
+                    </i>
+                    </p>
+                )
+            }
     };
-
-    render() {
-        const commentsUI = () => {
-            //let article_comments = null;
-            if(this.props.comment_list){
-                return this.props.comment_list.map(comment => {
-                     return (
-                         <Comment commentItem = {comment} key={comment._id} />
-                     )
-                 });
-             }else {
-                 return (
-                     <p>
-                        <i>
-                            No comments have been posted on this article yet.
-                        </i>
-                     </p>
-                 )
-             }
-        };
         
-        if(this.props.article){
-            return (
+    if(articleState.article){
+        return (
+            <div>
+                <h4> {articleState.article.title} </h4>
                 <div>
-                    <h4> {this.props.article.title} </h4>
-                    <div>
-                        {this.props.article.body}
-                    </div>
-                    <div>
-                        <h5> Reader comments: </h5>
-                        {commentsUI()}
-                    </div>
-                    
-                    <NewComment parentArticle={this.props.article} />
+                    {articleState.article.body}
+                </div>
+                <div>
+                    <h5> Reader comments: </h5>
+                    {commentsUI()}
+                </div>
+                
+                <NewComment parentArticle={articleState.article} />
 
-                </div>
-            )
-        }else {
-            return (
-                <div>
-                    Loading... Please, wait....
-                </div>
-            )
-        }
+            </div>
+        )
+    }else {
+        return (
+            <div>
+                Loading... Please, wait....
+            </div>
+        )
     }
 }
 
@@ -73,13 +75,7 @@ Article.propTypes ={
     commentsErrorMessage: PropTypes.object
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    article: state.articles.article,
-    comment_list: state.comments.comment_list,
-    errorMessage: state.articles.errorMessage,
-    commentsErrorMessage: state.comments.errorMessage
-});
 
 
-export default connect(mapStateToProps, { getArticle, getCommentsforArticle })(Article)
+
+export default Article;
