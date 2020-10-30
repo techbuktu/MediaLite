@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
+import React, { useEffect, useContext } from 'react';
 //import react-router-dom components
-import { Redirect, Link } from 'react-router-dom'; 
+import { Redirect, Link, useParams } from 'react-router-dom'; 
 //import action creators
-import { getEditorById } from '../../contextState/actions/editorActions';
+import { getEditorById, getEditorByUser } from '../../contextState/actions/editorActions';
 import { getWritersUnderEditor } from '../../contextState/actions/writerActions';
 import { getUser } from '../../contextState/actions/userActions';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { AppContext } from '../../contextState';
 
-class Editor extends Component {
+const Editor = () => {
+    const {editorState, editorDispatch} = useContext(AppContext);
+    const {writerState, writerDispatch} = useContext(AppContext);
 
-    componentDidMount(){
-        let editorLink = this.props.match.params.editorLink;
-        this.props.getEditorById(editorLink);
-        this.props.getWritersUnderEditor(editorLink);
-    };
+    let { editorLink } = useParams();
 
-    render() {
-        const {about, user} = this.props.editor;
+    useEffect(() => {
+        getEditorById(editorLink)(editorDispatch);
+        getWritersUnderEditor(editorLink)(editorDispatch);
+    }, [])
 
-        const writersUnderEditorUI = this.props.writer_list.map(writer => {
+        const {about, user} = editorState.editor;
+
+        const writersUnderEditorUI = writerState.writer_list.map(writer => {
             const { user, _id } = writer;
             if(user){
                 return (
@@ -36,7 +38,7 @@ class Editor extends Component {
             }
         })
 
-        if(this.props.editor.user){
+        if(editorState.editor.user){
             return (
                 <div>
                     <h5>
@@ -58,7 +60,6 @@ class Editor extends Component {
                 </p>
             )
         }
-    }
 }
 
 Editor.propTypes = {
@@ -70,11 +71,5 @@ Editor.propTypes = {
     errorMessage: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    editor: state.editors.editor,
-    writer_list: state.writers.writer_list,
-    errorMessage: state.editors.errorMessage
-});
 
-export default connect(mapStateToProps, { getEditorById, getWritersUnderEditor })(Editor);
+export default Editor;
