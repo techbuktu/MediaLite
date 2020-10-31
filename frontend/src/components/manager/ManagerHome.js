@@ -56,8 +56,8 @@ ManagerHome.propTypes ={
     //add props and action creators here.
     editor_list: PropTypes.array.isRequired,
     writer_list: PropTypes.array,
-    getAllEditors: PropTypes.func.isRequired,
-    getAllWriters: PropTypes.func.isRequired,
+    getAllEditors: PropTypes.func,
+    getAllWriters: PropTypes.func,
     editorsErrorMessage: PropTypes.string,
     writersErrorMessage: PropTypes.string
 };

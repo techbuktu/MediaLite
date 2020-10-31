@@ -8,18 +8,18 @@ import { AppContext } from '../../contextState';
 
  const NewEditor = () => {
     const {editorState, editorDispatch} = useContext(AppContext);
-    const {about, setAbout} = useState('');
+    const [about, setAbout] = useState('');
     
     //placeholder userState.user object until auth is implemented
     const user = {
-        firstName: 'Abraham',
-        lastName: 'Lincoln',
-        email: 'coding.abe@example.com',
+        firstName: 'Ramadhan',
+        lastName: 'Fatih',
+        email: 'coding.farouq@example.com',
         joinDate: "2019-10-16T20:07:12.805Z"
     }
 
     const onChange= (e) => {
-        let about = e.target.value;
+        setAbout(e.target.value);
         console.log(about);
     };
 
@@ -29,8 +29,10 @@ import { AppContext } from '../../contextState';
             user: user,
             about: about
         }
+
         const newEditorJson = JSON.stringify(newEditorObj);
         createNewEditor(newEditorJson)(editorDispatch);
+        setAbout('');
     }
 
     return (
@@ -42,7 +44,8 @@ import { AppContext } from '../../contextState';
                         </p>
                         <p>
                             <textarea 
-                                name="about" 
+                                name="about"
+                                class="about"
                                 defaultValue="" 
                                 placeholder="Enter some bio info about this new Editor." 
                                 cols="30" rows="7"
@@ -62,7 +65,5 @@ NewEditor.propTypes ={
     createNewEditor: PropTypes.func,
     errorMessage: PropTypes.string
 };
-
-
 
 export default NewEditor;
