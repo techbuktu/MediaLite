@@ -6,24 +6,24 @@ import { createNewEditor } from '../../contextState/actions/editorActions';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../contextState';
 
-const newEditor = () => {
+ const NewEditor = () => {
     const {editorState, editorDispatch} = useContext(AppContext);
-    //const {editor, setEditor} = useState({});
+    const {about, setAbout} = useState('');
     
     //placeholder userState.user object until auth is implemented
-    user = {
+    const user = {
         firstName: 'Abraham',
         lastName: 'Lincoln',
         email: 'coding.abe@example.com',
         joinDate: "2019-10-16T20:07:12.805Z"
     }
 
-    onChange= (e) => {
-        about = e.target.value;
+    const onChange= (e) => {
+        let about = e.target.value;
         console.log(about);
     };
 
-    onSubmit= (e) => {
+    const onSubmit= (e) => {
         e.preventDefault();
         let newEditorObj = {
             user: user,
@@ -57,7 +57,7 @@ const newEditor = () => {
 }
 
 
-newEditor.propTypes ={
+NewEditor.propTypes ={
     //add props and action creators here.
     createNewEditor: PropTypes.func,
     errorMessage: PropTypes.string
@@ -65,4 +65,4 @@ newEditor.propTypes ={
 
 
 
-export default newEditor;
+export default NewEditor;
