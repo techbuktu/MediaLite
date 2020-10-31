@@ -1,70 +1,59 @@
-import React, { Component } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { createNewEditor } from '../../contextState/actions/editorActions';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { AppContext } from '../../contextState';
 
-class newEditor extends Component {
-
-    constructor(){
-        super();
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        //placeholder this.props.user object until auth is implemented
-        this.user = {
-            firstName: 'Abraham',
-            lastName: 'Lincoln',
-            email: 'coding.abe@example.com',
-            joinDate: "2019-10-16T20:07:12.805Z"
-        }
-
+const newEditor = () => {
+    const {editorState, editorDispatch} = useContext(AppContext);
+    //const {editor, setEditor} = useState({});
+    
+    //placeholder userState.user object until auth is implemented
+    user = {
+        firstName: 'Abraham',
+        lastName: 'Lincoln',
+        email: 'coding.abe@example.com',
+        joinDate: "2019-10-16T20:07:12.805Z"
     }
-        
 
-    componentDidMount(){
-        
+    onChange= (e) => {
+        about = e.target.value;
+        console.log(about);
     };
 
-    onChange(e){
-        this.about = e.target.value;
-        console.log(this.about);
-    };
-
-    onSubmit(e){
+    onSubmit= (e) => {
         e.preventDefault();
         let newEditorObj = {
-            user: this.user,
-            about: this.about
+            user: user,
+            about: about
         }
         const newEditorJson = JSON.stringify(newEditorObj);
-        this.props.createNewEditor(newEditorJson);
+        createNewEditor(newEditorJson)(editorDispatch);
     }
-    render() {
-        return (
-            <div>
-                 <form onSubmit={this.onSubmit}>
+
+    return (
+        <div>
+                <form onSubmit={onSubmit}>
                     <div className="formContainer">
-                       <p>
+                        <p>
                             <label> About </label>
-                       </p>
+                        </p>
                         <p>
                             <textarea 
                                 name="about" 
                                 defaultValue="" 
                                 placeholder="Enter some bio info about this new Editor." 
                                 cols="30" rows="7"
-                                onChange={this.onChange} 
+                                onChange={onChange} 
                             />
                         </p>
                     </div>
-                    <button type="submit"> Add New Editor</button>
-                 </form>
-            </div>
-        )
-    }
+                <button type="submit"> Add New Editor</button>
+                </form>
+        </div>
+    )
 }
 
 
@@ -74,10 +63,6 @@ newEditor.propTypes ={
     errorMessage: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    errorMessage: state.editors.errorMessage
-});
 
 
-export default connect(mapStateToProps, { createNewEditor })(newEditor);
+export default newEditor;
