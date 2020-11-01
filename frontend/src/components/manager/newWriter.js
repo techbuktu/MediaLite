@@ -1,95 +1,89 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 //import react-router-dom components
-import { Redirect, Link } from 'react-router-dom'; 
+import { Redirect, Link, useParams } from 'react-router-dom'; 
 //import action creators
 import { createNewWriter } from '../../contextState/actions/writerActions'
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { AppContext } from '../../contextState';
 
-class newWriter extends Component {
-    constructor(){
-        super();
+const NewWriter = () => {
+    const [about, setAbout] = useState({});
+    const {writerState, writerDispatch} = useContext(AppContext);
 
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+    //placeholder userStatae.user until auth is implemented
+    let user = {
+        isActive:true,
+        firstName:"Alpha",
+        lastName:"Jalloh",
+        email:"techlite@jalloh.com"
+    };
 
-        //placeholder 'editor' object until auth, etc. is implemented
-        this.editor = {
-            _id:"5d93d7e02825b05a49fde0e5",
-            user: "5d910f646b3fcb4e13ac3545",
-            about: "I am Founder of The Millenial Times",
-            date: "2019-10-17T04:09:54.606Z"
-        };
-
-        //placeholder this.props.user until auth is implemented
-        this.user = {
-            isActive:true,
-            firstName:"Alpha",
-            lastName:"Jalloh",
-            email:"techlite@jalloh.com"
-        };
+    //placeholder editorState.editor object until auth, etc. is implemented
+    let editor = {
+        "_id": "5f989a5b541e9f24d78b53a7",
+        "user": {
+            "isActive": true,
+            "_id": "5f98993c541e9f24d78b53a4",
+            "firstName": "Testley",
+            "lastName": "Johnson",
+            "email": "testley@example.com",
+            "password": "$2a$10$s0A1ZC0kx2nLBqnhrpN7RuM4VASNieayj7OSM41ytb9FutTF9p3hK",
+            "joinDate": "2020-10-27T22:03:40.386Z",
+            "__v": 0
+        },
+        "about": "I am the Editor of the NodeVersity Times",
+        "date": "2020-10-27T22:08:27.929Z",
+        "__v": 0
     }
 
-
-    componentDidMount(){
-        //
+    const onChange = (e) => {
+        setAbout(e.target.value);
     };
 
-    onChange(e){
-        this.about = e.target.value;
-        
-    };
-
-    onSubmit(e){
+    const onSubmit = (e)=> {
         e.preventDefault();
 
         let newWriterObj = {
-            user: this.user,
-            about: this.about,
-            editor: this.editor,
+            user: user,
+            about: about,
+            editor: editor,
         };
+
         const newWriterJson = JSON.stringify(newWriterObj)
         console.log(newWriterJson);
-        this.props.createNewWriter(newWriterJson);
+        createNewWriter(newWriterJson)(writerDispatch);
     };
     
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <div className="formContainer">
-                        <h5> Use the Form Below to Add a New Staff Writer</h5>
-                        <p>
-                            <label> About </label>
-                        </p>
-                        <p>
-                            <textarea 
-                                name="about" 
-                                defaultValue="" 
-                                placeholder="Enter some details about this new Writer." 
-                                cols="30" rows="7"
-                                onChange={this.onChange} 
-                            />
-                        </p>
-                    </div>
-                    <button type="submit"> Add New Writer</button>
-                </form>
-            </div>
-        )
-    }
+    
+    return (
+        <div>
+            <form onSubmit={onSubmit}>
+                <div className="formContainer">
+                    <h5> Use the Form Below to Add a New Staff Writer</h5>
+                    <p>
+                        <label> About </label>
+                    </p>
+                    <p>
+                        <textarea 
+                            name="about" 
+                            defaultValue="" 
+                            placeholder="Enter some details about this new Writer." 
+                            cols="30" rows="7"
+                            onChange={onChange} 
+                        />
+                    </p>
+                </div>
+                <button type="submit"> Add New Writer</button>
+            </form>
+        </div>
+    )
 }
 
 
-newWriter.propTypes ={
+NewWriter.propTypes ={
     //add props and action creators here.
     createNewWriter: PropTypes.func.isRequired,
     errorMessage: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    errorMessage: state.writers.errorMessage
-});
-
-
-export default connect(mapStateToProps, { createNewWriter })(newWriter)
+export default NewWriter

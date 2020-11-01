@@ -16,7 +16,7 @@ import Editor from './components/manager/Editor';
 import Writer from './components/manager/Writer';
 import ManagerHome from './components/manager/ManagerHome';
 import NewEditor from './components/manager/newEditor';
-import newWriter from './components/manager/newWriter';
+import NewWriter from './components/manager/newWriter';
 
 //Import 'publisher'-section components 
 import Article from './components/publisher/Article';
@@ -43,7 +43,7 @@ function App() {
               <Route path="/login" component={LogIn} />
               <Route exact path="/manager" component={ManagerHome} />
               <Route path="/manager/new-editor" component={NewEditor} />
-              <Route path="/manager/new-writer" component={newWriter} />
+              <Route path="/manager/new-writer" component={NewWriter} />
               <Route path="/editors/:editorLink" component={Editor} />
               <Route path="/writers/:writerLink" component={Writer} />
               <Route exact path="/articles" component={ArticlesHome} />

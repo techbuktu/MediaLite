@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import { Redirect, Link, useParams } from 'react-router-dom'; 
 //import action creators
 import { getWriter } from '../../contextState/actions/writerActions'; //getAllArticlesforWriter() too
-import { getAllArticles, getAllArticlesByWriter } from '../../contextState/actions/articleActions';
+import { getAllArticlesByWriter } from '../../contextState/actions/articleActions';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../contextState';
 
@@ -16,7 +16,7 @@ const Writer =  () => {
 
     useEffect(() => {
         getWriter(writerLink)(writerDispatch);
-        getAllArticlesByWriter(writerLink)(writerDispatch);
+        getAllArticlesByWriter(writerLink)(articleDispatch);
 
     }, [writerState])
 
