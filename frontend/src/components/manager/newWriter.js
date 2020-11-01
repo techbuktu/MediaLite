@@ -55,29 +55,39 @@ const NewWriter = () => {
         createNewWriter(newWriterJson)(writerDispatch);
     };
     
-    
-    return (
-        <div>
-            <form onSubmit={onSubmit} id="writer_form">
-                <div className="formContainer">
-                    <h5> Use the Form Below to Add a New Staff Writer</h5>
-                    <p>
-                        <label> About </label>
-                    </p>
-                    <p>
-                        <textarea 
-                            name="about" 
-                            defaultValue="" 
-                            placeholder="Enter some details about this new Writer." 
-                            cols="30" rows="7"
-                            onChange={onChange} 
-                        />
-                    </p>
+    if(writerState.writer.about){
+        return(
+            <div>
+                Congratulations {writerState.writer.user.firstName}!
+                <p>
+                    You have created a new Writer account.
+                </p>
+            </div>
+        )
+        }else {
+            return (
+                <div>
+                    <form onSubmit={onSubmit} id="writer_form">
+                        <div className="formContainer">
+                            <h5> Use the Form Below to Add a New Staff Writer</h5>
+                            <p>
+                                <label> About </label>
+                            </p>
+                            <p>
+                                <textarea 
+                                    name="about" 
+                                    defaultValue="" 
+                                    placeholder="Enter some details about this new Writer." 
+                                    cols="30" rows="7"
+                                    onChange={onChange} 
+                                />
+                            </p>
+                        </div>
+                        <button type="submit"> Add New Writer</button>
+                    </form>
                 </div>
-                <button type="submit"> Add New Writer</button>
-            </form>
-        </div>
-    )
+            )
+        }
 }
 
 

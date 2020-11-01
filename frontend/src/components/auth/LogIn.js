@@ -1,78 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { loginUser } from '../../contextState/actions/userActions';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { AppContext } from '../../contextState';
 
-class LogIn extends Component {
-    constructor(){
-        super();
+const LogIn = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
+    const {userState, userDispatch} = useContext(AppContext);
 
-        this.loginCredsObj = {
+    const loginCredsObj = {
 
-        };
+    };    
 
-        this.onChange = this.onChange.bind(this);
-        this.logIn = this.logIn.bind(this);
-    }
-
-    onChange(e){
+    function onChange(e){
         //Populate the loginCredsObj 
-        this.loginCredsObj[e.target.name] = e.target.value;
-        console.log(this.loginCredsObj);
+        loginCredsObj[e.target.name] = e.target.value;
+        console.log(loginCredsObj);
         
     };
 
-    logIn(e){
+    function logIn(e){
         e.preventDefault();
         //JSONify the object for the API call 
-        let loginJson = JSON.stringify(this.loginCredsObj);
+        let loginJson = JSON.stringify(loginCredsObj);
         //POST the login creds to the API using the loginUser action creator.
-        this.props.loginUser(loginJson);
+        loginUser(loginJson)(userDispatch);
         //Clear the login_form 
         document.getElementById("login_form").reset();
     }
 
-    render() {
-        if(this.props.user && this.props.auth_token){
-            return (
-                <div> 
-                    <p>
-                        {this.props.user.firstName}, you are already logged in.
-                    </p>
-                    <p>
-                        You can head to the <Link to={'/'}>Home page</Link>
-                    </p>
-                </div>
-            )
-        }else {
-            return (
+    
+    if(userState.user && userState.auth_token){
+        return (
+            <div> 
+                <p>
+                    {userState.user.firstName}, you are already logged in.
+                </p>
+                <p>
+                    You can head to the <Link to={'/'}>Home page</Link>
+                </p>
+            </div>
+        )
+    }else {
+        return (
+            <div>
                 <div>
-                    <div>
-                        <form onSubmit={this.logIn} id="login_form">
-                            <div className="formContainer">
-                                <h5>Login to Your Medialite Account</h5>
-                                <p>
-                                    <label>
-                                        eMail 
-                                    </label>
-                                    <input type="email" className="formInput" name="email" defaultValue="" onChange={this.onChange} />
-                                </p>
-                                <p>
-                                    <label>
-                                        Password
-                                    </label>
-                                    <input type="password" className="formInput" name="password" defaultValue="" onChange={this.onChange} />
-                                </p>
-                                <input type="submit" value="Login"/>
-                            </div>
-                        </form>
-                    </div>
+                    <form onSubmit={logIn} id="login_form">
+                        <div className="formContainer">
+                            <h5>Login to Your Medialite Account</h5>
+                            <p>
+                                <label>
+                                    eMail 
+                                </label>
+                                <input type="email" className="formInput" name="email" defaultValue="" onChange={onChange} />
+                            </p>
+                            <p>
+                                <label>
+                                    Password
+                                </label>
+                                <input type="password" className="formInput" name="password" defaultValue="" onChange={onChange} />
+                            </p>
+                            <input type="submit" value="Login"/>
+                        </div>
+                    </form>
                 </div>
-            )
-        }
+            </div>
+        )
     }
 }
 
@@ -83,13 +79,4 @@ LogIn.propTypes ={
     user: PropTypes.object
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    errorMessage: state.users.errorMessage,
-    auth_token: state.users.auth_token,
-    user: state.users.user
-
-});
-
-
-export default connect(mapStateToProps, { loginUser })(LogIn);
+export default LogIn;

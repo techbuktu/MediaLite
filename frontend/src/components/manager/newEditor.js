@@ -36,28 +36,39 @@ import { AppContext } from '../../contextState';
         document.getElementById("editor_form").reset();
     }
 
-    return (
-        <div>
-                <form onSubmit={onSubmit} id="editor_form">
-                    <div className="formContainer">
-                        <p>
-                            <label> About </label>
-                        </p>
-                        <p>
-                            <textarea 
-                                name="about"
-                                class="about"
-                                defaultValue="" 
-                                placeholder="Enter some bio info about this new Editor." 
-                                cols="30" rows="7"
-                                onChange={onChange} 
-                            />
-                        </p>
-                    </div>
-                <button type="submit"> Add New Editor</button>
-                </form>
-        </div>
-    )
+    if(editorState.editor.about){
+        return(
+            <div>
+                Congratulations {editorState.editor.user.firstName}!
+                <p>
+                    You have created a new Editor account.
+                </p>
+            </div>
+        )
+    }else {
+        return (
+            <div>
+                    <form onSubmit={onSubmit} id="editor_form">
+                        <div className="formContainer">
+                            <p>
+                                <label> About </label>
+                            </p>
+                            <p>
+                                <textarea 
+                                    name="about"
+                                    class="about"
+                                    defaultValue="" 
+                                    placeholder="Enter some bio info about this new Editor." 
+                                    cols="30" rows="7"
+                                    onChange={onChange} 
+                                />
+                            </p>
+                        </div>
+                    <button type="submit"> Add New Editor</button>
+                    </form>
+            </div>
+        )
+    }
 }
 
 
