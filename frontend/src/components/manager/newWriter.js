@@ -38,6 +38,7 @@ const NewWriter = () => {
 
     const onChange = (e) => {
         setAbout(e.target.value);
+        document.getElementById("writer_form").reset();
     };
 
     const onSubmit = (e)=> {
@@ -57,7 +58,7 @@ const NewWriter = () => {
     
     return (
         <div>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} id="writer_form">
                 <div className="formContainer">
                     <h5> Use the Form Below to Add a New Staff Writer</h5>
                     <p>

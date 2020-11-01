@@ -1,84 +1,78 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 //import action creators
 import { registerUser } from '../../contextState/actions/userActions';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { AppContext } from '../../contextState';
 
-class Register extends Component {
-    constructor(){
-        super();
+const Register = () => {
+    const {userState, userDispatch} = useContext(AppContext);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] =  useState('');
+    const [password, setPassword] =  useState('');
+    
+    //Instantiate the newUserObj to submit to the API to register a new User
+    const newUserObj = {
 
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        //Instantiate the newUserObj to submit to the API to register a new User
-        this.newUserObj = {
-
-        };
     };
 
-    componentDidMount(){
-        //
-    };
-
-    onChange(e){
+    function onChange(e){
         //Populate the newUserObj
-        this.newUserObj[e.target.name] = e.target.value;
-        console.log(`this.newUserObj: ${this.newUserObj}`);
+        newUserObj[e.target.name] = e.target.value;
+        console.log(`newUserObj: ${newUserObj}`);
     }
 
-    onSubmit(e){
+    function onSubmit(e){
         e.preventDefault();
-        let newUserJson = JSON.stringify(this.newUserObj);
-        this.props.registerUser(newUserJson);
+        let newUserJson = JSON.stringify(newUserObj);
+        registerUser(newUserJson)(userDispatch);
         document.getElementById("register_form").reset();
     };
     
-    render() {
-        if(this.props.user.firstName){
-            return (
-                <div>
-                    <h5>Congrats, {this.props.user.firstName}! You have registered as {this.props.user.email}</h5>
-                </div>
-            )
-        }else {
-            return (
-                <div>
-                    <form onSubmit={this.onSubmit} id="register_form">
-                        <div className="formContainer">
-                            <h5>Register for a New Medialite Account</h5>
-                            <p>
-                                <label>
-                                    First Name
-                                </label>
-                                <input type="text" className="formInput" name="firstName" defaultValue="" onChange={this.onChange} />
-                            </p>
-                            <p>
-                                <label>
-                                    Last Name
-                                </label>
-                                <input type="text" className="formInput" name="lastName" defaultValue="" onChange={this.onChange} />
-                            </p>
-                            <p>
-                                <label>
-                                    eMail 
-                                </label>
-                                <input type="email" className="formInput" name="email" defaultValue="" onChange={this.onChange} />
-                            </p>
-                            <p>
-                                <label>
-                                    Password
-                                </label>
-                                <input type="password" className="formInput" name="password" defaultValue="" onChange={this.onChange} />
-                            </p>
-                            <input type="submit" value="Submit Comment"/>
-                        </div>
-                    </form>
-                </div>
-            )
-        }
+    
+    if(userState.user.firstName){
+        return (
+            <div>
+                <h5>Congrats, {userState.user.firstName}! You have registered as {userState.user.email}</h5>
+            </div>
+        )
+    }else {
+        return (
+            <div>
+                <form onSubmit={onSubmit} id="register_form">
+                    <div className="formContainer">
+                        <h5>Register for a New Medialite Account</h5>
+                        <p>
+                            <label>
+                                First Name
+                            </label>
+                            <input type="text" className="formInput" name="firstName" defaultValue="" onChange={onChange} />
+                        </p>
+                        <p>
+                            <label>
+                                Last Name
+                            </label>
+                            <input type="text" className="formInput" name="lastName" defaultValue="" onChange={onChange} />
+                        </p>
+                        <p>
+                            <label>
+                                eMail 
+                            </label>
+                            <input type="email" className="formInput" name="email" defaultValue="" onChange={onChange} />
+                        </p>
+                        <p>
+                            <label>
+                                Password
+                            </label>
+                            <input type="password" className="formInput" name="password" defaultValue="" onChange={onChange} />
+                        </p>
+                        <input type="submit" value="Submit Comment"/>
+                    </div>
+                </form>
+            </div>
+        )
     }
 };
 
@@ -89,11 +83,5 @@ Register.propTypes ={
     errorMessage: PropTypes.object
 };
 
-const mapStateToProps = (state) => ({
-    //add obj: state.<reducer_key>.obj_name; one for each component prop
-    user: state.users.user,
-    errorMessage: state.users.errorMessage
-});
 
-
-export default connect(mapStateToProps, { registerUser })(Register);
+export default Register;

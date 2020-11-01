@@ -33,11 +33,12 @@ import { AppContext } from '../../contextState';
         const newEditorJson = JSON.stringify(newEditorObj);
         createNewEditor(newEditorJson)(editorDispatch);
         setAbout('');
+        document.getElementById("editor_form").reset();
     }
 
     return (
         <div>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} id="editor_form">
                     <div className="formContainer">
                         <p>
                             <label> About </label>
