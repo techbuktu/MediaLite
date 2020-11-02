@@ -64,7 +64,7 @@ To achieve this DRY "pluggabbility" scheme of mine ( :) ), I decided to organize
 
 3. `index.js`: This is the "motherlode." This is where the app's Context API-based __app-wide context__ (herein named as `AppContext`) is created.  The app-wide __Context Provider__ component (herein named `AppProvider`) is also created here and then exported (for use in the root `App()` component in `App.js`.). 
 
-This is also where the setup for the [REDUX DEV TOOLS extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) could have been (but not fully) configured.
+This is also where the setup for the [REDUX DEV TOOLS extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) could have been (but, in this case, wasn't fully) configured.
 
 
 ## Installing Dependencies for the Project 
@@ -136,7 +136,8 @@ I can be reached, connected with, be-friended or followed on:
 
 #### My Tech Space:
 I have a few websites online, but the most relevant here are:
-* [TechBuktu](https://techbuktu.com) (I publish some web dev tutorials here every once in blue moon.)
+* [NodeVersity](https://nodeversity.com/) (I publish some web dev tutorials here every once in blue moon.)
+
 * [Siratiq: Interactive Mapping Platform](https://siratiq.com) (This is a work-in-progress platform that lets you create, share and discover photos, blog posts, notes and videos parlayed on your own personal map. Other features are forthcoming, God willing! :) )
 
 ### `I am Looking for a Full Stack Role`
