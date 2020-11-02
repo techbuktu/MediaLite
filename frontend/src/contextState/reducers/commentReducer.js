@@ -10,7 +10,7 @@ export const commentInitialState = {
     comment: {},
     updated_comment: {},
     errorMessage: {},
-    comment_error: {}
+    comment_error: {},
 };
 
 const commentReducer = (state=commentInitialState, action) => {
@@ -18,8 +18,9 @@ const commentReducer = (state=commentInitialState, action) => {
         case NEW_COMMENT:
             return {
                 ...state, 
-                comment: action.payload.new_comment, // .comment : VERIFY
-                comment_list : [action.payload.new_comment, ...state.comment_list]
+                comment: action.payload.new_comment, // .comment : VERIFY 
+                comment_list : [action.payload.comment, ...state.comment_list]
+                
             };
         case NEW_COMMENT_FAILED:
             return {
