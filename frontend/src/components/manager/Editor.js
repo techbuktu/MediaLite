@@ -4,7 +4,6 @@ import { Redirect, Link, useParams } from 'react-router-dom';
 //import action creators
 import { getEditorById, getEditorByUser } from '../../contextState/actions/editorActions';
 import { getWritersUnderEditor } from '../../contextState/actions/writerActions';
-import { getUser } from '../../contextState/actions/userActions';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../contextState';
 
@@ -16,7 +15,7 @@ const Editor = () => {
 
     useEffect(() => {
         getEditorById(editorLink)(editorDispatch);
-        getWritersUnderEditor(editorLink)(editorDispatch);
+        getWritersUnderEditor(editorLink)(writerDispatch);
     }, [])
 
         const {about, user} = editorState.editor;

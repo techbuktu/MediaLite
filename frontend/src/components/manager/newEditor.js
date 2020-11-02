@@ -10,7 +10,7 @@ import { AppContext } from '../../contextState';
     const {editorState, editorDispatch} = useContext(AppContext);
     const [about, setAbout] = useState('');
     
-    //placeholder userState.user object until auth is implemented
+    //placeholder userState.user object until auth is fully-implemented
     const user = {
         firstName: 'Ramadhan',
         lastName: 'Fatih',

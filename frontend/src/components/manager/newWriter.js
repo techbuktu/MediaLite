@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 //import react-router-dom components
-import { Redirect, Link, useParams } from 'react-router-dom'; 
+import { Redirect } from 'react-router-dom'; 
 //import action creators
 import { createNewWriter } from '../../contextState/actions/writerActions'
 import PropTypes from 'prop-types';
@@ -18,7 +18,7 @@ const NewWriter = () => {
         email:"techlite@jalloh.com"
     };
 
-    //placeholder editorState.editor object until auth, etc. is implemented
+    //placeholder editorState.editor object until auth, etc. is fully-implemented
     let editor = {
         "_id": "5f989a5b541e9f24d78b53a7",
         "user": {

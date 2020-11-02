@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 //import react-router-dom components
 import { Redirect, Link, useParams } from 'react-router-dom'; 
 //import action creators
-import { getWriter } from '../../contextState/actions/writerActions'; //getAllArticlesforWriter() too
+import { getWriter } from '../../contextState/actions/writerActions';
 import { getAllArticlesByWriter } from '../../contextState/actions/articleActions';
 import PropTypes from 'prop-types';
 import { AppContext } from '../../contextState';
