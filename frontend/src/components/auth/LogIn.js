@@ -36,7 +36,7 @@ const LogIn = () => {
         return (
             <div> 
                 <p>
-                    {userState.user.firstName}, you are already logged in.
+                    {userState.user.firstName}, you are logged in.
                 </p>
                 <p>
                     You can head to the <Link to={'/'}>Home page</Link>
