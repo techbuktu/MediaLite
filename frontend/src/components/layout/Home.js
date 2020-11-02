@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 //import react-router-dom components
 import { Redirect, Link } from 'react-router-dom'; 
 
-import PropTypes from 'prop-types';
-
 const Home = () => {
         return (
             <div>
@@ -18,10 +16,6 @@ const Home = () => {
                 </p>
             </div>
         )
-};
-
-Home.propTypes ={
-    //add props and action creators here.
 };
 
 
