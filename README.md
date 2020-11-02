@@ -18,7 +18,7 @@ I decided to develop MediaLite using the **`MERN`** stack, consisting, mainly, o
 
 * [React.js](https://reactjs.org/): Is arguably the most popular frontend/SPA framework in the web dev world at this point. I have also found it to be less-opinionated than Angular (my first love :) ) and as such has decided to select it for this project.
 
-* [Redux](https://redux.js.org/): I wanted to gauge the usefulness of this popular State Manager when integrated with a pseudo-complex project like MediaLite. So, instead of using the default React Context Api for State Management, I opted for Redux using the [react-redux](https://react-redux.js.org/) package that connects the two technologies. I am impressed! :) 
+* [React Context API](https://reactjs.org/docs/context.html): I wanted to use the Context API that comes bundled with React as its own full fledged **State Manager** (and somewhat of a Redux replacement; though that is still very much debatable, at least to me! :) ) I used the Context API alongside the new hooks-based objects (useState, useReducer, useContext) and so on to make sure this app it is "fully" React-hooks-based.
 
 * [Node.js](https://nodejs.org/en/): Node.js is the engine on which both ExpressJS and React.js run. Using NPM (its package manager and installer), one can install any needed third-party packages that are compatible and useful for the project at hand. In this case, I used NPM to install such packages as [mongoose](https://mongoosejs.com/), [bcryptjs](https://www.npmjs.com/package/bcryptjs), and others.
 
@@ -33,7 +33,7 @@ The main "entry points" of the project are:
 
 * ***backend/***: This folder contains the code for the backend (ExpressJS and co.) of the project. Its subfolders are organized into exlicitly-named **models/**, **routes/**, **middleware/**, **views/**, etc.
 
-* ***frontend/***: This folder contains the frontend (React.js and Redux) codebase. Inside the **src/** folder (where the app's codebase sits), I have decided to develop the frontend app in such a way that makes it reusable. As such, if you (or I) decide not to use Redux as the State Manager, that is easily replaceable while another option can be plugged in just as easily. 
+* ***frontend/***: This folder contains the frontend (React.js, Context API and Axios-based API calls) codebase. Inside the **src/** folder (where the app's codebase sits), I have decided to develop the frontend app in such a way that makes it reusable. As such, if you (or I) decide not to use the Context API as the State Manager, that is easily replaceable while another option (like Redux) can be plugged in just as easily, without rewriting all the parts of the state management codebase.
 
 To achieve this DRY "pluggabbility" scheme of mine ( :) ), I decided to organize the frontend React.js app into three main subfolders:
 
@@ -47,7 +47,7 @@ To achieve this DRY "pluggabbility" scheme of mine ( :) ), I decided to organize
 
 4. There's an intuitive HTTP verb-to-function mapping in how each method of an API service is named. Thus, UserApi.getUserById() is clear about what it does, what args it should be fed, what type of data it should get back from the server, etc. Compare this versus UserApi.getAllUsers() and UserApi.deleteUser(user_id). I wanted each one to speak for itself and therefore, make some types of redundant documentation unnecessary (or, at least minimal, since the methods are acutely-"Englishmanic". :) )
 
-* ***`components/`***: This holds the UI and logic for the app's components. I have sub-divided these into three sub-folders (which somewhat mirror the __model types__ in the backend app):
+* ***`components/`***: This holds the UI and logic for the app's components. I have sub-divided these into __*four*__ sub-folders (which somewhat mirror the __model types__ in the backend app):
 
 1. *`layout/`*: Holds the components that determine the shared layout/UI of the app: Header, Footer and Home. 
 2. *`auth/`*: To hold authentication-related components.
@@ -56,13 +56,15 @@ To achieve this DRY "pluggabbility" scheme of mine ( :) ), I decided to organize
 
 4. *`publisher/`*: Handles the components that are concerned with the UI and logic of the Article and Comment objects in the app, that the platform's users will interact with primarily.
 
-* **`dataStore/`**: This is where all the logic of the Redux store resides. Again, opinionated as I am, I have decided to organize the "**dataStore**" into explicitly-named folders:
+* **`contextState/`**: This is where all the logic of the Context API state resides. Again, opinionated as I am, I have decided to organize the "**contextState**" into explicitly-named folders:
 
 1. `actions/`: This has a `types/` sub-folder which contains one file each for the action TYPES related to each model. There is also a "_model_Actions.js" file (_e.g. `articleActions.js`, `writerActions.js`, etc.) for each model type. Each of these files contains the **action creators** (i.e functions) for the related model type. Each action creator is exported to enable reuse in other parts of the frontend app, as necessary, mainly in the components.
 
-2. `reducers/`: This contains a file each for every type of model of the frontend app. Thus, the `articleReducer.js` handles updating the application (Redux-based) state based on the *ACTION TYPE* that was `dispatch()`ed from the *ACTION CREATORS* . The `rootReducer` itself is in the `reducers/index.js` file.
+2. `reducers/`: This contains a file each for every type of model of the frontend app. Thus, the `articleReducer.js` handles updating the application (Context API-based) state based on the *ACTION TYPE* that was `dispatch()`ed from the *ACTION CREATORS* . 
 
-3. `index.js`: This is the "motherlode." This is where the app's Redux-based `store` is created and then exported (for use in `App.js`, etc.). The `rootReducer`, the frontend middleware (including `thunk`) also make "cameo" appearances here. This is also where the setup for the [REDUX DEV TOOLS extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) is configured.
+3. `index.js`: This is the "motherlode." This is where the app's Context API-based __app-wide context__ (herein named as `AppContext`) is created.  The app-wide __Context Provider__ component (herein named `AppProvider`) is also created here and then exported (for use in the root `App()` component in `App.js`.). 
+
+This is also where the setup for the [REDUX DEV TOOLS extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) could have been (but not fully) configured.
 
 
 ## Installing Dependencies for the Project 
