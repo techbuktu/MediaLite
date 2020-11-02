@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
 });
 **/
 
+//NOT FULLY-IMPLEMENTED OR USED IN THIS APPLICATION. ***DO NOT USE**
 const AppReducer = () => {
     return {
         users: userReducer,

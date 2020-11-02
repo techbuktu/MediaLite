@@ -24,7 +24,7 @@ const AppProvider = (props) => {
     const [articleState, articleDispatch] = useReducer(articleReducer, articleInitialState);
     const [commentState, commentDispatch] = useReducer(commentReducer, commentInitialState);
 
-    //const [state, dispatch] = useReducer(AppReducer, initialAppState);
+    //const [state, dispatch] = useReducer(AppReducer, initialAppState); <= NOT IMPLEMENTED. **DO NOT USE*
     
     return (
         <AppContext.Provider value={{
@@ -43,27 +43,3 @@ const AppProvider = (props) => {
 
 
 export default AppProvider;
-
-
-/**
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
-
-const initialState = { };
-const middleware = [thunk];
-
-//REDUX_DEVTOOLS_EXTENSION Setup
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-    rootReducer,
-    initialState,
-    composeEnhancers(
-        applyMiddleware(...middleware)
-    )
-);
-
-export default store;
-
-*/
