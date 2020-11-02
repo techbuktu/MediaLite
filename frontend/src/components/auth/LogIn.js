@@ -31,7 +31,6 @@ const LogIn = () => {
         //Clear the login_form 
         document.getElementById("login_form").reset();
     }
-
     
     if(userState.user && userState.auth_token){
         return (
