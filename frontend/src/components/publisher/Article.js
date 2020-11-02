@@ -23,11 +23,13 @@ const Article = (props) => {
 
     const commentsUI = () => {
         if(commentState.comment_list){
-            return commentState.comment_list.map(comment => {
+            return (
+                commentState.comment_list.map(comment => {
                     return (
                         <Comment commentItem = {comment} key={comment._id} />
                     )
-                });
+                })
+            );
             }else {
                 return (
                     <p>

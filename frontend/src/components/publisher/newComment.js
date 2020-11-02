@@ -60,7 +60,7 @@ NewComment.propTypes ={
     createNewComment: PropTypes.func,
     article: PropTypes.object,
     errorMessage: PropTypes.object,
-    new_comment: PropTypes.object
+    comment: PropTypes.object
 };
 
 
