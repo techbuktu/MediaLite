@@ -16,6 +16,7 @@ const Article = (props) => {
 
     useEffect(() => {
         getArticle(articleLink)(articleDispatch);
+        getCommentsforArticle(articleLink)(commentDispatch);
         console.log(`articleState.article: ${articleState.article.title}`)
     }, [articleLink])
 

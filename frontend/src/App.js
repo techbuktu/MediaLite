@@ -20,7 +20,7 @@ import NewWriter from './components/manager/newWriter';
 
 //Import 'publisher'-section components 
 import Article from './components/publisher/Article';
-import newArticle from './components/publisher/newArticle';
+import NewArticle from './components/publisher/newArticle';
 import ArticlesHome from './components/publisher/ArticlesHome';
 
 /**
@@ -47,7 +47,7 @@ function App() {
               <Route path="/editors/:editorLink" component={Editor} />
               <Route path="/writers/:writerLink" component={Writer} />
               <Route exact path="/articles" component={ArticlesHome} />
-              <Route exact path="/publisher/new-article" component={newArticle} />
+              <Route exact path="/publisher/new-article" component={NewArticle} />
               <Route path="/articles/:articleLink" component={Article} />
 
             <Footer />
